@@ -1,0 +1,66 @@
+.notification-popup {
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin-left: 1200px;
+  /* margin-top: 300px; */
+  z-index: 2;
+  height: 710px;
+  width: 400px;
+  justify-content: center;
+  background-color: rgb(255, 255, 255);
+  /* padding: 40px 30px 20px 30px; */
+  border-radius: 5px;
+  text-align: center;
+  border: 1px solid black;
+}
+
+
+.notification-popup .closebtn {
+  position: absolute;
+  top: 23px;
+  left: 16px;
+  height: 22px;
+  width: 22px;
+}
+
+.closebtn {
+  filter: invert(1);
+  margin-top: 1px;
+}
+
+.closebtn:hover {
+  transform: scale(1.1);
+}
+
+.noti-div {
+  background-color: rgb(255, 255, 255);
+  border-bottom: 1px solid rgb(0, 0, 0);
+  padding: 18px 18px;
+}
+
+.notidiv {
+  background-color: rgb(255, 255, 255);
+  border-bottom: 1px solid rgb(0, 0, 0);
+  padding: 18px 18px;
+}
+
+.latestnoti {
+  background-color: blue;
+  margin-top: -20px;
+  padding: 2.5px;
+}
+
+.latest-noti {
+  margin-top: 40px;
+  color: white;
+}
+
+.no-noti {
+  font-size: 20px;
+  font-weight: bold;
+  color: gray;
+  margin-top: 75%;
+}

@@ -1,0 +1,43 @@
+.currenttimetablediv {
+    background-color: blue;
+    margin: 30px 150px 0px 150px;
+    text-align: center;
+    color: white;
+    border-radius: 5px 5px 0px 0px;
+}
+
+.currenttimetabletitle {
+    padding: 10px 0px 10px 0px;
+    font-weight: normal;
+}
+
+/* .current-course {
+    width: 1300px;
+} */
+
+table {
+
+    border-spacing: 0px;
+
+}
+
+tbody,
+thead tr {
+    display: block;
+}
+
+tbody {
+    height: 200px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+tbody td,
+thead th {
+    width: 255px;
+}
+
+thead th:last-child {
+    width: 271px;
+    /* 140px + 16px scrollbar width */
+}

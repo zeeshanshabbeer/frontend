@@ -1,0 +1,269 @@
+.LpMainDiv {
+  position: relative;
+}
+
+.Lpcontainer {
+  text-align: center;
+  background-image: linear-gradient(to bottom, rgb(170, 170, 170), black);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+}
+
+.loginAs {
+  margin-top: 170px;
+}
+
+.studentdiv {
+  background-color: rgb(196, 196, 196);
+  display: inline-table;
+  text-align: center;
+  margin-right: 80px;
+  padding: 0px 50px 26px 50px;
+  border: 1px solid black;
+  border-radius: 5px;
+  color: black;
+}
+
+.studentdiv:hover {
+  background-color: rgb(224, 224, 224);
+  transform: scale(1.1);
+}
+
+.batchadvisordiv {
+  background-color: rgb(196, 196, 196);
+  display: inline-table;
+  text-align: center;
+  padding: 0px 50px 0px 50px;
+  border: 1px solid black;
+  border-radius: 5px;
+  color: black;
+}
+
+.batchadvisordiv:hover {
+  background-color: rgb(224, 224, 224);
+  transform: scale(1.1);
+}
+
+.LPicon {
+  width: 70px;
+  height: 70px;
+  margin-top: 20px;
+}
+
+.LpTitle {
+  float: left;
+  margin-left: 150px;
+  margin-top: -240px;
+
+
+}
+
+.LandingPagetitle {
+  margin-left: -1200px;
+  font-size: 34px;
+
+}
+
+.LandingPagetagline {
+  margin-left: -1080px;
+  margin-top: -25px;
+  font-size: 22px;
+}
+
+@media screen and (max-width: 768px) and (min-width: 560px) {
+  .loginAs {
+    margin-top: 140px;
+  }
+
+  .LandingPagetitle {
+    margin-left: -550px;
+    font-size: 34px;
+
+  }
+
+  .LandingPagetagline {
+    margin-left: -430px;
+    margin-top: -25px;
+    font-size: 22px;
+  }
+
+}
+
+@media screen and (max-width: 1024px) and (min-width: 768px) {
+  .LandingPagetitle {
+    margin-left: -850px;
+    font-size: 34px;
+
+  }
+
+  .LandingPagetagline {
+    margin-left: -730px;
+    margin-top: -25px;
+    font-size: 22px;
+  }
+}
+
+@media screen and (max-width: 430px) and (min-width: 320px) {
+  .loginAs {
+    margin-top: 90px;
+  }
+
+  .studentdiv {
+    background-color: rgb(196, 196, 196);
+    display: table;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0px 50px 26px 50px;
+    border: 1px solid black;
+    border-radius: 5px;
+    color: black;
+  }
+
+  .batchadvisordiv {
+    background-color: rgb(196, 196, 196);
+    display: table;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    padding: 0px 50px 0px 50px;
+    border: 1px solid black;
+    border-radius: 5px;
+    color: black;
+  }
+
+  .LandingPagetitle {
+    margin-left: -280px;
+    font-size: 34px;
+
+  }
+
+  .LandingPagetagline {
+    margin-left: -160px;
+    margin-top: -25px;
+    font-size: 22px;
+  }
+
+  .link {
+    text-decoration: none;
+  }
+
+}
+
+@media screen and (max-width: 385px) and (min-width: 320px) {
+  .LandingPagetitle {
+    margin-left: -270px;
+    font-size: 34px;
+
+  }
+
+  .LandingPagetagline {
+    margin-left: -155px;
+    margin-top: -25px;
+    font-size: 22px;
+  }
+}
+
+@media screen and (max-width: 375px) and (min-width: 320px) {
+  .LandingPagetitle {
+    margin-left: -250px;
+    font-size: 34px;
+
+  }
+
+  .LandingPagetagline {
+    margin-left: -130px;
+    margin-top: -25px;
+    font-size: 22px;
+  }
+}
+
+@media screen and (max-width: 365px) and (min-width: 320px) {
+  .LandingPagetitle {
+    margin-left: -255px;
+    font-size: 34px;
+
+  }
+
+  .LandingPagetagline {
+    margin-left: -140px;
+    margin-top: -25px;
+    font-size: 22px;
+  }
+}
+
+
+@media screen and (max-width: 355px) and (min-width: 320px) {
+  .LandingPagetitle {
+    margin-left: -250px;
+    font-size: 34px;
+
+  }
+
+  .LandingPagetagline {
+    margin-left: -135px;
+    margin-top: -25px;
+    font-size: 22px;
+  }
+}
+
+@media screen and (max-width: 350px) and (min-width: 320px) {
+  .LandingPagetitle {
+    margin-left: -245px;
+    font-size: 34px;
+
+  }
+
+  .LandingPagetagline {
+    margin-left: -130px;
+    margin-top: -25px;
+    font-size: 22px;
+  }
+}
+
+@media screen and (max-width: 320px) and (min-width: 320px) {
+  .LandingPagetitle {
+    margin-left: -200px !important;
+    font-size: 34px;
+
+  }
+
+  .LandingPagetagline {
+    margin-left: -80px !important;
+    margin-top: -25px;
+    font-size: 22px;
+  }
+}
+
+@media screen and (max-width: 345px) and (min-width: 320px) {
+  .LandingPagetitle {
+    margin-left: -215px;
+    font-size: 34px;
+
+  }
+
+  .LandingPagetagline {
+    margin-left: -100px;
+    margin-top: -25px;
+    font-size: 22px;
+  }
+}
+
+@media screen and (max-width: 912px) and (min-width: 768px) {
+  .LandingPagetitle {
+    margin-left: -650px;
+    font-size: 34px;
+
+  }
+
+  .LandingPagetagline {
+    margin-left: -530px;
+    margin-top: -25px;
+    font-size: 22px;
+  }
+}
