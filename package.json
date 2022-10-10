@@ -2,7 +2,7 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
-  "proxy": "backend-three-nu.vercel.app",
+  "proxy": "https://backend-al598hy5l-zeeshanshabbeer.vercel.app",
   "dependencies": {
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
