@@ -13,6 +13,7 @@ import Error from "../../utils/Errors";
 import Success from "../../utils/Success";
 
 const AddForm = (props) => {
+  console.log("zeeshan");
   const location = useLocation();
   const registrationId = location.state;
   const Navigate = useNavigate();
