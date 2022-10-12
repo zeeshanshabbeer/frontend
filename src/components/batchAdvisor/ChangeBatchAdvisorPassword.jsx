@@ -26,40 +26,43 @@ const ChangeBatchAdvisorPassword = () => {
   const Update_Password = async (e) => {
     e.preventDefault();
     const { old_password, new_password, confirm_password } = update_password;
-    if(!update_password.old_password){
+    if (!update_password.old_password) {
       Error("Please enter old password.");
       return;
     }
-    if(!update_password.new_password){
+    if (!update_password.new_password) {
       Error("Please enter new password.");
       return;
     }
-    if(!update_password.confirm_password){
+    if (!update_password.confirm_password) {
       Error("Please confirm new password.");
       return;
     }
     const regexPattern =
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).{8,}$/;
     if (regexPattern.test(new_password)) {
-      const res = await fetch("/BatchAdvisor/BA_updatepassword", {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          old_password: old_password,
-          new_password: new_password,
-          confirm_password: confirm_password,
-        }),
-      });
+      const res = await fetch(
+        "https://backend-three-nu.vercel.app/BatchAdvisor/BA_updatepassword",
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            old_password: old_password,
+            new_password: new_password,
+            confirm_password: confirm_password,
+          }),
+        }
+      );
       const data = await res.json();
       if (data.status === "success") {
-        Success(data.message)
-        setTimeout(()=>{
+        Success(data.message);
+        setTimeout(() => {
           navigate("/BatchAdvisorProfile");
-        },3000)
+        }, 3000);
       } else {
-        Error(data.message)
+        Error(data.message);
       }
     } else {
       Error(

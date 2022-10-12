@@ -7,14 +7,17 @@ import "./../../css/CurrentTimetable.css";
 const CurrentTimetable = () => {
   const [timetable, setTimetable] = useState([]);
   const S_Timetable = async () => {
-    const res = await fetch("/Timetable/StudentTimetable", {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      credentials: "include",
-    });
+    const res = await fetch(
+      "https://backend-three-nu.vercel.app/Timetable/StudentTimetable",
+      {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      }
+    );
 
     const data = await res.json();
     if (data.status === "success") {

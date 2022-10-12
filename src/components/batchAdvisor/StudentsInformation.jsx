@@ -11,13 +11,15 @@ const StudentsInformation = () => {
 
   const getstudentdata = async () => {
     try {
-      // const res = await fetch("/StudentsInformations", {
-      const res = await fetch("/StudentInformation/StudentInformation", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const res = await fetch(
+        "https://backend-three-nu.vercel.app/StudentInformation/StudentInformation",
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
       const data = await res.json();
       setStudent(data.message);
 

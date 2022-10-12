@@ -22,7 +22,7 @@ const BatchAdvisorQueryThread = () => {
   const chat = async () => {
     setMessage1("");
     const res = await fetch(
-      `/ChatBox/BA_ViewMessages/${registrationId}/${subject}`,
+      `https://backend-three-nu.vercel.app/ChatBox/BA_ViewMessages/${registrationId}/${subject}`,
       {
         method: "GET",
         headers: {
@@ -54,7 +54,7 @@ const BatchAdvisorQueryThread = () => {
     }
     const message = message1;
     const res = await fetch(
-      `/ChatBox/BA_MessageReply/${registrationId}/${subject}/${message}`,
+      `https://backend-three-nu.vercel.app/ChatBox/BA_MessageReply/${registrationId}/${subject}/${message}`,
       {
         method: "POST",
         headers: {

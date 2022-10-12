@@ -31,16 +31,19 @@ const FreezeSemester = () => {
       return;
     }
     setUser({ continuationTime: "", reason: "" });
-    const res = await fetch("/FreezeSemester/freezeSemester", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        reason,
-        continuationTime,
-      }),
-    });
+    const res = await fetch(
+      "https://backend-three-nu.vercel.app/FreezeSemester/freezeSemester",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          reason,
+          continuationTime,
+        }),
+      }
+    );
     const data = await res.json();
     if (data.status === "success") {
       Success(data.message);
@@ -94,7 +97,6 @@ const FreezeSemester = () => {
             <option value="SP24">SP24</option>
           </select>
           <br />
-          {console.log(user)}
           {user.reason === "" && user.continuationTime === "" ? (
             <button className="freezebutton">Submit</button>
           ) : (

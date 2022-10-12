@@ -8,14 +8,17 @@ import "./../../css/RepeatCourse.css";
 const RepeatCourse = () => {
   const [userData, setUserData] = useState([]);
   const S_Profile = async () => {
-    const res = await fetch("/RepeatCourse/RepeatCourse", {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      credentials: "include",
-    });
+    const res = await fetch(
+      "https://backend-three-nu.vercel.app/RepeatCourse/RepeatCourse",
+      {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      }
+    );
 
     const data = await res.json();
     if (data.status === "success") {

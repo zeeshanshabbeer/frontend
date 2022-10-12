@@ -36,17 +36,20 @@ const NewBatchAdvisorPassword = () => {
     const regexPattern =
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).{8,}$/;
     if (regexPattern.test(new_password)) {
-      const res = await fetch("/BatchAdvisor/BA_resetpassword", {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          new_password,
-          confirm_password,
-          token,
-        }),
-      });
+      const res = await fetch(
+        "https://backend-three-nu.vercel.app/BatchAdvisor/BA_resetpassword",
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            new_password,
+            confirm_password,
+            token,
+          }),
+        }
+      );
       const data = await res.json();
       if (data.status === "success") {
         Success(data.message);

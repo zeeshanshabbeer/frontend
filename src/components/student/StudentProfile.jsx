@@ -22,14 +22,17 @@ const StudentProfile = () => {
   const S_Profile = async () => {
     setButtonPopup(false);
     setUpdate_contact_no({ contactNo: "" });
-    const res = await fetch("/Student/Studentprofile", {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      credentials: "include",
-    });
+    const res = await fetch(
+      "https://backend-three-nu.vercel.app/Student/Studentprofile",
+      {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      }
+    );
 
     const data = await res.json();
     if (data.status === "success") {
@@ -44,7 +47,6 @@ const StudentProfile = () => {
   // for update contact
   let name, value;
   const handleInputs = (e) => {
-    console.log(e);
     name = e.target.name;
     value = e.target.value;
     setUpdate_contact_no({ ...update_contact_no, [name]: value });
@@ -59,15 +61,18 @@ const StudentProfile = () => {
     }
     if (validator.isNumeric(contactNo)) {
       if (contactNo.length === 10) {
-        const res = await fetch("/Student/UpdateContact", {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            contactNo,
-          }),
-        });
+        const res = await fetch(
+          "https://backend-three-nu.vercel.app/Student/UpdateContact",
+          {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              contactNo,
+            }),
+          }
+        );
         const data = await res.json();
         if (data.status === "success") {
           Success(data.message);

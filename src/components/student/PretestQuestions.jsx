@@ -1,28 +1,29 @@
 import React, { useState, useEffect } from "react";
 import "./../../css/Pretest.css";
 import { Link, useLocation } from "react-router-dom";
-import { ToastContainer} from "react-toastify";
-import Error from "../../utils/Errors"
-import Success from "../../utils/Success"
-
+import { ToastContainer } from "react-toastify";
+import Error from "../../utils/Errors";
 
 const PretestQuestions = () => {
   const location = useLocation();
   const courseName = location.state;
   const [preTest, setPreTest] = useState([]);
   const pretest_question = async () => {
-      const res = await fetch(`/Pretest/getQuestions/${courseName}`, {
+    const res = await fetch(
+      `https://backend-three-nu.vercel.app/Pretest/getQuestions/${courseName}`,
+      {
         method: "GET",
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
         },
         credentials: "include",
-      });
-      const data = await res.json();
-      if(data.status==="success"){
-        setPreTest(data.message);
       }
+    );
+    const data = await res.json();
+    if (data.status === "success") {
+      setPreTest(data.message);
+    }
   };
   useEffect(() => {
     pretest_question();
@@ -46,24 +47,27 @@ const PretestQuestions = () => {
   //submit button
   const submitTest = async () => {
     const answer = state;
-    const res = await fetch(`/Pretest/verifyAnswer/${courseName}`, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        answer: answer,
-      }),
-    });
+    const res = await fetch(
+      `https://backend-three-nu.vercel.app/Pretest/verifyAnswer/${courseName}`,
+      {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          answer: answer,
+        }),
+      }
+    );
     await res.json();
   };
 
-const SubmitError=async(e)=>{
-  e.preventDefault()
-  Error("please solve all questions");
-  return
-}
+  const SubmitError = async (e) => {
+    e.preventDefault();
+    Error("please solve all questions");
+    return;
+  };
 
   return (
     <>
@@ -128,20 +132,22 @@ const SubmitError=async(e)=>{
               </button>
             </Link>
           ) : (
-            <button className="start-btn" onClick={SubmitError}>Submit</button>
+            <button className="start-btn" onClick={SubmitError}>
+              Submit
+            </button>
           )}
         </div>
         <ToastContainer
-            position="top-center"
-            autoClose={2000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-          />
+          position="top-center"
+          autoClose={2000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
       </div>
     </>
   );

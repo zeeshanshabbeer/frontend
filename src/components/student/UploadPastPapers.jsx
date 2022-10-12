@@ -48,10 +48,13 @@ const UploadPastPapers = () => {
     setCourse_title("");
     setSession("");
     setFileName();
-    const res = await fetch("/Pastpaper/upload_pastpapers", {
-      method: "POST",
-      body: formData,
-    });
+    const res = await fetch(
+      "https://backend-three-nu.vercel.app/Pastpaper/upload_pastpapers",
+      {
+        method: "POST",
+        body: formData,
+      }
+    );
     const data = await res.json();
     if (data.status === "success") {
       Success(data.message);
@@ -62,14 +65,17 @@ const UploadPastPapers = () => {
   // get all(sos or elective) courses to check what is coursecode and credits hours
   const [allCourses, setAllCourses] = useState([]);
   const getAllCourses = async () => {
-    const res = await fetch("/SechemeOfStudy/AllCourses", {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      credentials: "include",
-    });
+    const res = await fetch(
+      "https://backend-three-nu.vercel.app/SechemeOfStudy/AllCourses",
+      {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      }
+    );
     const data = await res.json();
     if (data.status === "success") {
       setAllCourses(data.message);

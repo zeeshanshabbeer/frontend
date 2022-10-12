@@ -10,12 +10,15 @@ const TopMenu = () => {
   const [userData, setUserData] = useState({});
   const navigate = useNavigate();
   const calltopmenu = async () => {
-    const res = await fetch("/Student/S_Topmenu", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const res = await fetch(
+      "https://backend-three-nu.vercel.app/Student/S_Topmenu",
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
     const data = await res.json();
     setUserData(data.message);
     if (data.status !== "success") {
@@ -29,14 +32,17 @@ const TopMenu = () => {
 
   const S_logout = async (e) => {
     e.preventDefault();
-    const res = await fetch("/Student/Studentlogout", {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      credentials: "include",
-    });
+    const res = await fetch(
+      "https://backend-three-nu.vercel.app/Student/Studentlogout",
+      {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      }
+    );
     const data = await res.json();
     if (data.status === "success") {
       navigate("/StudentLogin");
@@ -45,18 +51,19 @@ const TopMenu = () => {
   // for Notification
   const [notifications, setNotifications] = useState([]);
   const S_Notification = async () => {
-    const res = await fetch("/Notification/S_notification", {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      // credentials: "include",
-    });
+    const res = await fetch(
+      "https://backend-three-nu.vercel.app/Notification/S_notification",
+      {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        // credentials: "include",
+      }
+    );
     const data = await res.json();
-    console.log(data);
     if (data.status === "success") {
-      console.log(data);
       setNotifications(data.message);
     }
   };

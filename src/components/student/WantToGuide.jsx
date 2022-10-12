@@ -15,15 +15,18 @@ const WantToGuide = () => {
   const [course, setCourse] = useState("");
   // in which course you want to guide
   const submit = async (course) => {
-    const res = await fetch(`/Guidance/want_to_guide/${course}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        course,
-      }),
-    });
+    const res = await fetch(
+      `https://backend-three-nu.vercel.app/Guidance/want_to_guide/${course}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          course,
+        }),
+      }
+    );
     const data = await res.json();
     if (data.status === "success") {
       Success(data.message);
@@ -36,14 +39,17 @@ const WantToGuide = () => {
   const [coursedata, setCourseData] = useState([]);
   const wanttoguide = async () => {
     setCourse("");
-    const res = await fetch("/Guidance/guide_courses", {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      credentials: "include",
-    });
+    const res = await fetch(
+      "https://backend-three-nu.vercel.app/Guidance/guide_courses",
+      {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      }
+    );
     const data = await res.json();
     if (data.status === "success") {
       setCourseData(data.message);
@@ -55,23 +61,29 @@ const WantToGuide = () => {
   // setChecked(true)
   const chec = async (add) => {
     setChecked(add);
-    const res = await fetch(`/Guidance/wantToGuide_contact/${add}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const res = await fetch(
+      `https://backend-three-nu.vercel.app/Guidance/wantToGuide_contact/${add}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
     await res.json();
   };
   const checkBox = async () => {
-    const res = await fetch("/Guidance/ContactNo", {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      credentials: "include",
-    });
+    const res = await fetch(
+      "https://backend-three-nu.vercel.app/Guidance/ContactNo",
+      {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      }
+    );
     const data = await res.json();
     if (data.status === "success") {
       if (data.message.contactNo === "--") {
@@ -89,15 +101,18 @@ const WantToGuide = () => {
 
   // for delete courses
   const delcourse = async (course) => {
-    const res = await fetch(`/Guidance/Guidance/delete/${course}`, {
-      method: "delete",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        course,
-      }),
-    });
+    const res = await fetch(
+      `https://backend-three-nu.vercel.app/Guidance/Guidance/delete/${course}`,
+      {
+        method: "delete",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          course,
+        }),
+      }
+    );
     const data = await res.json();
     if (data.status === "success") {
       Success(data.message);
@@ -114,14 +129,17 @@ const WantToGuide = () => {
   const [allCourses, setAllCourses] = useState([]);
   const getAllCourses = async () => {
     setCourse("");
-    const res = await fetch("/SechemeOfStudy/AllCourses", {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      credentials: "include",
-    });
+    const res = await fetch(
+      "https://backend-three-nu.vercel.app/SechemeOfStudy/AllCourses",
+      {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      }
+    );
     const data = await res.json();
     if (data.status === "success") {
       setAllCourses(data.message);

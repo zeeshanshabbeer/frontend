@@ -16,12 +16,15 @@ const BatchAdvisorTopMenu = () => {
   }, []);
 
   const calltopmenu = async () => {
-    const res = await fetch("/BatchAdvisor/BA_Topmenu", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const res = await fetch(
+      "https://backend-three-nu.vercel.app/BatchAdvisor/BA_Topmenu",
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
     const data = await res.json();
     if (data.status === "success") {
       setUserData(data.message);
@@ -32,14 +35,17 @@ const BatchAdvisorTopMenu = () => {
   //for logout
 
   const BAlogout = async () => {
-    const res = await fetch("/BatchAdvisor/BatchAdvisorLogout", {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      credentials: "include",
-    });
+    const res = await fetch(
+      "https://backend-three-nu.vercel.app/BatchAdvisor/BatchAdvisorLogout",
+      {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      }
+    );
     const data = await res.json();
     if (data.status === "success") {
       navigate("/BatchAdvisorLogin");
@@ -49,17 +55,19 @@ const BatchAdvisorTopMenu = () => {
   // for Notification
   const [notifications, setNotifications] = useState([]);
   const BA_Notification = async () => {
-    const res = await fetch("/Notification/BA_notification", {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      credentials: "include",
-    });
+    const res = await fetch(
+      "https://backend-three-nu.vercel.app/Notification/BA_notification",
+      {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      }
+    );
     const data = await res.json();
     if (data.status === "success") {
-      console.log(data);
       setNotifications(data.message);
     }
   };

@@ -11,14 +11,17 @@ const PendingRequests = () => {
   const navigate = useNavigate();
   const S_Profile = async () => {
     try {
-      const res = await fetch("/BatchAdvisor/Add_Drop_Freeze_pending", {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        credentials: "include",
-      });
+      const res = await fetch(
+        "https://backend-three-nu.vercel.app/BatchAdvisor/Add_Drop_Freeze_pending",
+        {
+          method: "GET",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
+        }
+      );
 
       const data = await res.json();
       setUserData(data.message);
@@ -44,9 +47,9 @@ const PendingRequests = () => {
         <h2 className="freezesemestertitle">Pending Requests</h2>
       </div>
       {userData.length === 0 ? (
-                <div className="emptydiv">
-                <h2 className="emptytext">You don't have any pending requests!</h2>
-              </div>
+        <div className="emptydiv">
+          <h2 className="emptytext">You don't have any pending requests!</h2>
+        </div>
       ) : (
         <table className="pendingTable">
           <tr>

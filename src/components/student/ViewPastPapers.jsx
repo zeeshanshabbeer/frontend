@@ -40,7 +40,7 @@ const ViewPastPapers = () => {
     const { course_title, paper_type, session } = userData;
 
     const res = await fetch(
-      `/Pastpaper/paper/${course_title}/${paper_type}/${session}`,
+      `https://backend-three-nu.vercel.app/Pastpaper/paper/${course_title}/${paper_type}/${session}`,
       {
         method: "GET",
         headers: {
@@ -60,14 +60,17 @@ const ViewPastPapers = () => {
   const [pathfile, setPathfile] = useState({});
   useEffect(() => {});
   const delcourse = async (_id) => {
-    const res = await fetch(`/Pastpaper/papers/${_id}`, {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      credentials: "include",
-    });
+    const res = await fetch(
+      `https://backend-three-nu.vercel.app/Pastpaper/papers/${_id}`,
+      {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      }
+    );
     const data = await res.json();
     if (data.status === "success") {
       setPathfile(data.message);
@@ -78,14 +81,17 @@ const ViewPastPapers = () => {
   //get all(sos or elective) courses to check what is coursecode and credits hours
   const [allCourses, setAllCourses] = useState([]);
   const getAllCourses = async () => {
-    const res = await fetch("/SechemeOfStudy/AllCourses", {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      credentials: "include",
-    });
+    const res = await fetch(
+      "https://backend-three-nu.vercel.app/SechemeOfStudy/AllCourses",
+      {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      }
+    );
     const data = await res.json();
     if (data.status === "success") {
       setAllCourses(data.message);

@@ -13,7 +13,6 @@ import Error from "../../utils/Errors";
 import Success from "../../utils/Success";
 
 const AddForm = (props) => {
-  console.log("zeeshan");
   const location = useLocation();
   const registrationId = location.state;
   const Navigate = useNavigate();
@@ -24,14 +23,17 @@ const AddForm = (props) => {
     adddropform();
   }, []);
   const adddropform = async () => {
-    const res = await fetch(`/AddCourse/Add_Form/${registrationId}`, {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      credentials: "include",
-    });
+    const res = await fetch(
+      `https://backend-three-nu.vercel.app/AddCourse/Add_Form/${registrationId}`,
+      {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      }
+    );
     const data = await res.json();
     if (data.status === "success") {
       setDropform(data.message);
@@ -46,17 +48,20 @@ const AddForm = (props) => {
     e.preventDefault();
     const reason = reject;
     const courseName = reject1;
-    const res = await fetch("/AddCourse/delete_AddPending", {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        reason: reason,
-        courseName: courseName,
-        registrationId,
-      }),
-    });
+    const res = await fetch(
+      "https://backend-three-nu.vercel.app/AddCourse/delete_AddPending",
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          reason: reason,
+          courseName: courseName,
+          registrationId,
+        }),
+      }
+    );
     const data = await res.json();
     if (data.status === "success") {
       Success(data.message);
@@ -70,15 +75,18 @@ const AddForm = (props) => {
   //on accept drop request
   const onSubmit = async (e) => {
     e.preventDefault();
-    const res = await fetch("/AddCourse/Add_Coursess_Submit", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        registrationId,
-      }),
-    });
+    const res = await fetch(
+      "https://backend-three-nu.vercel.app/AddCourse/Add_Coursess_Submit",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          registrationId,
+        }),
+      }
+    );
     const data = await res.json();
     if (data.status === "success") {
       Success(data.message);

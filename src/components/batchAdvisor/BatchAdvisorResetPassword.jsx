@@ -25,15 +25,18 @@ const BatchAdvisorResetPassword = () => {
       Error("Please enter email.");
       return;
     }
-    const res = await fetch("/BatchAdvisor/BA_sendresetemail", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email,
-      }),
-    });
+    const res = await fetch(
+      "https://backend-three-nu.vercel.app/BatchAdvisor/BA_sendresetemail",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+        }),
+      }
+    );
     const data = await res.json();
     if (data.status === "success") {
       Success(data.message);

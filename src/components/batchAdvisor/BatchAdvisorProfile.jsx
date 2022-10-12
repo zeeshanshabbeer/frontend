@@ -26,14 +26,17 @@ const BatchAdvisorProfile = () => {
   const BA_Profile = async () => {
     setButtonPopup(false);
     setUpdate_contact_no({ contactNo: "" });
-    const res = await fetch("/BatchAdvisor/BatchAdvisorProfile", {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      credentials: "include",
-    });
+    const res = await fetch(
+      "https://backend-three-nu.vercel.app/BatchAdvisor/BatchAdvisorProfile",
+      {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      }
+    );
 
     const data = await res.json();
     if (data.status === "success") {
@@ -58,15 +61,18 @@ const BatchAdvisorProfile = () => {
     }
     if (validator.isNumeric(contactNo)) {
       if (contactNo.length === 10) {
-        const res = await fetch("/BatchAdvisor/BA_updatecontact", {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            contactNo,
-          }),
-        });
+        const res = await fetch(
+          "https://backend-three-nu.vercel.app/BatchAdvisor/BA_updatecontact",
+          {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              contactNo,
+            }),
+          }
+        );
         const data = await res.json();
         if (data.status === "success") {
           Success(data.message);

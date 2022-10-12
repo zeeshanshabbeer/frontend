@@ -12,14 +12,17 @@ const OfficeHours = () => {
   const [friday, setFriday] = useState([]);
 
   const S_office = async () => {
-    const res = await fetch("/OfficeHours/officehour", {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      credentials: "include",
-    });
+    const res = await fetch(
+      "https://backend-three-nu.vercel.app/OfficeHours/officehour",
+      {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      }
+    );
 
     const data = await res.json();
     if (data.status === "success") {

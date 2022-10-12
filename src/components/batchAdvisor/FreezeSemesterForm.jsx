@@ -12,15 +12,18 @@ import "react-toastify/dist/ReactToastify.css";
 const FreezeSemesterForm = () => {
   const sendEmail = async (e) => {
     e.preventDefault();
-    const res = await fetch("/FreezeSemester/FreezeSemester_Accept", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        registrationId,
-      }),
-    });
+    const res = await fetch(
+      "https://backend-three-nu.vercel.app/FreezeSemester/FreezeSemester_Accept",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          registrationId,
+        }),
+      }
+    );
     const data = await res.json();
     if (data.status === "success") {
       emailjs
@@ -73,14 +76,17 @@ const FreezeSemesterForm = () => {
   }, []);
 
   const FreezeForm = async () => {
-    const res = await fetch(`/FreezeSemester/Freeze_Form/${registrationId}`, {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      credentials: "include",
-    });
+    const res = await fetch(
+      `https://backend-three-nu.vercel.app/FreezeSemester/Freeze_Form/${registrationId}`,
+      {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      }
+    );
 
     const data = await res.json();
     if (data.status === "success") {
@@ -93,15 +99,18 @@ const FreezeSemesterForm = () => {
 
   const submit = async (e) => {
     e.preventDefault();
-    const res = await fetch("/FreezeSemester/FreezeSemester_reject", {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        registrationId,
-      }),
-    });
+    const res = await fetch(
+      "https://backend-three-nu.vercel.app/FreezeSemester/FreezeSemester_reject",
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          registrationId,
+        }),
+      }
+    );
     const data = await res.json();
     setButtonPopup(false);
     if (data.status === "success") {
@@ -132,7 +141,7 @@ const FreezeSemesterForm = () => {
   //accept button
   // const Submit_A = async (e) => {
   //   e.preventDefault();
-  //   const res = await fetch("/FreezeSemester/FreezeSemester_Accept", {
+  //   const res = await fetch("https://backend-three-nu.vercel.app/FreezeSemester/FreezeSemester_Accept", {
   //     method: "POST",
   //     headers: {
   //       "Content-Type": "application/json",

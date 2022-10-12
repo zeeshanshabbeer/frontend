@@ -34,16 +34,19 @@ const BatchAdvisorLogin = () => {
       Error("Please enter the password.");
       return;
     }
-    const res = await fetch("/BatchAdvisor/BatchAdvisorLogin", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: email,
-        password: password,
-      }),
-    });
+    const res = await fetch(
+      "https://backend-three-nu.vercel.app/BatchAdvisor/BatchAdvisorLogin",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: email,
+          password: password,
+        }),
+      }
+    );
     const data = await res.json();
     if (data.status === "success") {
       navigate("/PendingRequests");

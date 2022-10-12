@@ -25,18 +25,20 @@ const BatchAdvisorOfficeHours = () => {
       day = "Monday";
       to = "--";
     }
-    //const res = await fetch(`/officehours/${day}/${from}/${to}`, {
-    const res = await fetch(`/OfficeHours/officehours/${day}/${from}/${to}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        day,
-        from,
-        to,
-      }),
-    });
+    const res = await fetch(
+      `https://backend-three-nu.vercel.app/OfficeHours/officehours/${day}/${from}/${to}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          day,
+          from,
+          to,
+        }),
+      }
+    );
     const data = await res.json();
     if (data.status === 400 || !data) {
       window.alert("invalid credentials");
@@ -57,18 +59,20 @@ const BatchAdvisorOfficeHours = () => {
       day = "Monday";
       from = "--";
     }
-    //const res = await fetch(`/officehours/${day}/${from}/${to}`, {
-    const res = await fetch(`/OfficeHours/officehours/${day}/${from}/${to}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        day,
-        from,
-        to,
-      }),
-    });
+    const res = await fetch(
+      `https://backend-three-nu.vercel.app/OfficeHours/officehours/${day}/${from}/${to}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          day,
+          from,
+          to,
+        }),
+      }
+    );
     const data = await res.json();
     if (res.status === 400 || !data) {
       window.alert("invalid credentials");
@@ -89,19 +93,20 @@ const BatchAdvisorOfficeHours = () => {
       day = "Tuesday";
       to = "--";
     }
-    console.log(from, day, to);
-    //  const res = await fetch(`/officehours/${day}/${from}/${to}`, {
-    const res = await fetch(`/OfficeHours/officehours/${day}/${from}/${to}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        day,
-        from,
-        to,
-      }),
-    });
+    const res = await fetch(
+      `https://backend-three-nu.vercel.app/OfficeHours/officehours/${day}/${from}/${to}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          day,
+          from,
+          to,
+        }),
+      }
+    );
     const data = await res.json();
     if (res.status === 400 || !data) {
       window.alert("invalid credentials");
@@ -122,18 +127,20 @@ const BatchAdvisorOfficeHours = () => {
       day = "Tuesday";
       from = "--";
     }
-    //const res = await fetch(`/officehours/${day}/${from}/${to}`, {
-    const res = await fetch(`/OfficeHours/officehours/${day}/${from}/${to}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        day,
-        from,
-        to,
-      }),
-    });
+    const res = await fetch(
+      `https://backend-three-nu.vercel.app/OfficeHours/officehours/${day}/${from}/${to}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          day,
+          from,
+          to,
+        }),
+      }
+    );
     const data = await res.json();
     if (res.status === 400 || !data) {
       window.alert("invalid credentials");
@@ -155,17 +162,20 @@ const BatchAdvisorOfficeHours = () => {
       to = "--";
     }
 
-    const res = await fetch(`/OfficeHours/officehours/${day}/${from}/${to}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        day,
-        from,
-        to,
-      }),
-    });
+    const res = await fetch(
+      `https://backend-three-nu.vercel.app/OfficeHours/officehours/${day}/${from}/${to}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          day,
+          from,
+          to,
+        }),
+      }
+    );
     const data = await res.json();
     if (res.status === 400 || !data) {
       window.alert("invalid credentials");
@@ -186,18 +196,20 @@ const BatchAdvisorOfficeHours = () => {
       day = "Wednesday";
       from = "--";
     }
-    //const res = await fetch(`/officehours/${day}/${from}/${to}`, {
-    const res = await fetch(`/OfficeHours/officehours/${day}/${from}/${to}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        day,
-        from,
-        to,
-      }),
-    });
+    const res = await fetch(
+      `https://backend-three-nu.vercel.app/OfficeHours/officehours/${day}/${from}/${to}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          day,
+          from,
+          to,
+        }),
+      }
+    );
     const data = await res.json();
     if (res.status === 400 || !data) {
       window.alert("invalid credentials");
@@ -218,18 +230,20 @@ const BatchAdvisorOfficeHours = () => {
       day = "Thursday";
       to = "--";
     }
-    // const res = await fetch(`/officehours/${day}/${from}/${to}`, {
-    const res = await fetch(`/OfficeHours/officehours/${day}/${from}/${to}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        day,
-        from,
-        to,
-      }),
-    });
+    const res = await fetch(
+      `https://backend-three-nu.vercel.app/OfficeHours/officehours/${day}/${from}/${to}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          day,
+          from,
+          to,
+        }),
+      }
+    );
     const data = await res.json();
     if (res.status === 400 || !data) {
       window.alert("invalid credentials");
@@ -250,18 +264,20 @@ const BatchAdvisorOfficeHours = () => {
       day = "Thursday";
       from = "--";
     }
-    //const res = await fetch(`/officehours/${day}/${from}/${to}`, {
-    const res = await fetch(`/OfficeHours/officehours/${day}/${from}/${to}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        day,
-        from,
-        to,
-      }),
-    });
+    const res = await fetch(
+      `https://backend-three-nu.vercel.app/OfficeHours/officehours/${day}/${from}/${to}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          day,
+          from,
+          to,
+        }),
+      }
+    );
     const data = await res.json();
     if (res.status === 400 || !data) {
       window.alert("invalid credentials");
@@ -282,18 +298,20 @@ const BatchAdvisorOfficeHours = () => {
       day = "Friday";
       to = "--";
     }
-    //const res = await fetch(`/officehours/${day}/${from}/${to}`, {
-    const res = await fetch(`/OfficeHours/officehours/${day}/${from}/${to}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        day,
-        from,
-        to,
-      }),
-    });
+    const res = await fetch(
+      `https://backend-three-nu.vercel.app/OfficeHours/officehours/${day}/${from}/${to}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          day,
+          from,
+          to,
+        }),
+      }
+    );
     const data = await res.json();
     if (res.status === 400 || !data) {
       window.alert("invalid credentials");
@@ -314,18 +332,20 @@ const BatchAdvisorOfficeHours = () => {
       day = "Friday";
       from = "--";
     }
-    //const res = await fetch(`/officehours/${day}/${from}/${to}`, {
-    const res = await fetch(`/OfficeHours/officehours/${day}/${from}/${to}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        day,
-        from,
-        to,
-      }),
-    });
+    const res = await fetch(
+      `https://backend-three-nu.vercel.app/OfficeHours/officehours/${day}/${from}/${to}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          day,
+          from,
+          to,
+        }),
+      }
+    );
     const data = await res.json();
     if (res.status === 400 || !data) {
       window.alert("invalid credentials");
@@ -335,14 +355,17 @@ const BatchAdvisorOfficeHours = () => {
   };
 
   const S_office = async () => {
-    const res = await fetch("/OfficeHours/officehours", {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      credentials: "include",
-    });
+    const res = await fetch(
+      "https://backend-three-nu.vercel.app/OfficeHours/officehours",
+      {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      }
+    );
     const data = await res.json();
     if (data.status === "success") {
       setMonday(data.message.Monday);

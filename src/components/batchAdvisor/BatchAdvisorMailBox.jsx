@@ -15,14 +15,17 @@ const BatchAdvisorMailBox = () => {
   const [pageLoad, setPageLoad] = useState(0);
 
   const Querybox = async () => {
-    const res = await fetch("/ChatBox/BA_ViewMessage", {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      credentials: "include",
-    });
+    const res = await fetch(
+      "https://backend-three-nu.vercel.app/ChatBox/BA_ViewMessage",
+      {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      }
+    );
     const data = await res.json();
     if (data.status === "success") {
       setQuerybox(data.message);
@@ -39,7 +42,7 @@ const BatchAdvisorMailBox = () => {
     const registrationId = deleteChat[0];
     const subject = deleteChat[1];
     const res = await fetch(
-      `/ChatBox/BA_DeleteChat/${registrationId}/${subject}`,
+      `https://backend-three-nu.vercel.app/ChatBox/BA_DeleteChat/${registrationId}/${subject}`,
       {
         method: "DELETE",
         headers: {

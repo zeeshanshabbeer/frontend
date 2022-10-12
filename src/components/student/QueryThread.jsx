@@ -18,12 +18,15 @@ const QueryThread = () => {
   const [pageLoad, setPageLoad] = useState(0);
   const [studentChat, setStudentChat] = useState([]);
   const chat = async () => {
-    const res = await fetch(`/ChatBox/S_ViewMessage/${subject}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const res = await fetch(
+      `https://backend-three-nu.vercel.app/ChatBox/S_ViewMessage/${subject}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
     const data = await res.json();
     setMessage1("");
     if (data.status === "success") {
@@ -49,12 +52,15 @@ const QueryThread = () => {
       return;
     }
     const message = message1;
-    const res = await fetch(`/ChatBox/S_SendMessage/${subject}/${message}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const res = await fetch(
+      `https://backend-three-nu.vercel.app/ChatBox/S_SendMessage/${subject}/${message}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
     await res.json();
     setPageLoad(pageLoad + 1);
   };

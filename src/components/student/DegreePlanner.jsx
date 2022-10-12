@@ -9,15 +9,18 @@ import "./../../css/DegreePlanner.css";
 const DegreePlanner = () => {
   const [Track, setTrack] = useState();
   const [degree, setDegree] = useState({ data: "", name: "" });
-  
+
   const degreeTrack = async () => {
-    const res = fetch("/DegreePlanner/DegreePlanner", {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-    });
+    const res = fetch(
+      "https://backend-three-nu.vercel.app/DegreePlanner/DegreePlanner",
+      {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      }
+    );
     const data = await (await res).json();
     if (data.status === "success") {
       setDegree(data);
@@ -33,14 +36,17 @@ const DegreePlanner = () => {
   const [course, setCourse] = useState([]);
   const [allCourses, setAllCourses] = useState([]);
   const getAllCourses = async () => {
-    const res = await fetch("/SechemeOfStudy/AllCourses", {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      credentials: "include",
-    });
+    const res = await fetch(
+      "https://backend-three-nu.vercel.app/SechemeOfStudy/AllCourses",
+      {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      }
+    );
     const data = await res.json();
     if (data.status === "success") {
       setAllCourses(data.message);

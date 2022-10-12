@@ -13,18 +13,21 @@ const PretestInstructions = () => {
   //get all(sos or elective) courses to check what is coursecode and credits hours
   const [allCourses, setAllCourses] = useState([]);
   const getAllCourses = async () => {
-      const res = await fetch("/SechemeOfStudy/AllCourses", {
+    const res = await fetch(
+      "https://backend-three-nu.vercel.app/SechemeOfStudy/AllCourses",
+      {
         method: "GET",
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
         },
         credentials: "include",
-      });
-      const data = await res.json();
-      if(data.status==="success"){
-        setAllCourses(data.message);
       }
+    );
+    const data = await res.json();
+    if (data.status === "success") {
+      setAllCourses(data.message);
+    }
   };
   useEffect(() => {
     if (getAllCourses.length === 0) {

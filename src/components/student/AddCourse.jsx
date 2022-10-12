@@ -14,14 +14,17 @@ const AddCourse = () => {
   //fetch credits hours
   const [creditHours, setCreditHours] = useState("");
   const getCreditsHour = async () => {
-    const res = await fetch("/AddCourse/CreditHour", {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      credentials: "include",
-    });
+    const res = await fetch(
+      "https://backend-three-nu.vercel.app/AddCourse/CreditHour",
+      {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      }
+    );
     const data = await res.json();
     if (data.status === "success") {
       setCreditHours(data.message);
@@ -33,14 +36,17 @@ const AddCourse = () => {
   // get all courses that student can add
   const [getCourses, setGetCourses] = useState([]);
   const getAddCourses = async () => {
-    const res = await fetch("/AddCourse/CoursesThatAdded", {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      credentials: "include",
-    });
+    const res = await fetch(
+      "https://backend-three-nu.vercel.app/AddCourse/CoursesThatAdded",
+      {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      }
+    );
     const data = await res.json();
     if (data.status === "success") {
       setGetCourses(data.message);
@@ -59,14 +65,17 @@ const AddCourse = () => {
 
   const TimeTableClash = async () => {
     const subject = addcourse;
-    const res = await fetch(`/Timetable/TimetableClashes/${subject}`, {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      credentials: "include",
-    });
+    const res = await fetch(
+      `https://backend-three-nu.vercel.app/Timetable/TimetableClashes/${subject}`,
+      {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      }
+    );
     const data = await res.json();
     if (data.status === "success") {
       setTimetableClash(data.message);
@@ -80,14 +89,17 @@ const AddCourse = () => {
   // get all(sos or elective) courses to check what is coursecode and credits hours
   const [allCourses, setAllCourses] = useState([]);
   const getAllCourses = async () => {
-    const res = await fetch("/SechemeOfStudy/AllCourses", {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      credentials: "include",
-    });
+    const res = await fetch(
+      "https://backend-three-nu.vercel.app/SechemeOfStudy/AllCourses",
+      {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      }
+    );
     const data = await res.json();
     if (data.status === "success") {
       setAllCourses(data.message);
@@ -129,14 +141,17 @@ const AddCourse = () => {
     setSections("");
     setReasons("");
     setFileName();
-    const res = await fetch("/PendingAddCourse/AddCourses", {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      credentials: "include",
-    });
+    const res = await fetch(
+      "https://backend-three-nu.vercel.app/PendingAddCourse/AddCourses",
+      {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      }
+    );
     const data = await res.json();
     if (data.status === "success") {
       setDetail(data.message);
@@ -208,22 +223,25 @@ const AddCourse = () => {
           }
         }
       }
-      const res = await fetch("/PendingAddCourse/AddpendingCourses", {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          courseCode,
-          courseName,
-          section,
-          credits,
-          reason,
-          preTest,
-          preReqCourse,
-        }),
-      });
+      const res = await fetch(
+        "https://backend-three-nu.vercel.app/PendingAddCourse/AddpendingCourses",
+        {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            courseCode,
+            courseName,
+            section,
+            credits,
+            reason,
+            preTest,
+            preReqCourse,
+          }),
+        }
+      );
       const data = await res.json();
       if (data.status === "success") {
         Success("Course added successfully.");
@@ -235,7 +253,7 @@ const AddCourse = () => {
   //click on delete button
   const dele1 = async (courseName) => {
     const res = await fetch(
-      `/PendingAddCourse/DeleteSpecificRecord/${courseName}`,
+      `https://backend-three-nu.vercel.app/PendingAddCourse/DeleteSpecificRecord/${courseName}`,
       {
         method: "DELETE",
         headers: {
@@ -267,10 +285,13 @@ const AddCourse = () => {
     const formData = new FormData();
     formData.append("fee", fileName);
     setFileName();
-    const res = await fetch("/AddCourse/submit_AddForm", {
-      method: "POST",
-      body: formData,
-    });
+    const res = await fetch(
+      "https://backend-three-nu.vercel.app/AddCourse/submit_AddForm",
+      {
+        method: "POST",
+        body: formData,
+      }
+    );
     const data = await res.json();
     setLoadComponents(loadComponents + 1);
     if (data.status === "success") {

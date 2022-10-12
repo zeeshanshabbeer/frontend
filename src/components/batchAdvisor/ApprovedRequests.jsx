@@ -14,14 +14,17 @@ const ApprovedRequests = () => {
   const [userData, setUserData] = useState([]);
   const [pageLoad, setPageLoad] = useState(0);
   const S_Profile = async () => {
-    const res = await fetch("/ApprovedRequest/ApprovedRequest", {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      credentials: "include",
-    });
+    const res = await fetch(
+      "https://backend-three-nu.vercel.app/ApprovedRequest/ApprovedRequest",
+      {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      }
+    );
 
     const data = await res.json();
     if (data.status === "success") {
@@ -31,12 +34,15 @@ const ApprovedRequests = () => {
 
   const deleted = async (_id) => {
     // const res = await fetch(`/delete/${_id}`, {
-    const res = await fetch(`/ApprovedRequest/delete/${_id}`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const res = await fetch(
+      `https://backend-three-nu.vercel.app/ApprovedRequest/delete/${_id}`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
     const data = await res.json();
     if (data.status === "success") {
       Success(data.message);

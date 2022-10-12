@@ -17,14 +17,17 @@ const DropForm = (props) => {
   const navigate = useNavigate();
 
   const adddropform = async () => {
-    const res = await fetch(`/DropCourse/Drop_Form/${registrationId}`, {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      credentials: "include",
-    });
+    const res = await fetch(
+      `https://backend-three-nu.vercel.app/DropCourse/Drop_Form/${registrationId}`,
+      {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      }
+    );
 
     const data = await res.json();
     if (data.status === "success") {
@@ -45,17 +48,20 @@ const DropForm = (props) => {
     e.preventDefault();
     const reason = reject;
     const courseName = reject1;
-    const res = await fetch("/DropCourse/delete_DropRequest", {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        reason: reason,
-        courseName: courseName,
-        registrationId,
-      }),
-    });
+    const res = await fetch(
+      "https://backend-three-nu.vercel.app/DropCourse/delete_DropRequest",
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          reason: reason,
+          courseName: courseName,
+          registrationId,
+        }),
+      }
+    );
     const data = await res.json();
     if (data.status === "success") {
       setButtonPopup(false);
@@ -89,15 +95,18 @@ const DropForm = (props) => {
   //on accept drop request
   const onSubmit = async (e) => {
     e.preventDefault();
-    const res = await fetch("/DropCourse/dropcoursess", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        registrationId,
-      }),
-    });
+    const res = await fetch(
+      "https://backend-three-nu.vercel.app/DropCourse/dropcoursess",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          registrationId,
+        }),
+      }
+    );
     const data = await res.json();
     setButtonPopup(false);
     if (data.status === "success") {
@@ -110,9 +119,9 @@ const DropForm = (props) => {
         draggable: true,
         progress: undefined,
       });
-      setTimeout(()=>{
+      setTimeout(() => {
         navigate("/ApprovedRequests");
-      },3000)
+      }, 3000);
     } else {
       toast.error(data.message, {
         position: "top-center",

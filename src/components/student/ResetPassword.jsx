@@ -25,15 +25,18 @@ const ResetPassword = () => {
       return;
     }
     setSendemail({ email: "" });
-    const res = await fetch("/Student/SendResetEmail", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email,
-      }),
-    });
+    const res = await fetch(
+      "https://backend-three-nu.vercel.app/Student/SendResetEmail",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+        }),
+      }
+    );
     const data = await res.json();
     if (data.status === "success") {
       Success(data.message);

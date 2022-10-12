@@ -12,7 +12,7 @@ const StudentTranscript = (props) => {
   const studentRecord = async () => {
     try {
       const res = await fetch(
-        `/StudentInformation/GetStudentData/${registrationId}`,
+        `https://backend-three-nu.vercel.app/StudentInformation/GetStudentData/${registrationId}`,
         {
           method: "GET",
           headers: {

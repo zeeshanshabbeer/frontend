@@ -18,14 +18,17 @@ const MailBox = () => {
 
   const [querybox, setQuerybox] = useState([]);
   const Querybox = async () => {
-    const res = await fetch("/ChatBox/S_ViewMessage", {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      credentials: "include",
-    });
+    const res = await fetch(
+      "https://backend-three-nu.vercel.app/ChatBox/S_ViewMessage",
+      {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      }
+    );
     const data = await res.json();
     if (data.status === "success") {
       setQuerybox(data.message);
@@ -41,12 +44,15 @@ const MailBox = () => {
   const deleteSubmit = async (e) => {
     e.preventDefault();
     const subject = deleteChat;
-    const res = await fetch(`/ChatBox/S_DeleteChat/${subject}`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const res = await fetch(
+      `https://backend-three-nu.vercel.app/ChatBox/S_DeleteChat/${subject}`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
     const data = res.json();
     setPageLoad(pageLoad + 1);
     setButtonPopup(false);

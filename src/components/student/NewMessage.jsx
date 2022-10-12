@@ -30,16 +30,19 @@ const NewMessage = () => {
       return;
     }
     const { subject, message } = newsms;
-    const res = await fetch("/ChatBox/CreateChat", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        subject,
-        message,
-      }),
-    });
+    const res = await fetch(
+      "https://backend-three-nu.vercel.app/ChatBox/CreateChat",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          subject,
+          message,
+        }),
+      }
+    );
     const data = await res.json();
     if (data.status === "success") {
       Success(data.message);

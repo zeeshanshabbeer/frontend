@@ -41,17 +41,20 @@ const ChangeStudentPassword = () => {
     const regexPattern =
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).{8,}$/;
     if (regexPattern.test(new_password)) {
-      const res = await fetch("/Student/UpdatePassword", {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          old_password: old_password,
-          new_password: new_password,
-          confirm_password: confirm_password,
-        }),
-      });
+      const res = await fetch(
+        "https://backend-three-nu.vercel.app/Student/UpdatePassword",
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            old_password: old_password,
+            new_password: new_password,
+            confirm_password: confirm_password,
+          }),
+        }
+      );
       const data = await res.json();
       if (data.status === "success") {
         Success(data.message);

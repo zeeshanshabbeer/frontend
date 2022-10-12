@@ -49,7 +49,6 @@ const StudentLogin = () => {
       }
     );
     const data = await res.json();
-    console.log(data);
     if (data.status === "success") {
       Success(data.message);
       navigate("/Home");
