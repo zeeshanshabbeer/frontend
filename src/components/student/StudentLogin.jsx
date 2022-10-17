@@ -46,6 +46,9 @@ const StudentLogin = () => {
           regNo: regNo,
           password: password,
         }),
+        mode: "cors",
+        credentials: "include",
+        withCredentials: true,
       }
     );
     const data = await res.json();
