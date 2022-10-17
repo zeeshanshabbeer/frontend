@@ -34,23 +34,20 @@ const StudentLogin = () => {
       return;
     }
     const { batch, regNo, password } = user;
-    const res = await fetch(
-      "https://backend-three-nu.vercel.app/Student/Studentlogin",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        mode: "cors",
-        // credentials: "include",
-        // withCredentials: true,
-        body: JSON.stringify({
-          batch: batch,
-          regNo: regNo,
-          password: password,
-        }),
-      }
-    );
+    const res = await fetch("/Student/Studentlogin", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      mode: "cors",
+      // credentials: "include",
+      // withCredentials: true,
+      body: JSON.stringify({
+        batch: batch,
+        regNo: regNo,
+        password: password,
+      }),
+    });
     const data = await res.json();
     if (data.status === "success") {
       Success(data.message);

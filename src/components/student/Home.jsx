@@ -14,15 +14,12 @@ const Home = () => {
   const [userData, setUserData] = useState([]);
   const [buttonPopup, setButtonPopup] = useState(false);
   const Home = async () => {
-    const res = await fetch(
-      "https://backend-three-nu.vercel.app/Student/Home",
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const res = await fetch("/Student/Home", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
     const data = await res.json();
     if (data.status === "success") {
       setUserData(data.message);
@@ -34,15 +31,12 @@ const Home = () => {
 
   const [credit, setCredit] = useState();
   const creditHour = async () => {
-    const res = await fetch(
-      "https://backend-three-nu.vercel.app/Student/Home_credits",
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const res = await fetch("/Student/Home_credits", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
     const data = await res.json();
     setCredit(data.message);
   };
@@ -55,19 +49,16 @@ const Home = () => {
     e.preventDefault();
     const reason = drop;
     const courseName = drop1;
-    const res = await fetch(
-      "https://backend-three-nu.vercel.app/DropCourse/DropCourse",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          reason: reason,
-          courseName: courseName,
-        }),
-      }
-    );
+    const res = await fetch("/DropCourse/DropCourse", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        reason: reason,
+        courseName: courseName,
+      }),
+    });
     const data = await res.json();
     setButtonPopup(false);
     if (data.status === "success") {

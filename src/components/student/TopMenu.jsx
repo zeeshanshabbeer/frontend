@@ -10,15 +10,12 @@ const TopMenu = () => {
   const [userData, setUserData] = useState({});
   const navigate = useNavigate();
   const calltopmenu = async () => {
-    const res = await fetch(
-      "https://backend-three-nu.vercel.app/Student/S_Topmenu",
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const res = await fetch("/Student/S_Topmenu", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
     const data = await res.json();
     setUserData(data.message);
     if (data.status !== "success") {
