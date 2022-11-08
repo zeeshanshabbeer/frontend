@@ -74,7 +74,6 @@ const FreezeSemesterForm = () => {
         "Content-Type": "application/json",
         authorization: localStorage.getItem("BA_token"),
       },
-      credentials: "include",
     });
 
     const data = await res.json();

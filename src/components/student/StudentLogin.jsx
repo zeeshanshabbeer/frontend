@@ -40,7 +40,7 @@ const StudentLogin = () => {
         "Content-Type": "application/json",
       },
       mode: "cors",
-      // credentials: "include",
+      //
       // withCredentials: true,
       body: JSON.stringify({
         batch: batch,

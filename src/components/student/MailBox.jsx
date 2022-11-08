@@ -25,7 +25,6 @@ const MailBox = () => {
         "Content-Type": "application/json",
         authorization: localStorage.getItem("S_token"),
       },
-      credentials: "include",
     });
     const data = await res.json();
     if (data.status === "success") {
