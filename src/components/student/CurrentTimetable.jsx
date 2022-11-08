@@ -7,17 +7,15 @@ import "./../../css/CurrentTimetable.css";
 const CurrentTimetable = () => {
   const [timetable, setTimetable] = useState([]);
   const S_Timetable = async () => {
-    const res = await fetch(
-      "https://backend-three-nu.vercel.app/Timetable/StudentTimetable",
-      {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        credentials: "include",
-      }
-    );
+    const res = await fetch("https://backend-three-nu.vercel.app/Timetable/StudentTimetable", {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        authorization: localStorage.getItem("S_token"),
+      },
+      credentials: "include",
+    });
 
     const data = await res.json();
     if (data.status === "success") {
@@ -29,17 +27,17 @@ const CurrentTimetable = () => {
     S_Timetable();
   }, []);
   return (
-    <div className="maincontainer">
+    <div className='maincontainer'>
       <TopMenu />
       <MainMenu />
-      <div className="currenttimetablediv">
-        <h2 className="currenttimetabletitle ">Timetable</h2>
+      <div className='currenttimetablediv'>
+        <h2 className='currenttimetabletitle '>Timetable</h2>
       </div>
       <table>
         <thead>
           <tr>
             <th>Day</th>
-            <th className="current-course">Course Title</th>
+            <th className='current-course'>Course Title</th>
             <th>Section</th>
             <th>Time</th>
             <th>Room</th>
@@ -49,7 +47,7 @@ const CurrentTimetable = () => {
           {timetable.map((time) => (
             <tr>
               <td>{time.Day}</td>
-              <td className="current-course">{time.courseName}</td>
+              <td className='current-course'>{time.courseName}</td>
               <td>{time.courseSection}</td>
               <td>{time.classTime}</td>
               <td>{time.classRoom}</td>

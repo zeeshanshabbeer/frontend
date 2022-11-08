@@ -21,15 +21,13 @@ const BatchAdvisorQueryThread = () => {
   const [batchAdvisorChat, setBatchAdvisorchat] = useState([]);
   const chat = async () => {
     setMessage1("");
-    const res = await fetch(
-      `https://backend-three-nu.vercel.app/ChatBox/BA_ViewMessages/${registrationId}/${subject}`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const res = await fetch(`https://backend-three-nu.vercel.app/ChatBox/BA_ViewMessages/${registrationId}/${subject}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: localStorage.getItem("BA_token"),
+      },
+    });
     const data = await res.json();
     if (data.status === "success") {
       setBatchAdvisorchat(data.message);
@@ -53,15 +51,13 @@ const BatchAdvisorQueryThread = () => {
       });
     }
     const message = message1;
-    const res = await fetch(
-      `https://backend-three-nu.vercel.app/ChatBox/BA_MessageReply/${registrationId}/${subject}/${message}`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const res = await fetch(`https://backend-three-nu.vercel.app/ChatBox/BA_MessageReply/${registrationId}/${subject}/${message}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: localStorage.getItem("BA_token"),
+      },
+    });
     const data = await res.json();
     if (data.status === "success") {
       setPageLoad(pageLoad + 1);
@@ -69,73 +65,50 @@ const BatchAdvisorQueryThread = () => {
   };
 
   return (
-    <div className="BAprofilecontainer">
+    <div className='BAprofilecontainer'>
       <BatchAdvisorTopMenu />
       <BatchAdvisorMainMenu />
-      <div className="menuheadingdiv">
-        <h2 className="freezesemestertitle">
+      <div className='menuheadingdiv'>
+        <h2 className='freezesemestertitle'>
           <div>
-            <Link to="/BatchAdvisorMailBox">
-              <img src={back} alt="" className="backToInbox" />
+            <Link to='/BatchAdvisorMailBox'>
+              <img src={back} alt='' className='backToInbox' />
             </Link>
             Query Box
           </div>
         </h2>
       </div>
-      <div className="msgthreadcontainer">
-        <p className="subjectHeading">
+      <div className='msgthreadcontainer'>
+        <p className='subjectHeading'>
           <b>Subject:</b> {subject}
         </p>
         {batchAdvisorChat.map((chat) =>
           chat.name !== name ? (
             <div>
-              <div className="Sent">
+              <div className='Sent'>
                 {chat.message}
                 <br />
-                <p className="time">{chat.date}</p>
+                <p className='time'>{chat.date}</p>
               </div>
             </div>
           ) : (
             <div>
-              <div className="Received">
+              <div className='Received'>
                 {chat.message}
                 <br />
-                <p className="time">{chat.date}</p>
+                <p className='time'>{chat.date}</p>
               </div>
             </div>
           )
         )}
       </div>
-      <div className="msgTextAreaContainer">
-        <form action="">
-          <textarea
-            name="message1"
-            value={message1}
-            onChange={(e) => setMessage1(e.target.value)}
-            id=""
-            cols="100"
-            rows="1"
-            className="msgTextArea"
-          ></textarea>
-          <img
-            src={sendMessage}
-            alt=""
-            className="sendMessageIcon"
-            onClick={sendsms}
-          />
+      <div className='msgTextAreaContainer'>
+        <form action=''>
+          <textarea name='message1' value={message1} onChange={(e) => setMessage1(e.target.value)} id='' cols='100' rows='1' className='msgTextArea'></textarea>
+          <img src={sendMessage} alt='' className='sendMessageIcon' onClick={sendsms} />
         </form>
       </div>
-      <ToastContainer
-        position="top-center"
-        autoClose={2000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
+      <ToastContainer position='top-center' autoClose={2000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
       <Footer />
     </div>
   );

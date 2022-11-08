@@ -8,17 +8,15 @@ import "./../../css/RepeatCourse.css";
 const RepeatCourse = () => {
   const [userData, setUserData] = useState([]);
   const S_Profile = async () => {
-    const res = await fetch(
-      "https://backend-three-nu.vercel.app/RepeatCourse/RepeatCourse",
-      {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        credentials: "include",
-      }
-    );
+    const res = await fetch("https://backend-three-nu.vercel.app/RepeatCourse/RepeatCourse", {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        authorization: localStorage.getItem("S_token"),
+      },
+      credentials: "include",
+    });
 
     const data = await res.json();
     if (data.status === "success") {
@@ -31,25 +29,25 @@ const RepeatCourse = () => {
   }, []);
 
   return (
-    <div className="maincontainer">
+    <div className='maincontainer'>
       <TopMenu />
       <MainMenu />
 
-      <div className="freezesemesterdiv">
-        <h2 className="freezesemestertitle">Repeat Course</h2>
+      <div className='freezesemesterdiv'>
+        <h2 className='freezesemestertitle'>Repeat Course</h2>
       </div>
       {userData.length === 0 ? (
-        <div className="emptydiv">
-          <h2 className="emptytext">You don't have any course to repeat!</h2>
+        <div className='emptydiv'>
+          <h2 className='emptytext'>You don't have any course to repeat!</h2>
         </div>
       ) : (
         <div>
           <table>
             <tr>
-              <th className="codeCol">Course Code</th>
-              <th className="titleCol">Course Title</th>
-              <th className="creditsCol">Credits</th>
-              <th className="gpaCol">GPA</th>
+              <th className='codeCol'>Course Code</th>
+              <th className='titleCol'>Course Title</th>
+              <th className='creditsCol'>Credits</th>
+              <th className='gpaCol'>GPA</th>
             </tr>
             {userData.map((repeat) => (
               <tr>
@@ -60,8 +58,8 @@ const RepeatCourse = () => {
               </tr>
             ))}
           </table>
-          <Link to="/AddCourse">
-            <button className="repeatbtn">Add Course to Repeat</button>
+          <Link to='/AddCourse'>
+            <button className='repeatbtn'>Add Course to Repeat</button>
           </Link>
         </div>
       )}

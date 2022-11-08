@@ -15,18 +15,16 @@ const WantToGuide = () => {
   const [course, setCourse] = useState("");
   // in which course you want to guide
   const submit = async (course) => {
-    const res = await fetch(
-      `https://backend-three-nu.vercel.app/Guidance/want_to_guide/${course}`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          course,
-        }),
-      }
-    );
+    const res = await fetch(`https://backend-three-nu.vercel.app/Guidance/want_to_guide/${course}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: localStorage.getItem("S_token"),
+      },
+      body: JSON.stringify({
+        course,
+      }),
+    });
     const data = await res.json();
     if (data.status === "success") {
       Success(data.message);
@@ -39,17 +37,15 @@ const WantToGuide = () => {
   const [coursedata, setCourseData] = useState([]);
   const wanttoguide = async () => {
     setCourse("");
-    const res = await fetch(
-      "https://backend-three-nu.vercel.app/Guidance/guide_courses",
-      {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        credentials: "include",
-      }
-    );
+    const res = await fetch("https://backend-three-nu.vercel.app/Guidance/guide_courses", {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        authorization: localStorage.getItem("S_token"),
+      },
+      credentials: "include",
+    });
     const data = await res.json();
     if (data.status === "success") {
       setCourseData(data.message);
@@ -61,29 +57,25 @@ const WantToGuide = () => {
   // setChecked(true)
   const chec = async (add) => {
     setChecked(add);
-    const res = await fetch(
-      `https://backend-three-nu.vercel.app/Guidance/wantToGuide_contact/${add}`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const res = await fetch(`https://backend-three-nu.vercel.app/Guidance/wantToGuide_contact/${add}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: localStorage.getItem("S_token"),
+      },
+    });
     await res.json();
   };
   const checkBox = async () => {
-    const res = await fetch(
-      "https://backend-three-nu.vercel.app/Guidance/ContactNo",
-      {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        credentials: "include",
-      }
-    );
+    const res = await fetch("https://backend-three-nu.vercel.app/Guidance/ContactNo", {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        authorization: localStorage.getItem("S_token"),
+      },
+      credentials: "include",
+    });
     const data = await res.json();
     if (data.status === "success") {
       if (data.message.contactNo === "--") {
@@ -101,18 +93,16 @@ const WantToGuide = () => {
 
   // for delete courses
   const delcourse = async (course) => {
-    const res = await fetch(
-      `https://backend-three-nu.vercel.app/Guidance/Guidance/delete/${course}`,
-      {
-        method: "delete",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          course,
-        }),
-      }
-    );
+    const res = await fetch(`https://backend-three-nu.vercel.app/Guidance/Guidance/delete/${course}`, {
+      method: "delete",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: localStorage.getItem("S_token"),
+      },
+      body: JSON.stringify({
+        course,
+      }),
+    });
     const data = await res.json();
     if (data.status === "success") {
       Success(data.message);
@@ -129,17 +119,15 @@ const WantToGuide = () => {
   const [allCourses, setAllCourses] = useState([]);
   const getAllCourses = async () => {
     setCourse("");
-    const res = await fetch(
-      "https://backend-three-nu.vercel.app/SechemeOfStudy/AllCourses",
-      {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        credentials: "include",
-      }
-    );
+    const res = await fetch("https://backend-three-nu.vercel.app/SechemeOfStudy/AllCourses", {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        authorization: localStorage.getItem("S_token"),
+      },
+      credentials: "include",
+    });
     const data = await res.json();
     if (data.status === "success") {
       setAllCourses(data.message);
@@ -149,32 +137,24 @@ const WantToGuide = () => {
     getAllCourses();
   }, [pageLoad]);
   return (
-    <div className="maincontainer">
+    <div className='maincontainer'>
       <TopMenu />
       <MainMenu />
-      <div className="pastpapersdiv">
-        <Link to="/GuidanceBox">
-          <img src={back} alt="" className="backiconwant" />
+      <div className='pastpapersdiv'>
+        <Link to='/GuidanceBox'>
+          <img src={back} alt='' className='backiconwant' />
         </Link>
-        <h2 className="pastpaperstitle">Want to Guide?</h2>
+        <h2 className='pastpaperstitle'>Want to Guide?</h2>
       </div>
-      <div className="wanttoguidecontainer">
-        <form action="" method="POST">
+      <div className='wanttoguidecontainer'>
+        <form action='' method='POST'>
           <br />
-          <label className="courselabel" htmlFor="">
+          <label className='courselabel' htmlFor=''>
             Course 1
           </label>
           <br />
-          <select
-            className="courseinput"
-            id=""
-            name="course"
-            value={course}
-            onChange={(e) => submit(e.target.value)}
-            placeholder=""
-            required
-          >
-            <option value="" disabled selected hidden>
+          <select className='courseinput' id='' name='course' value={course} onChange={(e) => submit(e.target.value)} placeholder='' required>
+            <option value='' disabled selected hidden>
               Select Course 1
             </option>
             {allCourses.map((course) => (
@@ -182,51 +162,30 @@ const WantToGuide = () => {
             ))}
           </select>
           <br />
-          <input
-            type="checkbox"
-            className="contactcheckbox"
-            name="check"
-            checked={checked}
-            onClick={(e) => chec(e.target.checked)}
-          />
-          <label htmlFor="" className="contactcheckboxlabel">
+          <input type='checkbox' className='contactcheckbox' name='check' checked={checked} onClick={(e) => chec(e.target.checked)} />
+          <label htmlFor='' className='contactcheckboxlabel'>
             I also want to share my phone number
           </label>
-          <ToastContainer
-            position="top-center"
-            autoClose={2000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-          />
+          <ToastContainer position='top-center' autoClose={2000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
         </form>
       </div>
-      <div className="guidancetablecontainer">
+      <div className='guidancetablecontainer'>
         {coursedata.length === 0 ? (
-          <h3 className="norec">No record found!</h3>
+          <h3 className='norec'>No record found!</h3>
         ) : (
-          <form action="" method="GET">
-            <table className="wanttoguidetable">
+          <form action='' method='GET'>
+            <table className='wanttoguidetable'>
               <tr>
-                <th className="coursecol">Course Title</th>
-                <th className="delcol">Delete</th>
+                <th className='coursecol'>Course Title</th>
+                <th className='delcol'>Delete</th>
               </tr>
               {coursedata.map((courses) => (
                 <tr>
-                  <td className="row" name="course">
+                  <td className='row' name='course'>
                     {courses.course}
                   </td>
-                  <td className="row">
-                    <img
-                      src={deleteicon}
-                      onClick={() => delcourse(courses.course)}
-                      alt=""
-                      className="delbtn"
-                    />
+                  <td className='row'>
+                    <img src={deleteicon} onClick={() => delcourse(courses.course)} alt='' className='delbtn' />
                   </td>
                 </tr>
               ))}

@@ -26,17 +26,15 @@ const BatchAdvisorProfile = () => {
   const BA_Profile = async () => {
     setButtonPopup(false);
     setUpdate_contact_no({ contactNo: "" });
-    const res = await fetch(
-      "https://backend-three-nu.vercel.app/BatchAdvisor/BatchAdvisorProfile",
-      {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        credentials: "include",
-      }
-    );
+    const res = await fetch("https://backend-three-nu.vercel.app/BatchAdvisor/BatchAdvisorProfile", {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        authorization: localStorage.getItem("BA_token"),
+      },
+      credentials: "include",
+    });
 
     const data = await res.json();
     if (data.status === "success") {
@@ -61,18 +59,16 @@ const BatchAdvisorProfile = () => {
     }
     if (validator.isNumeric(contactNo)) {
       if (contactNo.length === 10) {
-        const res = await fetch(
-          "https://backend-three-nu.vercel.app/BatchAdvisor/BA_updatecontact",
-          {
-            method: "PUT",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              contactNo,
-            }),
-          }
-        );
+        const res = await fetch("https://backend-three-nu.vercel.app/BatchAdvisor/BA_updatecontact", {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            authorization: localStorage.getItem("BA_token"),
+          },
+          body: JSON.stringify({
+            contactNo,
+          }),
+        });
         const data = await res.json();
         if (data.status === "success") {
           Success(data.message);
@@ -93,55 +89,35 @@ const BatchAdvisorProfile = () => {
   };
 
   return (
-    <div className="BAprofilecontainer">
+    <div className='BAprofilecontainer'>
       <BatchAdvisorTopMenu />
       <BatchAdvisorMainMenu />
-      <div className="menuheadingdiv">
-        <h2 className="freezesemestertitle">Profile</h2>
+      <div className='menuheadingdiv'>
+        <h2 className='freezesemestertitle'>Profile</h2>
       </div>
-      <form action="" method="GET">
-        <div className="BAprofileformdiv">
-          <label className="BAnamelabel" htmlFor="">
+      <form action='' method='GET'>
+        <div className='BAprofileformdiv'>
+          <label className='BAnamelabel' htmlFor=''>
             Name
           </label>
           <br />
-          <input
-            className="BAfirsttwoinputs"
-            type="text"
-            value={userData.name}
-            placeholder=""
-          />
+          <input className='BAfirsttwoinputs' type='text' value={userData.name} placeholder='' />
           <br />
-          <label className="BAemaillabel" htmlFor="">
+          <label className='BAemaillabel' htmlFor=''>
             Email
           </label>
           <br />
-          <input
-            className="BAfirsttwoinputs"
-            type="text"
-            value={userData.email}
-            placeholder=""
-          />
+          <input className='BAfirsttwoinputs' type='text' value={userData.email} placeholder='' />
           <br />
-          <label className="BAcontactlabel" htmlFor="">
+          <label className='BAcontactlabel' htmlFor=''>
             Contact Number
           </label>
           <br />
-          <input
-            className="BAinput"
-            type="text"
-            value={userData.contactNo}
-            placeholder=""
-          />
-          <img
-            className="editicon"
-            onClick={() => setButtonPopup(true)}
-            src={edit}
-            alt=""
-          />
+          <input className='BAinput' type='text' value={userData.contactNo} placeholder='' />
+          <img className='editicon' onClick={() => setButtonPopup(true)} src={edit} alt='' />
           <br />
-          <Link className="BApsdlink" to="/ChangeBatchAdvisorPassword">
-            <label className="BApsdlabel" htmlFor="">
+          <Link className='BApsdlink' to='/ChangeBatchAdvisorPassword'>
+            <label className='BApsdlabel' htmlFor=''>
               Change Password
             </label>
           </Link>
@@ -150,40 +126,19 @@ const BatchAdvisorProfile = () => {
         </div>
       </form>
       <Footer />
-      <ChangeBatchAdvisorContact
-        trigger={buttonPopup}
-        setTrigger={setButtonPopup}
-      >
-        <form action="" method="PUT">
-          <label htmlFor="" className="newcontactlabel">
+      <ChangeBatchAdvisorContact trigger={buttonPopup} setTrigger={setButtonPopup}>
+        <form action='' method='PUT'>
+          <label htmlFor='' className='newcontactlabel'>
             New Contact Number
           </label>
           <br />
-          <input
-            type="text"
-            className="newcontactinput"
-            required
-            name="contactNo"
-            value={update_contact_no.contactNo}
-            onChange={handleInputs}
-            placeholder=""
-          />
+          <input type='text' className='newcontactinput' required name='contactNo' value={update_contact_no.contactNo} onChange={handleInputs} placeholder='' />
           <br />
-          <button className="newcontactbutton" onClick={update_contact}>
+          <button className='newcontactbutton' onClick={update_contact}>
             Update
           </button>
         </form>
-        <ToastContainer
-          position="top-center"
-          autoClose={2000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-        />
+        <ToastContainer position='top-center' autoClose={2000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
       </ChangeBatchAdvisorContact>
     </div>
   );

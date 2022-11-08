@@ -31,19 +31,17 @@ const FreezeSemester = () => {
       return;
     }
     setUser({ continuationTime: "", reason: "" });
-    const res = await fetch(
-      "https://backend-three-nu.vercel.app/FreezeSemester/freezeSemester",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          reason,
-          continuationTime,
-        }),
-      }
-    );
+    const res = await fetch("https://backend-three-nu.vercel.app/FreezeSemester/freezeSemester", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: localStorage.getItem("S_token"),
+      },
+      body: JSON.stringify({
+        reason,
+        continuationTime,
+      }),
+    });
     const data = await res.json();
     if (data.status === "success") {
       Success(data.message);
@@ -52,69 +50,42 @@ const FreezeSemester = () => {
     }
   };
   return (
-    <div className="maincontainer">
+    <div className='maincontainer'>
       <TopMenu />
       <MainMenu />
-      <div className="freezesemesterdiv">
-        <h2 className="freezesemestertitle">Freeze Semester</h2>
+      <div className='freezesemesterdiv'>
+        <h2 className='freezesemestertitle'>Freeze Semester</h2>
       </div>
-      <div className="formdiv">
-        <form action="" method="POST">
-          <label className="reasonlabel" htmlFor="">
+      <div className='formdiv'>
+        <form action='' method='POST'>
+          <label className='reasonlabel' htmlFor=''>
             Reason
           </label>
           <br />
-          <textarea
-            name="reason"
-            value={user.reason}
-            onChange={handleInputs}
-            className="reasoninput"
-            placeholder="Enter a valid reason"
-            cols="30"
-            rows="8"
-            required
-          ></textarea>
+          <textarea name='reason' value={user.reason} onChange={handleInputs} className='reasoninput' placeholder='Enter a valid reason' cols='30' rows='8' required></textarea>
           <br />
-          <label className="timelabel" htmlFor="">
+          <label className='timelabel' htmlFor=''>
             Continuation Semester
           </label>
           <br />
-          <select
-            required
-            className="timeinput"
-            name="continuationTime"
-            value={user.continuationTime}
-            onChange={handleInputs}
-            id=""
-            placeholder=""
-          >
-            <option value="" disabled selected hidden>
+          <select required className='timeinput' name='continuationTime' value={user.continuationTime} onChange={handleInputs} id='' placeholder=''>
+            <option value='' disabled selected hidden>
               Select a contiuation semester
             </option>
-            <option value="FA22">FA22</option>
-            <option value="SP23">SP23</option>
-            <option value="FA23">FA23</option>
-            <option value="SP24">SP24</option>
+            <option value='FA22'>FA22</option>
+            <option value='SP23'>SP23</option>
+            <option value='FA23'>FA23</option>
+            <option value='SP24'>SP24</option>
           </select>
           <br />
           {user.reason === "" && user.continuationTime === "" ? (
-            <button className="freezebutton">Submit</button>
+            <button className='freezebutton'>Submit</button>
           ) : (
-            <button className="freezebutton" onClick={loginUser}>
+            <button className='freezebutton' onClick={loginUser}>
               Submit
             </button>
           )}
-          <ToastContainer
-            position="top-center"
-            autoClose={2000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-          />
+          <ToastContainer position='top-center' autoClose={2000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
         </form>
       </div>
       <Footer />

@@ -25,20 +25,18 @@ const BatchAdvisorOfficeHours = () => {
       day = "Monday";
       to = "--";
     }
-    const res = await fetch(
-      `https://backend-three-nu.vercel.app/OfficeHours/officehours/${day}/${from}/${to}`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          day,
-          from,
-          to,
-        }),
-      }
-    );
+    const res = await fetch(`https://backend-three-nu.vercel.app/OfficeHours/officehours/${day}/${from}/${to}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: localStorage.getItem("BA_token"),
+      },
+      body: JSON.stringify({
+        day,
+        from,
+        to,
+      }),
+    });
     const data = await res.json();
     if (data.status === 400 || !data) {
       window.alert("invalid credentials");
@@ -59,20 +57,18 @@ const BatchAdvisorOfficeHours = () => {
       day = "Monday";
       from = "--";
     }
-    const res = await fetch(
-      `https://backend-three-nu.vercel.app/OfficeHours/officehours/${day}/${from}/${to}`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          day,
-          from,
-          to,
-        }),
-      }
-    );
+    const res = await fetch(`https://backend-three-nu.vercel.app/OfficeHours/officehours/${day}/${from}/${to}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: localStorage.getItem("BA_token"),
+      },
+      body: JSON.stringify({
+        day,
+        from,
+        to,
+      }),
+    });
     const data = await res.json();
     if (res.status === 400 || !data) {
       window.alert("invalid credentials");
@@ -93,20 +89,18 @@ const BatchAdvisorOfficeHours = () => {
       day = "Tuesday";
       to = "--";
     }
-    const res = await fetch(
-      `https://backend-three-nu.vercel.app/OfficeHours/officehours/${day}/${from}/${to}`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          day,
-          from,
-          to,
-        }),
-      }
-    );
+    const res = await fetch(`https://backend-three-nu.vercel.app/OfficeHours/officehours/${day}/${from}/${to}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: localStorage.getItem("BA_token"),
+      },
+      body: JSON.stringify({
+        day,
+        from,
+        to,
+      }),
+    });
     const data = await res.json();
     if (res.status === 400 || !data) {
       window.alert("invalid credentials");
@@ -127,20 +121,18 @@ const BatchAdvisorOfficeHours = () => {
       day = "Tuesday";
       from = "--";
     }
-    const res = await fetch(
-      `https://backend-three-nu.vercel.app/OfficeHours/officehours/${day}/${from}/${to}`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          day,
-          from,
-          to,
-        }),
-      }
-    );
+    const res = await fetch(`https://backend-three-nu.vercel.app/OfficeHours/officehours/${day}/${from}/${to}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: localStorage.getItem("BA_token"),
+      },
+      body: JSON.stringify({
+        day,
+        from,
+        to,
+      }),
+    });
     const data = await res.json();
     if (res.status === 400 || !data) {
       window.alert("invalid credentials");
@@ -162,20 +154,18 @@ const BatchAdvisorOfficeHours = () => {
       to = "--";
     }
 
-    const res = await fetch(
-      `https://backend-three-nu.vercel.app/OfficeHours/officehours/${day}/${from}/${to}`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          day,
-          from,
-          to,
-        }),
-      }
-    );
+    const res = await fetch(`https://backend-three-nu.vercel.app/OfficeHours/officehours/${day}/${from}/${to}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: localStorage.getItem("BA_token"),
+      },
+      body: JSON.stringify({
+        day,
+        from,
+        to,
+      }),
+    });
     const data = await res.json();
     if (res.status === 400 || !data) {
       window.alert("invalid credentials");
@@ -196,20 +186,18 @@ const BatchAdvisorOfficeHours = () => {
       day = "Wednesday";
       from = "--";
     }
-    const res = await fetch(
-      `https://backend-three-nu.vercel.app/OfficeHours/officehours/${day}/${from}/${to}`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          day,
-          from,
-          to,
-        }),
-      }
-    );
+    const res = await fetch(`https://backend-three-nu.vercel.app/OfficeHours/officehours/${day}/${from}/${to}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: localStorage.getItem("BA_token"),
+      },
+      body: JSON.stringify({
+        day,
+        from,
+        to,
+      }),
+    });
     const data = await res.json();
     if (res.status === 400 || !data) {
       window.alert("invalid credentials");
@@ -230,20 +218,18 @@ const BatchAdvisorOfficeHours = () => {
       day = "Thursday";
       to = "--";
     }
-    const res = await fetch(
-      `https://backend-three-nu.vercel.app/OfficeHours/officehours/${day}/${from}/${to}`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          day,
-          from,
-          to,
-        }),
-      }
-    );
+    const res = await fetch(`https://backend-three-nu.vercel.app/OfficeHours/officehours/${day}/${from}/${to}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: localStorage.getItem("BA_token"),
+      },
+      body: JSON.stringify({
+        day,
+        from,
+        to,
+      }),
+    });
     const data = await res.json();
     if (res.status === 400 || !data) {
       window.alert("invalid credentials");
@@ -264,20 +250,18 @@ const BatchAdvisorOfficeHours = () => {
       day = "Thursday";
       from = "--";
     }
-    const res = await fetch(
-      `https://backend-three-nu.vercel.app/OfficeHours/officehours/${day}/${from}/${to}`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          day,
-          from,
-          to,
-        }),
-      }
-    );
+    const res = await fetch(`https://backend-three-nu.vercel.app/OfficeHours/officehours/${day}/${from}/${to}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: localStorage.getItem("BA_token"),
+      },
+      body: JSON.stringify({
+        day,
+        from,
+        to,
+      }),
+    });
     const data = await res.json();
     if (res.status === 400 || !data) {
       window.alert("invalid credentials");
@@ -298,20 +282,18 @@ const BatchAdvisorOfficeHours = () => {
       day = "Friday";
       to = "--";
     }
-    const res = await fetch(
-      `https://backend-three-nu.vercel.app/OfficeHours/officehours/${day}/${from}/${to}`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          day,
-          from,
-          to,
-        }),
-      }
-    );
+    const res = await fetch(`https://backend-three-nu.vercel.app/OfficeHours/officehours/${day}/${from}/${to}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: localStorage.getItem("BA_token"),
+      },
+      body: JSON.stringify({
+        day,
+        from,
+        to,
+      }),
+    });
     const data = await res.json();
     if (res.status === 400 || !data) {
       window.alert("invalid credentials");
@@ -332,20 +314,18 @@ const BatchAdvisorOfficeHours = () => {
       day = "Friday";
       from = "--";
     }
-    const res = await fetch(
-      `https://backend-three-nu.vercel.app/OfficeHours/officehours/${day}/${from}/${to}`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          day,
-          from,
-          to,
-        }),
-      }
-    );
+    const res = await fetch(`https://backend-three-nu.vercel.app/OfficeHours/officehours/${day}/${from}/${to}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: localStorage.getItem("BA_token"),
+      },
+      body: JSON.stringify({
+        day,
+        from,
+        to,
+      }),
+    });
     const data = await res.json();
     if (res.status === 400 || !data) {
       window.alert("invalid credentials");
@@ -355,17 +335,15 @@ const BatchAdvisorOfficeHours = () => {
   };
 
   const S_office = async () => {
-    const res = await fetch(
-      "https://backend-three-nu.vercel.app/OfficeHours/officehours",
-      {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        credentials: "include",
-      }
-    );
+    const res = await fetch("https://backend-three-nu.vercel.app/OfficeHours/officehours", {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        authorization: localStorage.getItem("BA_token"),
+      },
+      credentials: "include",
+    });
     const data = await res.json();
     if (data.status === "success") {
       setMonday(data.message.Monday);
@@ -377,61 +355,43 @@ const BatchAdvisorOfficeHours = () => {
   };
   useEffect(() => {
     //we can not use async function in useEffect
-    if (
-      monday.length === 0 ||
-      tuesday.length === 0 ||
-      wednesday.length === 0 ||
-      thursday.length === 0 ||
-      friday.length === 0
-    ) {
+    if (monday.length === 0 || tuesday.length === 0 || wednesday.length === 0 || thursday.length === 0 || friday.length === 0) {
       S_office();
     }
   }, []);
   return (
-    <div className="BAprofilecontainer">
+    <div className='BAprofilecontainer'>
       <BatchAdvisorTopMenu />
       <BatchAdvisorMainMenu />
-      <div className="menuheadingdiv">
-        <h2 className="freezesemestertitle">Office Hours</h2>
+      <div className='menuheadingdiv'>
+        <h2 className='freezesemestertitle'>Office Hours</h2>
       </div>
       <table>
         <tr>
-          <th className="columns">Day</th>
-          <th className="columns">From</th>
-          <th className="columns">To</th>
+          <th className='columns'>Day</th>
+          <th className='columns'>From</th>
+          <th className='columns'>To</th>
         </tr>
         {monday.map((time) => (
           <tr>
-            <td className="days">{time.day}</td>
+            <td className='days'>{time.day}</td>
             <td>
               {" "}
-              <input
-                type="time"
-                className="timeInput"
-                name="from"
-                value={time.from}
-                onChange={MondayF}
-              />
+              <input type='time' className='timeInput' name='from' value={time.from} onChange={MondayF} />
             </td>
             <td>
-              <input
-                type="time"
-                className="timeInput"
-                name="to"
-                value={time.to}
-                onChange={MondayT}
-              />
+              <input type='time' className='timeInput' name='to' value={time.to} onChange={MondayT} />
             </td>
           </tr>
         ))}
         {tuesday.map((time) => (
           <tr>
-            <td className="days">{time.day}</td>
+            <td className='days'>{time.day}</td>
             <td>
               <input
-                type="time"
-                className="timeInput"
-                name="from"
+                type='time'
+                className='timeInput'
+                name='from'
                 value={time.from}
                 onChange={TuesdayF}
                 // placeholder={time.from}
@@ -439,9 +399,9 @@ const BatchAdvisorOfficeHours = () => {
             </td>
             <td>
               <input
-                type="time"
-                className="timeInput"
-                name="to"
+                type='time'
+                className='timeInput'
+                name='to'
                 value={time.to}
                 onChange={TuesdayT}
                 // placeholder={time.to}
@@ -451,76 +411,40 @@ const BatchAdvisorOfficeHours = () => {
         ))}
         {wednesday.map((time) => (
           <tr>
-            <td className="days">{time.day}</td>
+            <td className='days'>{time.day}</td>
             <td>
               {" "}
-              <input
-                type="time"
-                className="timeInput"
-                name="from"
-                value={time.from}
-                onChange={WednesdayF}
-              />
+              <input type='time' className='timeInput' name='from' value={time.from} onChange={WednesdayF} />
             </td>
             <td>
               {" "}
-              <input
-                type="time"
-                className="timeInput"
-                name="to"
-                value={time.to}
-                onChange={WednesdayT}
-              />
+              <input type='time' className='timeInput' name='to' value={time.to} onChange={WednesdayT} />
             </td>
           </tr>
         ))}
         {thursday.map((time) => (
           <tr>
-            <td className="days">{time.day}</td>
+            <td className='days'>{time.day}</td>
             <td>
               {" "}
-              <input
-                type="time"
-                className="timeInput"
-                name="from"
-                value={time.from}
-                onChange={ThursdayF}
-              />
+              <input type='time' className='timeInput' name='from' value={time.from} onChange={ThursdayF} />
             </td>
             <td>
               {" "}
-              <input
-                type="time"
-                className="timeInput"
-                name="to"
-                value={time.to}
-                onChange={ThursdayT}
-              />
+              <input type='time' className='timeInput' name='to' value={time.to} onChange={ThursdayT} />
             </td>
           </tr>
         ))}
         {friday.map((time) => (
           <tr>
-            <td className="days">{time.day}</td>
+            <td className='days'>{time.day}</td>
             <td>
               {" "}
-              <input
-                type="time"
-                className="timeInput"
-                name="from"
-                value={time.from}
-                onChange={FridayF}
-              />
+              <input type='time' className='timeInput' name='from' value={time.from} onChange={FridayF} />
             </td>
             <td>
               {" "}
-              <input
-                type="time"
-                className="timeInput"
-                name="to"
-                value={time.to}
-                onChange={FridayT}
-              />
+              <input type='time' className='timeInput' name='to' value={time.to} onChange={FridayT} />
             </td>
           </tr>
         ))}

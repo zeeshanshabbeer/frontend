@@ -11,15 +11,13 @@ const StudentsInformation = () => {
 
   const getstudentdata = async () => {
     try {
-      const res = await fetch(
-        "https://backend-three-nu.vercel.app/StudentInformation/StudentInformation",
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const res = await fetch("https://backend-three-nu.vercel.app/StudentInformation/StudentInformation", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: localStorage.getItem("BA_token"),
+        },
+      });
       const data = await res.json();
       setStudent(data.message);
 
@@ -38,20 +36,20 @@ const StudentsInformation = () => {
   }, []);
 
   return (
-    <div className="BAprofilecontainer">
+    <div className='BAprofilecontainer'>
       <BatchAdvisorTopMenu />
       <BatchAdvisorMainMenu />
-      <div className="menuheadingdiv">
-        <h2 className="freezesemestertitle">Students Information</h2>
+      <div className='menuheadingdiv'>
+        <h2 className='freezesemestertitle'>Students Information</h2>
       </div>
       <table>
         <tr>
-          <th className="regCol">Registration No.</th>
-          <th className="nameCol">Name</th>
-          <th className="secCol">Section</th>
-          <th className="emailCol">Email</th>
-          <th className="cgpaCol">CGPA</th>
-          <th className="transCol">Transcript</th>
+          <th className='regCol'>Registration No.</th>
+          <th className='nameCol'>Name</th>
+          <th className='secCol'>Section</th>
+          <th className='emailCol'>Email</th>
+          <th className='cgpaCol'>CGPA</th>
+          <th className='transCol'>Transcript</th>
         </tr>
         {student.map((students) => (
           <tr>
@@ -63,7 +61,7 @@ const StudentsInformation = () => {
             <td>
               {/* <button onClick={()=>submit(students._id)}>View </button> */}
               <Link to={"/StudentTranscript"} state={students.registrationId}>
-                <img className="nexticon" src={next} alt="" />
+                <img className='nexticon' src={next} alt='' />
               </Link>
             </td>
           </tr>
