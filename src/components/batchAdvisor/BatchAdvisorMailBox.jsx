@@ -20,6 +20,7 @@ const BatchAdvisorMailBox = () => {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
+        authorization: localStorage.getItem("BA_token"),
       },
       credentials: "include",
     });
