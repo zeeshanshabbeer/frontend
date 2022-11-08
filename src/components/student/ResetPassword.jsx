@@ -25,18 +25,16 @@ const ResetPassword = () => {
       return;
     }
     setSendemail({ email: "" });
-    const res = await fetch(
-      "https://backend-three-nu.vercel.app/Student/SendResetEmail",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email,
-        }),
-      }
-    );
+    const res = await fetch("https://backend-three-nu.vercel.app/Student/SendResetEmail", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: localStorage.getItem("S_token"),
+      },
+      body: JSON.stringify({
+        email,
+      }),
+    });
     const data = await res.json();
     if (data.status === "success") {
       Success(data.message);
@@ -46,49 +44,31 @@ const ResetPassword = () => {
   };
 
   return (
-    <div className="maincontainer">
-      <h1 className="title">Tipster</h1>
-      <h3 className="tagline">A Digital Batch Advisor</h3>
-      <h1 className="console">
-        <FontAwesomeIcon icon={faUserGraduate} className="icon" />
+    <div className='maincontainer'>
+      <h1 className='title'>Tipster</h1>
+      <h3 className='tagline'>A Digital Batch Advisor</h3>
+      <h1 className='console'>
+        <FontAwesomeIcon icon={faUserGraduate} className='icon' />
         Student Console
       </h1>
-      <div className="container3">
-        <h2 className="rstpassword">Reset Password</h2>
+      <div className='container3'>
+        <h2 className='rstpassword'>Reset Password</h2>
         <hr />
-        <form action="" method="POST">
-          <h3 className="todo">
+        <form action='' method='POST'>
+          <h3 className='todo'>
             Please enter your official email to receive
             <br />
             the password reset link.
           </h3>
-          <input
-            className="email"
-            type="email"
-            name="email"
-            value={sendemail.email}
-            onChange={handleInputs}
-            placeholder=""
-            required
-          />
+          <input className='email' type='email' name='email' value={sendemail.email} onChange={handleInputs} placeholder='' required />
           <br />
-          <Link to="/">
-            <button className="cancelbtn">Cancel</button>
+          <Link to='/'>
+            <button className='cancelbtn'>Cancel</button>
           </Link>
-          <button className="sendbtn" onClick={send_mail}>
+          <button className='sendbtn' onClick={send_mail}>
             Send
           </button>
-          <ToastContainer
-            position="top-center"
-            autoClose={2000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-          />
+          <ToastContainer position='top-center' autoClose={2000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
         </form>
       </div>
       <Footer />

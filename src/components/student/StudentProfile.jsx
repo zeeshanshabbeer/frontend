@@ -22,17 +22,15 @@ const StudentProfile = () => {
   const S_Profile = async () => {
     setButtonPopup(false);
     setUpdate_contact_no({ contactNo: "" });
-    const res = await fetch(
-      "https://backend-three-nu.vercel.app/Student/Studentprofile",
-      {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        credentials: "include",
-      }
-    );
+    const res = await fetch("https://backend-three-nu.vercel.app/Student/Studentprofile", {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        authorization: localStorage.getItem("S_token"),
+      },
+      credentials: "include",
+    });
 
     const data = await res.json();
     if (data.status === "success") {
@@ -61,18 +59,16 @@ const StudentProfile = () => {
     }
     if (validator.isNumeric(contactNo)) {
       if (contactNo.length === 10) {
-        const res = await fetch(
-          "https://backend-three-nu.vercel.app/Student/UpdateContact",
-          {
-            method: "PUT",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              contactNo,
-            }),
-          }
-        );
+        const res = await fetch("https://backend-three-nu.vercel.app/Student/UpdateContact", {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            authorization: localStorage.getItem("S_token"),
+          },
+          body: JSON.stringify({
+            contactNo,
+          }),
+        });
         const data = await res.json();
         if (data.status === "success") {
           Success(data.message);
@@ -93,140 +89,82 @@ const StudentProfile = () => {
   };
 
   return (
-    <div className="maincontainer">
+    <div className='maincontainer'>
       <TopMenu />
       <MainMenu />
-      <div className="freezesemesterdiv">
-        <h2 className="freezesemestertitle">Profile</h2>
+      <div className='freezesemesterdiv'>
+        <h2 className='freezesemestertitle'>Profile</h2>
       </div>
-      <form action="" method="GET">
-        <div className="profileformdiv">
-          <label className="label" htmlFor="">
+      <form action='' method='GET'>
+        <div className='profileformdiv'>
+          <label className='label' htmlFor=''>
             Name
           </label>
           <br />
-          <input
-            className="input"
-            type="text"
-            value={userData.name}
-            placeholder=""
-          />
+          <input className='input' type='text' value={userData.name} placeholder='' />
           <br />
-          <label className="label" htmlFor="">
+          <label className='label' htmlFor=''>
             Father Name
           </label>
           <br />
-          <input
-            className="input"
-            type="text"
-            value={userData.fatherName}
-            placeholder=""
-          />
+          <input className='input' type='text' value={userData.fatherName} placeholder='' />
           <br />
-          <label className="label" htmlFor="">
+          <label className='label' htmlFor=''>
             Registration Number
           </label>
           <br />
-          <input
-            className="input"
-            type="text"
-            value={userData.registrationId}
-            placeholder=""
-          />
+          <input className='input' type='text' value={userData.registrationId} placeholder='' />
           <br />
-          <label className="label" htmlFor="">
+          <label className='label' htmlFor=''>
             Email
           </label>
           <br />
-          <input
-            className="input"
-            type="text"
-            value={userData.email}
-            placeholder=""
-          />
+          <input className='input' type='text' value={userData.email} placeholder='' />
           <br />
-          <label className="label" htmlFor="">
+          <label className='label' htmlFor=''>
             Address
           </label>
           <br />
-          <input
-            className="input"
-            type="text"
-            value={userData.address}
-            placeholder=""
-          />
+          <input className='input' type='text' value={userData.address} placeholder='' />
           <br />
-          <label className="label" htmlFor="">
+          <label className='label' htmlFor=''>
             Contact Number
           </label>
           <br />
-          <input
-            className="input"
-            type="text"
-            value={userData.contactNo}
-            placeholder=""
-          />
-          <img
-            onClick={() => setButtonPopup(true)}
-            className="editicon"
-            src={edit}
-            alt=""
-          />
+          <input className='input' type='text' value={userData.contactNo} placeholder='' />
+          <img onClick={() => setButtonPopup(true)} className='editicon' src={edit} alt='' />
           <br />
-          <label className="label" htmlFor="">
+          <label className='label' htmlFor=''>
             Batch Advisor Name
           </label>
           <br />
-          <input
-            className="input"
-            type="text"
-            value={userData.batchAdvisorName}
-            placeholder="Dr. Hamza"
-          />
+          <input className='input' type='text' value={userData.batchAdvisorName} placeholder='Dr. Hamza' />
           <br />
-          <Link className="psdlink" to="/ChangeStudentPassword">
-            <label className="psdlabel" htmlFor="">
+          <Link className='psdlink' to='/ChangeStudentPassword'>
+            <label className='psdlabel' htmlFor=''>
               Change Password
             </label>
           </Link>
           <br />
           <br />
-          <div className="picdiv">
-            <img src={userData.profilePic} alt="" />
+          <div className='picdiv'>
+            <img src={userData.profilePic} alt='' />
           </div>
         </div>
       </form>
       <Footer />
       <ChangeStudentContact trigger={buttonPopup} setTrigger={setButtonPopup}>
-        <form action="" method="PUT">
-          <label htmlFor="" className="newcontactlabel">
+        <form action='' method='PUT'>
+          <label htmlFor='' className='newcontactlabel'>
             New Contact Number
           </label>
           <br />
-          <input
-            type="text"
-            className="newcontactinput"
-            required
-            name="contactNo"
-            value={update_contact_no.contactNo}
-            onChange={handleInputs}
-            placeholder=""
-          />
+          <input type='text' className='newcontactinput' required name='contactNo' value={update_contact_no.contactNo} onChange={handleInputs} placeholder='' />
           <br />
-          <button className="newcontactbutton" onClick={update_contact}>
+          <button className='newcontactbutton' onClick={update_contact}>
             Update
           </button>
-          <ToastContainer
-            position="top-center"
-            autoClose={2000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-          />
+          <ToastContainer position='top-center' autoClose={2000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
         </form>
       </ChangeStudentContact>
     </div>

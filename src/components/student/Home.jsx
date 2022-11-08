@@ -14,15 +14,13 @@ const Home = () => {
   const [userData, setUserData] = useState([]);
   const [buttonPopup, setButtonPopup] = useState(false);
   const Home = async () => {
-    const res = await fetch(
-      "https://backend-three-nu.vercel.app/Student/Home",
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const res = await fetch("https://backend-three-nu.vercel.app/Student/Home", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: localStorage.getItem("S_token"),
+      },
+    });
     const data = await res.json();
     if (data.status === "success") {
       setUserData(data.message);
@@ -34,15 +32,13 @@ const Home = () => {
 
   const [credit, setCredit] = useState();
   const creditHour = async () => {
-    const res = await fetch(
-      "https://backend-three-nu.vercel.app/Student/Home_credits",
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const res = await fetch("https://backend-three-nu.vercel.app/Student/Home_credits", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: localStorage.getItem("S_token"),
+      },
+    });
     const data = await res.json();
     setCredit(data.message);
   };
@@ -55,19 +51,17 @@ const Home = () => {
     e.preventDefault();
     const reason = drop;
     const courseName = drop1;
-    const res = await fetch(
-      "https://backend-three-nu.vercel.app/DropCourse/DropCourse",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          reason: reason,
-          courseName: courseName,
-        }),
-      }
-    );
+    const res = await fetch("https://backend-three-nu.vercel.app/DropCourse/DropCourse", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: localStorage.getItem("S_token"),
+      },
+      body: JSON.stringify({
+        reason: reason,
+        courseName: courseName,
+      }),
+    });
     const data = await res.json();
     setButtonPopup(false);
     if (data.status === "success") {
@@ -83,27 +77,25 @@ const Home = () => {
     Home();
   }, [stateLoad]);
   return (
-    <div className="maincontainer">
+    <div className='maincontainer'>
       <TopMenu />
       <MainMenu />
       <div>
-        <div className="freezesemesterdiv">
-          <h2 className="freezesemestertitle">Registered Courses</h2>
+        <div className='freezesemesterdiv'>
+          <h2 className='freezesemestertitle'>Registered Courses</h2>
         </div>
         {userData.length === 0 ? (
-          <div className="emptydiv">
-            <h2 className="emptytext">
-              You don't have any registered courses!
-            </h2>
+          <div className='emptydiv'>
+            <h2 className='emptytext'>You don't have any registered courses!</h2>
           </div>
         ) : (
           <table>
             <tr>
-              <th className="column1">Course Code</th>
-              <th className="column2">Course Title</th>
-              <th className="column3">Credits</th>
-              <th className="column5">Status</th>
-              <th className="column6">Drop</th>
+              <th className='column1'>Course Code</th>
+              <th className='column2'>Course Title</th>
+              <th className='column3'>Credits</th>
+              <th className='column5'>Status</th>
+              <th className='column6'>Drop</th>
             </tr>
             {userData.map((home) => (
               <tr>
@@ -115,39 +107,26 @@ const Home = () => {
                   <td>
                     <img
                       src={deleteicon}
-                      alt=""
-                      className="dropbtn"
+                      alt=''
+                      className='dropbtn'
                       onClick={() => {
                         setButtonPopup(true);
                         setDrop1(home.courseName);
                       }}
                     />
                   </td>
-                ) : home.status === "Add Pending" ||
-                  home.status === "Drop Pending" ? (
+                ) : home.status === "Add Pending" || home.status === "Drop Pending" ? (
                   <td>
-                    <div className="dropbtndiv-status">
-                      <img
-                        src={deleteicondisabled}
-                        alt=""
-                        className="dropbtndisabled-status"
-                      />
-                      <span className="tooltipstatus">
-                        Request is already pending!
-                      </span>
+                    <div className='dropbtndiv-status'>
+                      <img src={deleteicondisabled} alt='' className='dropbtndisabled-status' />
+                      <span className='tooltipstatus'>Request is already pending!</span>
                     </div>
                   </td>
                 ) : (
                   <td>
-                    <div className="dropbtndiv-credits">
-                      <img
-                        src={deleteicondisabled}
-                        alt=""
-                        className="dropbtndisabled-credits"
-                      />
-                      <span className="tooltipcredits">
-                        You cannot drop less than 12 credit hours!
-                      </span>
+                    <div className='dropbtndiv-credits'>
+                      <img src={deleteicondisabled} alt='' className='dropbtndisabled-credits' />
+                      <span className='tooltipcredits'>You cannot drop less than 12 credit hours!</span>
                     </div>
                   </td>
                 )}
@@ -158,36 +137,26 @@ const Home = () => {
       </div>
       <Footer />
       <DropReasonPopup trigger={buttonPopup} setTrigger={setButtonPopup}>
-        <form action="" method="POST">
-          <label htmlFor="" className="dropreasonlabel">
+        <form action='' method='POST'>
+          <label htmlFor='' className='dropreasonlabel'>
             Reason
           </label>
           <br />
           <textarea
-            name="reason"
+            name='reason'
             value={drop.reason}
             onChange={(e) => setDrop(e.target.value)}
-            className="dropreasoninput"
-            placeholder="Enter a valid reason to drop the course"
-            cols="40"
-            rows="5"
+            className='dropreasoninput'
+            placeholder='Enter a valid reason to drop the course'
+            cols='40'
+            rows='5'
             required
           ></textarea>
           <br />
-          <button className="newcontactbutton" onClick={submit}>
+          <button className='newcontactbutton' onClick={submit}>
             Drop
           </button>
-          <ToastContainer
-            position="top-center"
-            autoClose={2000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-          />
+          <ToastContainer position='top-center' autoClose={2000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
         </form>
       </DropReasonPopup>
     </div>

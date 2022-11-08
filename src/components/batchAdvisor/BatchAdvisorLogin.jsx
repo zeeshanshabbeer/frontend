@@ -34,76 +34,50 @@ const BatchAdvisorLogin = () => {
       Error("Please enter the password.");
       return;
     }
-    const res = await fetch(
-      "https://backend-three-nu.vercel.app/BatchAdvisor/BatchAdvisorLogin",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: email,
-          password: password,
-        }),
-      }
-    );
+    const res = await fetch("https://backend-three-nu.vercel.app/BatchAdvisor/BatchAdvisorLogin", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: email,
+        password: password,
+      }),
+    });
     const data = await res.json();
     if (data.status === "success") {
+      localStorage.setItem("BA_token", data.token);
       navigate("/PendingRequests");
     } else {
       Error(data.message);
     }
   };
   return (
-    <div className="BALogincontainer">
-      <h1 className="title">Tipster</h1>
-      <h3 className="tagline">A Digital Batch Advisor</h3>
-      <h1 className="console">
-        <FontAwesomeIcon icon={faUserTie} className="icon" />
+    <div className='BALogincontainer'>
+      <h1 className='title'>Tipster</h1>
+      <h3 className='tagline'>A Digital Batch Advisor</h3>
+      <h1 className='console'>
+        <FontAwesomeIcon icon={faUserTie} className='icon' />
         Batch Advisor Console
       </h1>
 
-      <div className="container2">
-        <form action="" method="POST">
-          <h2 className="stdlogin">Batch Advisor Login</h2>
+      <div className='container2'>
+        <form action='' method='POST'>
+          <h2 className='stdlogin'>Batch Advisor Login</h2>
           <hr />
           <br />
-          <input
-            className="BALoginLabels"
-            type="text"
-            name="email"
-            value={user.email}
-            onChange={handleInputs}
-            placeholder="Email"
-          />
+          <input className='BALoginLabels' type='text' name='email' value={user.email} onChange={handleInputs} placeholder='Email' />
           <br />
           <br />
-          <input
-            className="BALoginLabels"
-            type="password"
-            name="password"
-            value={user.password}
-            onChange={handleInputs}
-            placeholder="Password"
-          />
+          <input className='BALoginLabels' type='password' name='password' value={user.password} onChange={handleInputs} placeholder='Password' />
           <br />
-          <button className="btn" onClick={loginUser}>
+          <button className='btn' onClick={loginUser}>
             Login
           </button>
-          <Link to="/BatchAdvisorResetPassword" className="link">
-            <h4 className="forgotPassword">Forgot Password?</h4>
+          <Link to='/BatchAdvisorResetPassword' className='link'>
+            <h4 className='forgotPassword'>Forgot Password?</h4>
           </Link>
-          <ToastContainer
-            position="top-center"
-            autoClose={2000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-          />
+          <ToastContainer position='top-center' autoClose={2000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
         </form>
       </div>
 

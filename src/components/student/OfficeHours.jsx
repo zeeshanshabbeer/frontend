@@ -12,17 +12,15 @@ const OfficeHours = () => {
   const [friday, setFriday] = useState([]);
 
   const S_office = async () => {
-    const res = await fetch(
-      "https://backend-three-nu.vercel.app/OfficeHours/officehour",
-      {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        credentials: "include",
-      }
-    );
+    const res = await fetch("https://backend-three-nu.vercel.app/OfficeHours/officehour", {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        authorization: localStorage.getItem("S_token"),
+      },
+      credentials: "include",
+    });
 
     const data = await res.json();
     if (data.status === "success") {
@@ -37,1711 +35,751 @@ const OfficeHours = () => {
         F_from,
         F_to = "";
       // From time of Monday
-      if (
-        data.message.Monday[0].from.charAt(0) +
-          data.message.Monday[0].from.charAt(1) ===
-        "13"
-      ) {
+      if (data.message.Monday[0].from.charAt(0) + data.message.Monday[0].from.charAt(1) === "13") {
         const data1 = data.message.Monday[0].from.substring(2, 5);
         M_from = "01" + data1 + " " + "PM";
-      } else if (
-        data.message.Monday[0].from.charAt(0) +
-          data.message.Monday[0].from.charAt(1) ===
-        "14"
-      ) {
+      } else if (data.message.Monday[0].from.charAt(0) + data.message.Monday[0].from.charAt(1) === "14") {
         const data1 = data.message.Monday[0].from.substring(2, 5);
         M_from = "02" + data1 + " " + "PM";
-      } else if (
-        data.message.Monday[0].from.charAt(0) +
-          data.message.Monday[0].from.charAt(1) ===
-        "15"
-      ) {
+      } else if (data.message.Monday[0].from.charAt(0) + data.message.Monday[0].from.charAt(1) === "15") {
         const data1 = data.message.Monday[0].from.substring(2, 5);
         M_from = "03" + data1 + " " + "PM";
-      } else if (
-        data.message.Monday[0].from.charAt(0) +
-          data.message.Monday[0].from.charAt(1) ===
-        "16"
-      ) {
+      } else if (data.message.Monday[0].from.charAt(0) + data.message.Monday[0].from.charAt(1) === "16") {
         const data1 = data.message.Monday[0].from.substring(2, 5);
         M_from = "04" + data1 + " " + "PM";
-      } else if (
-        data.message.Monday[0].from.charAt(0) +
-          data.message.Monday[0].from.charAt(1) ===
-        "17"
-      ) {
+      } else if (data.message.Monday[0].from.charAt(0) + data.message.Monday[0].from.charAt(1) === "17") {
         const data1 = data.message.Monday[0].from.substring(2, 5);
         M_from = "05" + data1 + " " + "PM";
-      } else if (
-        data.message.Monday[0].from.charAt(0) +
-          data.message.Monday[0].from.charAt(1) ===
-        "18"
-      ) {
+      } else if (data.message.Monday[0].from.charAt(0) + data.message.Monday[0].from.charAt(1) === "18") {
         const data1 = data.message.Monday[0].from.substring(2, 5);
         M_from = "06" + data1 + " " + "PM";
-      } else if (
-        data.message.Monday[0].from.charAt(0) +
-          data.message.Monday[0].from.charAt(1) ===
-        "19"
-      ) {
+      } else if (data.message.Monday[0].from.charAt(0) + data.message.Monday[0].from.charAt(1) === "19") {
         const data1 = data.message.Monday[0].from.substring(2, 5);
         M_from = "07" + data1 + " " + "PM";
-      } else if (
-        data.message.Monday[0].from.charAt(0) +
-          data.message.Monday[0].from.charAt(1) ===
-        "20"
-      ) {
+      } else if (data.message.Monday[0].from.charAt(0) + data.message.Monday[0].from.charAt(1) === "20") {
         const data1 = data.message.Monday[0].from.substring(2, 5);
         M_from = "08" + data1 + " " + "PM";
-      } else if (
-        data.message.Monday[0].from.charAt(0) +
-          data.message.Monday[0].from.charAt(1) ===
-        "21"
-      ) {
+      } else if (data.message.Monday[0].from.charAt(0) + data.message.Monday[0].from.charAt(1) === "21") {
         const data1 = data.message.Monday[0].from.substring(2, 5);
         M_from = "09" + data1 + " " + "PM";
-      } else if (
-        data.message.Monday[0].from.charAt(0) +
-          data.message.Monday[0].from.charAt(1) ===
-        "22"
-      ) {
+      } else if (data.message.Monday[0].from.charAt(0) + data.message.Monday[0].from.charAt(1) === "22") {
         const data1 = data.message.Monday[0].from.substring(2, 5);
         M_from = "10" + data1 + " " + "PM";
-      } else if (
-        data.message.Monday[0].from.charAt(0) +
-          data.message.Monday[0].from.charAt(1) ===
-        "23"
-      ) {
+      } else if (data.message.Monday[0].from.charAt(0) + data.message.Monday[0].from.charAt(1) === "23") {
         const data1 = data.message.Monday[0].from.substring(2, 5);
         M_from = "11" + data1 + " " + "PM";
-      } else if (
-        data.message.Monday[0].from.charAt(0) +
-          data.message.Monday[0].from.charAt(1) ===
-        "00"
-      ) {
+      } else if (data.message.Monday[0].from.charAt(0) + data.message.Monday[0].from.charAt(1) === "00") {
         const data1 = data.message.Monday[0].from.substring(2, 5);
         M_from = "12" + data1 + " " + "AM";
-      } else if (
-        data.message.Monday[0].from.charAt(0) +
-          data.message.Monday[0].from.charAt(1) ===
-        "01"
-      ) {
+      } else if (data.message.Monday[0].from.charAt(0) + data.message.Monday[0].from.charAt(1) === "01") {
         const data1 = data.message.Monday[0].from.substring(2, 5);
         M_from = "01" + data1 + " " + "AM";
-      } else if (
-        data.message.Monday[0].from.charAt(0) +
-          data.message.Monday[0].from.charAt(1) ===
-        "02"
-      ) {
+      } else if (data.message.Monday[0].from.charAt(0) + data.message.Monday[0].from.charAt(1) === "02") {
         const data1 = data.message.Monday[0].from.substring(2, 5);
         M_from = "02" + data1 + " " + "AM";
-      } else if (
-        data.message.Monday[0].from.charAt(0) +
-          data.message.Monday[0].from.charAt(1) ===
-        "03"
-      ) {
+      } else if (data.message.Monday[0].from.charAt(0) + data.message.Monday[0].from.charAt(1) === "03") {
         const data1 = data.message.Monday[0].from.substring(2, 5);
         M_from = "03" + data1 + " " + "AM";
-      } else if (
-        data.message.Monday[0].from.charAt(0) +
-          data.message.Monday[0].from.charAt(1) ===
-        "04"
-      ) {
+      } else if (data.message.Monday[0].from.charAt(0) + data.message.Monday[0].from.charAt(1) === "04") {
         const data1 = data.message.Monday[0].from.substring(2, 5);
         M_from = "04" + data1 + " " + "AM";
-      } else if (
-        data.message.Monday[0].from.charAt(0) +
-          data.message.Monday[0].from.charAt(1) ===
-        "05"
-      ) {
+      } else if (data.message.Monday[0].from.charAt(0) + data.message.Monday[0].from.charAt(1) === "05") {
         const data1 = data.message.Monday[0].from.substring(2, 5);
         M_from = "05" + data1 + " " + "AM";
-      } else if (
-        data.message.Monday[0].from.charAt(0) +
-          data.message.Monday[0].from.charAt(1) ===
-        "06"
-      ) {
+      } else if (data.message.Monday[0].from.charAt(0) + data.message.Monday[0].from.charAt(1) === "06") {
         const data1 = data.message.Monday[0].from.substring(2, 5);
         M_from = "06" + data1 + " " + "AM";
-      } else if (
-        data.message.Monday[0].from.charAt(0) +
-          data.message.Monday[0].from.charAt(1) ===
-        "07"
-      ) {
+      } else if (data.message.Monday[0].from.charAt(0) + data.message.Monday[0].from.charAt(1) === "07") {
         const data1 = data.message.Monday[0].from.substring(2, 5);
         M_from = "07" + data1 + " " + "AM";
-      } else if (
-        data.message.Monday[0].from.charAt(0) +
-          data.message.Monday[0].from.charAt(1) ===
-        "08"
-      ) {
+      } else if (data.message.Monday[0].from.charAt(0) + data.message.Monday[0].from.charAt(1) === "08") {
         const data1 = data.message.Monday[0].from.substring(2, 5);
         M_from = "08" + data1 + " " + "AM";
-      } else if (
-        data.message.Monday[0].from.charAt(0) +
-          data.message.Monday[0].from.charAt(1) ===
-        "09"
-      ) {
+      } else if (data.message.Monday[0].from.charAt(0) + data.message.Monday[0].from.charAt(1) === "09") {
         const data1 = data.message.Monday[0].from.substring(2, 5);
         M_from = "09" + data1 + " " + "AM";
-      } else if (
-        data.message.Monday[0].from.charAt(0) +
-          data.message.Monday[0].from.charAt(1) ===
-        "10"
-      ) {
+      } else if (data.message.Monday[0].from.charAt(0) + data.message.Monday[0].from.charAt(1) === "10") {
         const data1 = data.message.Monday[0].from.substring(2, 5);
         M_from = "10" + data1 + " " + "AM";
-      } else if (
-        data.message.Monday[0].from.charAt(0) +
-          data.message.Monday[0].from.charAt(1) ===
-        "11"
-      ) {
+      } else if (data.message.Monday[0].from.charAt(0) + data.message.Monday[0].from.charAt(1) === "11") {
         const data1 = data.message.Monday[0].from.substring(2, 5);
         M_from = "11" + data1 + " " + "AM";
-      } else if (
-        data.message.Monday[0].from.charAt(0) +
-          data.message.Monday[0].from.charAt(1) ===
-        "12"
-      ) {
+      } else if (data.message.Monday[0].from.charAt(0) + data.message.Monday[0].from.charAt(1) === "12") {
         const data1 = data.message.Monday[0].from.substring(2, 5);
         M_from = "12" + data1 + " " + "PM";
       }
 
       // To time of Monday
-      if (
-        data.message.Monday[0].to.charAt(0) +
-          data.message.Monday[0].to.charAt(1) ===
-        "13"
-      ) {
+      if (data.message.Monday[0].to.charAt(0) + data.message.Monday[0].to.charAt(1) === "13") {
         const data1 = data.message.Monday[0].to.substring(2, 5);
         M_to = "01" + data1 + " " + "PM";
-      } else if (
-        data.message.Monday[0].to.charAt(0) +
-          data.message.Monday[0].to.charAt(1) ===
-        "14"
-      ) {
+      } else if (data.message.Monday[0].to.charAt(0) + data.message.Monday[0].to.charAt(1) === "14") {
         const data1 = data.message.Monday[0].to.substring(2, 5);
         M_to = "02" + data1 + " " + "PM";
-      } else if (
-        data.message.Monday[0].to.charAt(0) +
-          data.message.Monday[0].to.charAt(1) ===
-        "15"
-      ) {
+      } else if (data.message.Monday[0].to.charAt(0) + data.message.Monday[0].to.charAt(1) === "15") {
         const data1 = data.message.Monday[0].to.substring(2, 5);
         M_to = "03" + data1 + " " + "PM";
-      } else if (
-        data.message.Monday[0].to.charAt(0) +
-          data.message.Monday[0].to.charAt(1) ===
-        "16"
-      ) {
+      } else if (data.message.Monday[0].to.charAt(0) + data.message.Monday[0].to.charAt(1) === "16") {
         const data1 = data.message.Monday[0].to.substring(2, 5);
         M_to = "04" + data1 + " " + "PM";
-      } else if (
-        data.message.Monday[0].to.charAt(0) +
-          data.message.Monday[0].to.charAt(1) ===
-        "17"
-      ) {
+      } else if (data.message.Monday[0].to.charAt(0) + data.message.Monday[0].to.charAt(1) === "17") {
         const data1 = data.message.Monday[0].to.substring(2, 5);
         M_to = "05" + data1 + " " + "PM";
-      } else if (
-        data.message.Monday[0].to.charAt(0) +
-          data.message.Monday[0].to.charAt(1) ===
-        "18"
-      ) {
+      } else if (data.message.Monday[0].to.charAt(0) + data.message.Monday[0].to.charAt(1) === "18") {
         const data1 = data.message.Monday[0].to.substring(2, 5);
         M_to = "06" + data1 + " " + "PM";
-      } else if (
-        data.message.Monday[0].to.charAt(0) +
-          data.message.Monday[0].to.charAt(1) ===
-        "19"
-      ) {
+      } else if (data.message.Monday[0].to.charAt(0) + data.message.Monday[0].to.charAt(1) === "19") {
         const data1 = data.message.Monday[0].to.substring(2, 5);
         M_to = "07" + data1 + " " + "PM";
-      } else if (
-        data.message.Monday[0].to.charAt(0) +
-          data.message.Monday[0].to.charAt(1) ===
-        "20"
-      ) {
+      } else if (data.message.Monday[0].to.charAt(0) + data.message.Monday[0].to.charAt(1) === "20") {
         const data1 = data.message.Monday[0].to.substring(2, 5);
         M_to = "08" + data1 + " " + "PM";
-      } else if (
-        data.message.Monday[0].to.charAt(0) +
-          data.message.Monday[0].to.charAt(1) ===
-        "21"
-      ) {
+      } else if (data.message.Monday[0].to.charAt(0) + data.message.Monday[0].to.charAt(1) === "21") {
         const data1 = data.message.Monday[0].to.substring(2, 5);
         M_to = "09" + data1 + " " + "PM";
-      } else if (
-        data.message.Monday[0].to.charAt(0) +
-          data.message.Monday[0].to.charAt(1) ===
-        "22"
-      ) {
+      } else if (data.message.Monday[0].to.charAt(0) + data.message.Monday[0].to.charAt(1) === "22") {
         const data1 = data.message.Monday[0].to.substring(2, 5);
         M_to = "10" + data1 + " " + "PM";
-      } else if (
-        data.message.Monday[0].to.charAt(0) +
-          data.message.Monday[0].to.charAt(1) ===
-        "23"
-      ) {
+      } else if (data.message.Monday[0].to.charAt(0) + data.message.Monday[0].to.charAt(1) === "23") {
         const data1 = data.message.Monday[0].to.substring(2, 5);
         M_to = "11" + data1 + " " + "PM";
-      } else if (
-        data.message.Monday[0].to.charAt(0) +
-          data.message.Monday[0].to.charAt(1) ===
-        "00"
-      ) {
+      } else if (data.message.Monday[0].to.charAt(0) + data.message.Monday[0].to.charAt(1) === "00") {
         const data1 = data.message.Monday[0].to.substring(2, 5);
         M_to = "12" + data1 + " " + "AM";
-      } else if (
-        data.message.Monday[0].to.charAt(0) +
-          data.message.Monday[0].to.charAt(1) ===
-        "01"
-      ) {
+      } else if (data.message.Monday[0].to.charAt(0) + data.message.Monday[0].to.charAt(1) === "01") {
         const data1 = data.message.Monday[0].to.substring(2, 5);
         M_to = "01" + data1 + " " + "AM";
-      } else if (
-        data.message.Monday[0].to.charAt(0) +
-          data.message.Monday[0].to.charAt(1) ===
-        "02"
-      ) {
+      } else if (data.message.Monday[0].to.charAt(0) + data.message.Monday[0].to.charAt(1) === "02") {
         const data1 = data.message.Monday[0].to.substring(2, 5);
         M_to = "02" + data1 + " " + "AM";
-      } else if (
-        data.message.Monday[0].to.charAt(0) +
-          data.message.Monday[0].to.charAt(1) ===
-        "03"
-      ) {
+      } else if (data.message.Monday[0].to.charAt(0) + data.message.Monday[0].to.charAt(1) === "03") {
         const data1 = data.message.Monday[0].to.substring(2, 5);
         M_to = "03" + data1 + " " + "AM";
-      } else if (
-        data.message.Monday[0].to.charAt(0) +
-          data.message.Monday[0].to.charAt(1) ===
-        "04"
-      ) {
+      } else if (data.message.Monday[0].to.charAt(0) + data.message.Monday[0].to.charAt(1) === "04") {
         const data1 = data.message.Monday[0].to.substring(2, 5);
         M_to = "04" + data1 + " " + "AM";
-      } else if (
-        data.message.Monday[0].to.charAt(0) +
-          data.message.Monday[0].to.charAt(1) ===
-        "05"
-      ) {
+      } else if (data.message.Monday[0].to.charAt(0) + data.message.Monday[0].to.charAt(1) === "05") {
         const data1 = data.message.Monday[0].to.substring(2, 5);
         M_to = "05" + data1 + " " + "AM";
-      } else if (
-        data.message.Monday[0].to.charAt(0) +
-          data.message.Monday[0].to.charAt(1) ===
-        "06"
-      ) {
+      } else if (data.message.Monday[0].to.charAt(0) + data.message.Monday[0].to.charAt(1) === "06") {
         const data1 = data.message.Monday[0].to.substring(2, 5);
         M_to = "06" + data1 + " " + "AM";
-      } else if (
-        data.message.Monday[0].to.charAt(0) +
-          data.message.Monday[0].to.charAt(1) ===
-        "07"
-      ) {
+      } else if (data.message.Monday[0].to.charAt(0) + data.message.Monday[0].to.charAt(1) === "07") {
         const data1 = data.message.Monday[0].to.substring(2, 5);
         M_to = "07" + data1 + " " + "AM";
-      } else if (
-        data.message.Monday[0].to.charAt(0) +
-          data.message.Monday[0].to.charAt(1) ===
-        "08"
-      ) {
+      } else if (data.message.Monday[0].to.charAt(0) + data.message.Monday[0].to.charAt(1) === "08") {
         const data1 = data.message.Monday[0].to.substring(2, 5);
         M_to = "08" + data1 + " " + "AM";
-      } else if (
-        data.message.Monday[0].to.charAt(0) +
-          data.message.Monday[0].to.charAt(1) ===
-        "09"
-      ) {
+      } else if (data.message.Monday[0].to.charAt(0) + data.message.Monday[0].to.charAt(1) === "09") {
         const data1 = data.message.Monday[0].to.substring(2, 5);
         M_to = "09" + data1 + " " + "AM";
-      } else if (
-        data.message.Monday[0].to.charAt(0) +
-          data.message.Monday[0].to.charAt(1) ===
-        "10"
-      ) {
+      } else if (data.message.Monday[0].to.charAt(0) + data.message.Monday[0].to.charAt(1) === "10") {
         const data1 = data.message.Monday[0].to.substring(2, 5);
         M_to = "10" + data1 + " " + "AM";
-      } else if (
-        data.message.Monday[0].to.charAt(0) +
-          data.message.Monday[0].to.charAt(1) ===
-        "11"
-      ) {
+      } else if (data.message.Monday[0].to.charAt(0) + data.message.Monday[0].to.charAt(1) === "11") {
         const data1 = data.message.Monday[0].to.substring(2, 5);
         M_to = "11" + data1 + " " + "AM";
-      } else if (
-        data.message.Monday[0].to.charAt(0) +
-          data.message.Monday[0].to.charAt(1) ===
-        "12"
-      ) {
+      } else if (data.message.Monday[0].to.charAt(0) + data.message.Monday[0].to.charAt(1) === "12") {
         const data1 = data.message.Monday[0].to.substring(2, 5);
         M_to = "12" + data1 + " " + "PM";
       }
 
       // from time to Tuesday
-      if (
-        data.message.Tuesday[0].from.charAt(0) +
-          data.message.Tuesday[0].from.charAt(1) ===
-        "13"
-      ) {
+      if (data.message.Tuesday[0].from.charAt(0) + data.message.Tuesday[0].from.charAt(1) === "13") {
         const data1 = data.message.Tuesday[0].from.substring(2, 5);
         T_from = "01" + data1 + " " + "PM";
-      } else if (
-        data.message.Tuesday[0].from.charAt(0) +
-          data.message.Tuesday[0].from.charAt(1) ===
-        "14"
-      ) {
+      } else if (data.message.Tuesday[0].from.charAt(0) + data.message.Tuesday[0].from.charAt(1) === "14") {
         const data1 = data.message.Tuesday[0].from.substring(2, 5);
         T_from = "02" + data1 + " " + "PM";
-      } else if (
-        data.message.Tuesday[0].from.charAt(0) +
-          data.message.Tuesday[0].from.charAt(1) ===
-        "15"
-      ) {
+      } else if (data.message.Tuesday[0].from.charAt(0) + data.message.Tuesday[0].from.charAt(1) === "15") {
         const data1 = data.message.Tuesday[0].from.substring(2, 5);
         T_from = "03" + data1 + " " + "PM";
-      } else if (
-        data.message.Tuesday[0].from.charAt(0) +
-          data.message.Tuesday[0].from.charAt(1) ===
-        "16"
-      ) {
+      } else if (data.message.Tuesday[0].from.charAt(0) + data.message.Tuesday[0].from.charAt(1) === "16") {
         const data1 = data.message.Tuesday[0].from.substring(2, 5);
         T_from = "04" + data1 + " " + "PM";
-      } else if (
-        data.message.Tuesday[0].from.charAt(0) +
-          data.message.Tuesday[0].from.charAt(1) ===
-        "17"
-      ) {
+      } else if (data.message.Tuesday[0].from.charAt(0) + data.message.Tuesday[0].from.charAt(1) === "17") {
         const data1 = data.message.Tuesday[0].from.substring(2, 5);
         T_from = "05" + data1 + " " + "PM";
-      } else if (
-        data.message.Tuesday[0].from.charAt(0) +
-          data.message.Tuesday[0].from.charAt(1) ===
-        "18"
-      ) {
+      } else if (data.message.Tuesday[0].from.charAt(0) + data.message.Tuesday[0].from.charAt(1) === "18") {
         const data1 = data.message.Tuesday[0].from.substring(2, 5);
         T_from = "06" + data1 + " " + "PM";
-      } else if (
-        data.message.Tuesday[0].from.charAt(0) +
-          data.message.Tuesday[0].from.charAt(1) ===
-        "19"
-      ) {
+      } else if (data.message.Tuesday[0].from.charAt(0) + data.message.Tuesday[0].from.charAt(1) === "19") {
         const data1 = data.message.Tuesday[0].from.substring(2, 5);
         T_from = "07" + data1 + " " + "PM";
-      } else if (
-        data.message.Tuesday[0].from.charAt(0) +
-          data.message.Tuesday[0].from.charAt(1) ===
-        "20"
-      ) {
+      } else if (data.message.Tuesday[0].from.charAt(0) + data.message.Tuesday[0].from.charAt(1) === "20") {
         const data1 = data.message.Tuesday[0].from.substring(2, 5);
         T_from = "08" + data1 + " " + "PM";
-      } else if (
-        data.message.Tuesday[0].from.charAt(0) +
-          data.message.Tuesday[0].from.charAt(1) ===
-        "21"
-      ) {
+      } else if (data.message.Tuesday[0].from.charAt(0) + data.message.Tuesday[0].from.charAt(1) === "21") {
         const data1 = data.message.Tuesday[0].from.substring(2, 5);
         T_from = "09" + data1 + " " + "PM";
-      } else if (
-        data.message.Tuesday[0].from.charAt(0) +
-          data.message.Tuesday[0].from.charAt(1) ===
-        "22"
-      ) {
+      } else if (data.message.Tuesday[0].from.charAt(0) + data.message.Tuesday[0].from.charAt(1) === "22") {
         const data1 = data.message.Tuesday[0].from.substring(2, 5);
         T_from = "10" + data1 + " " + "PM";
-      } else if (
-        data.message.Tuesday[0].from.charAt(0) +
-          data.message.Tuesday[0].from.charAt(1) ===
-        "23"
-      ) {
+      } else if (data.message.Tuesday[0].from.charAt(0) + data.message.Tuesday[0].from.charAt(1) === "23") {
         const data1 = data.message.Tuesday[0].from.substring(2, 5);
         T_from = "11" + data1 + " " + "PM";
-      } else if (
-        data.message.Tuesday[0].from.charAt(0) +
-          data.message.Tuesday[0].from.charAt(1) ===
-        "00"
-      ) {
+      } else if (data.message.Tuesday[0].from.charAt(0) + data.message.Tuesday[0].from.charAt(1) === "00") {
         const data1 = data.message.Tuesday[0].from.substring(2, 5);
         T_from = "12" + data1 + " " + "AM";
-      } else if (
-        data.message.Tuesday[0].from.charAt(0) +
-          data.message.Tuesday[0].from.charAt(1) ===
-        "01"
-      ) {
+      } else if (data.message.Tuesday[0].from.charAt(0) + data.message.Tuesday[0].from.charAt(1) === "01") {
         const data1 = data.message.Tuesday[0].from.substring(2, 5);
         T_from = "01" + data1 + " " + "AM";
-      } else if (
-        data.message.Tuesday[0].from.charAt(0) +
-          data.message.Tuesday[0].from.charAt(1) ===
-        "02"
-      ) {
+      } else if (data.message.Tuesday[0].from.charAt(0) + data.message.Tuesday[0].from.charAt(1) === "02") {
         const data1 = data.message.Tuesday[0].from.substring(2, 5);
         T_from = "02" + data1 + " " + "AM";
-      } else if (
-        data.message.Tuesday[0].from.charAt(0) +
-          data.message.Tuesday[0].from.charAt(1) ===
-        "03"
-      ) {
+      } else if (data.message.Tuesday[0].from.charAt(0) + data.message.Tuesday[0].from.charAt(1) === "03") {
         const data1 = data.message.Tuesday[0].from.substring(2, 5);
         T_from = "03" + data1 + " " + "AM";
-      } else if (
-        data.message.Tuesday[0].from.charAt(0) +
-          data.message.Tuesday[0].from.charAt(1) ===
-        "04"
-      ) {
+      } else if (data.message.Tuesday[0].from.charAt(0) + data.message.Tuesday[0].from.charAt(1) === "04") {
         const data1 = data.message.Tuesday[0].from.substring(2, 5);
         T_from = "04" + data1 + " " + "AM";
-      } else if (
-        data.message.Tuesday[0].from.charAt(0) +
-          data.message.Tuesday[0].from.charAt(1) ===
-        "05"
-      ) {
+      } else if (data.message.Tuesday[0].from.charAt(0) + data.message.Tuesday[0].from.charAt(1) === "05") {
         const data1 = data.message.Tuesday[0].from.substring(2, 5);
         T_from = "05" + data1 + " " + "AM";
-      } else if (
-        data.message.Tuesday[0].from.charAt(0) +
-          data.message.Tuesday[0].from.charAt(1) ===
-        "06"
-      ) {
+      } else if (data.message.Tuesday[0].from.charAt(0) + data.message.Tuesday[0].from.charAt(1) === "06") {
         const data1 = data.message.Tuesday[0].from.substring(2, 5);
         T_from = "06" + data1 + " " + "AM";
-      } else if (
-        data.message.Tuesday[0].from.charAt(0) +
-          data.message.Tuesday[0].from.charAt(1) ===
-        "07"
-      ) {
+      } else if (data.message.Tuesday[0].from.charAt(0) + data.message.Tuesday[0].from.charAt(1) === "07") {
         const data1 = data.message.Tuesday[0].from.substring(2, 5);
         T_from = "07" + data1 + " " + "AM";
-      } else if (
-        data.message.Tuesday[0].from.charAt(0) +
-          data.message.Tuesday[0].from.charAt(1) ===
-        "08"
-      ) {
+      } else if (data.message.Tuesday[0].from.charAt(0) + data.message.Tuesday[0].from.charAt(1) === "08") {
         const data1 = data.message.Tuesday[0].from.substring(2, 5);
         T_from = "08" + data1 + " " + "AM";
-      } else if (
-        data.message.Tuesday[0].from.charAt(0) +
-          data.message.Tuesday[0].from.charAt(1) ===
-        "09"
-      ) {
+      } else if (data.message.Tuesday[0].from.charAt(0) + data.message.Tuesday[0].from.charAt(1) === "09") {
         const data1 = data.message.Tuesday[0].from.substring(2, 5);
         T_from = "09" + data1 + " " + "AM";
-      } else if (
-        data.message.Tuesday[0].from.charAt(0) +
-          data.message.Tuesday[0].from.charAt(1) ===
-        "10"
-      ) {
+      } else if (data.message.Tuesday[0].from.charAt(0) + data.message.Tuesday[0].from.charAt(1) === "10") {
         const data1 = data.message.Tuesday[0].from.substring(2, 5);
         T_from = "10" + data1 + " " + "AM";
-      } else if (
-        data.message.Tuesday[0].from.charAt(0) +
-          data.message.Tuesday[0].from.charAt(1) ===
-        "11"
-      ) {
+      } else if (data.message.Tuesday[0].from.charAt(0) + data.message.Tuesday[0].from.charAt(1) === "11") {
         const data1 = data.message.Tuesday[0].from.substring(2, 5);
         T_from = "11" + data1 + " " + "AM";
-      } else if (
-        data.message.Tuesday[0].from.charAt(0) +
-          data.message.Tuesday[0].from.charAt(1) ===
-        "12"
-      ) {
+      } else if (data.message.Tuesday[0].from.charAt(0) + data.message.Tuesday[0].from.charAt(1) === "12") {
         const data1 = data.message.Tuesday[0].from.substring(2, 5);
         T_from = "12" + data1 + " " + "PM";
       }
 
       // to time to Tuesday
-      if (
-        data.message.Tuesday[0].to.charAt(0) +
-          data.message.Tuesday[0].to.charAt(1) ===
-        "13"
-      ) {
+      if (data.message.Tuesday[0].to.charAt(0) + data.message.Tuesday[0].to.charAt(1) === "13") {
         const data1 = data.message.Tuesday[0].to.substring(2, 5);
         T_to = "01" + data1 + " " + "PM";
-      } else if (
-        data.message.Tuesday[0].to.charAt(0) +
-          data.message.Tuesday[0].to.charAt(1) ===
-        "14"
-      ) {
+      } else if (data.message.Tuesday[0].to.charAt(0) + data.message.Tuesday[0].to.charAt(1) === "14") {
         const data1 = data.message.Tuesday[0].to.substring(2, 5);
         T_to = "02" + data1 + " " + "PM";
-      } else if (
-        data.message.Tuesday[0].to.charAt(0) +
-          data.message.Tuesday[0].to.charAt(1) ===
-        "15"
-      ) {
+      } else if (data.message.Tuesday[0].to.charAt(0) + data.message.Tuesday[0].to.charAt(1) === "15") {
         const data1 = data.message.Tuesday[0].to.substring(2, 5);
         T_to = "03" + data1 + " " + "PM";
-      } else if (
-        data.message.Tuesday[0].to.charAt(0) +
-          data.message.Tuesday[0].to.charAt(1) ===
-        "16"
-      ) {
+      } else if (data.message.Tuesday[0].to.charAt(0) + data.message.Tuesday[0].to.charAt(1) === "16") {
         const data1 = data.message.Tuesday[0].to.substring(2, 5);
         T_to = "04" + data1 + " " + "PM";
-      } else if (
-        data.message.Tuesday[0].to.charAt(0) +
-          data.message.Tuesday[0].to.charAt(1) ===
-        "17"
-      ) {
+      } else if (data.message.Tuesday[0].to.charAt(0) + data.message.Tuesday[0].to.charAt(1) === "17") {
         const data1 = data.message.Tuesday[0].to.substring(2, 5);
         T_to = "05" + data1 + " " + "PM";
-      } else if (
-        data.message.Tuesday[0].to.charAt(0) +
-          data.message.Tuesday[0].to.charAt(1) ===
-        "18"
-      ) {
+      } else if (data.message.Tuesday[0].to.charAt(0) + data.message.Tuesday[0].to.charAt(1) === "18") {
         const data1 = data.message.Tuesday[0].to.substring(2, 5);
         T_to = "06" + data1 + " " + "PM";
-      } else if (
-        data.message.Tuesday[0].to.charAt(0) +
-          data.message.Tuesday[0].to.charAt(1) ===
-        "19"
-      ) {
+      } else if (data.message.Tuesday[0].to.charAt(0) + data.message.Tuesday[0].to.charAt(1) === "19") {
         const data1 = data.message.Tuesday[0].to.substring(2, 5);
         T_to = "07" + data1 + " " + "PM";
-      } else if (
-        data.message.Tuesday[0].to.charAt(0) +
-          data.message.Tuesday[0].to.charAt(1) ===
-        "20"
-      ) {
+      } else if (data.message.Tuesday[0].to.charAt(0) + data.message.Tuesday[0].to.charAt(1) === "20") {
         const data1 = data.message.Tuesday[0].to.substring(2, 5);
         T_to = "08" + data1 + " " + "PM";
-      } else if (
-        data.message.Tuesday[0].to.charAt(0) +
-          data.message.Tuesday[0].to.charAt(1) ===
-        "21"
-      ) {
+      } else if (data.message.Tuesday[0].to.charAt(0) + data.message.Tuesday[0].to.charAt(1) === "21") {
         const data1 = data.message.Tuesday[0].to.substring(2, 5);
         T_to = "09" + data1 + " " + "PM";
-      } else if (
-        data.message.Tuesday[0].to.charAt(0) +
-          data.message.Tuesday[0].to.charAt(1) ===
-        "22"
-      ) {
+      } else if (data.message.Tuesday[0].to.charAt(0) + data.message.Tuesday[0].to.charAt(1) === "22") {
         const data1 = data.message.Tuesday[0].to.substring(2, 5);
         T_to = "10" + data1 + " " + "PM";
-      } else if (
-        data.message.Tuesday[0].to.charAt(0) +
-          data.message.Tuesday[0].to.charAt(1) ===
-        "23"
-      ) {
+      } else if (data.message.Tuesday[0].to.charAt(0) + data.message.Tuesday[0].to.charAt(1) === "23") {
         const data1 = data.message.Tuesday[0].to.substring(2, 5);
         T_to = "11" + data1 + " " + "PM";
-      } else if (
-        data.message.Tuesday[0].to.charAt(0) +
-          data.message.Tuesday[0].to.charAt(1) ===
-        "00"
-      ) {
+      } else if (data.message.Tuesday[0].to.charAt(0) + data.message.Tuesday[0].to.charAt(1) === "00") {
         const data1 = data.message.Tuesday[0].to.substring(2, 5);
         T_to = "12" + data1 + " " + "AM";
-      } else if (
-        data.message.Tuesday[0].to.charAt(0) +
-          data.message.Tuesday[0].to.charAt(1) ===
-        "01"
-      ) {
+      } else if (data.message.Tuesday[0].to.charAt(0) + data.message.Tuesday[0].to.charAt(1) === "01") {
         const data1 = data.message.Tuesday[0].to.substring(2, 5);
         T_to = "01" + data1 + " " + "AM";
-      } else if (
-        data.message.Tuesday[0].to.charAt(0) +
-          data.message.Tuesday[0].to.charAt(1) ===
-        "02"
-      ) {
+      } else if (data.message.Tuesday[0].to.charAt(0) + data.message.Tuesday[0].to.charAt(1) === "02") {
         const data1 = data.message.Tuesday[0].to.substring(2, 5);
         T_to = "02" + data1 + " " + "AM";
-      } else if (
-        data.message.Tuesday[0].to.charAt(0) +
-          data.message.Tuesday[0].to.charAt(1) ===
-        "03"
-      ) {
+      } else if (data.message.Tuesday[0].to.charAt(0) + data.message.Tuesday[0].to.charAt(1) === "03") {
         const data1 = data.message.Tuesday[0].to.substring(2, 5);
         T_to = "03" + data1 + " " + "AM";
-      } else if (
-        data.message.Tuesday[0].to.charAt(0) +
-          data.message.Tuesday[0].to.charAt(1) ===
-        "04"
-      ) {
+      } else if (data.message.Tuesday[0].to.charAt(0) + data.message.Tuesday[0].to.charAt(1) === "04") {
         const data1 = data.message.Tuesday[0].to.substring(2, 5);
         T_to = "04" + data1 + " " + "AM";
-      } else if (
-        data.message.Tuesday[0].to.charAt(0) +
-          data.message.Tuesday[0].to.charAt(1) ===
-        "05"
-      ) {
+      } else if (data.message.Tuesday[0].to.charAt(0) + data.message.Tuesday[0].to.charAt(1) === "05") {
         const data1 = data.message.Tuesday[0].to.substring(2, 5);
         T_to = "05" + data1 + " " + "AM";
-      } else if (
-        data.message.Tuesday[0].to.charAt(0) +
-          data.message.Tuesday[0].to.charAt(1) ===
-        "06"
-      ) {
+      } else if (data.message.Tuesday[0].to.charAt(0) + data.message.Tuesday[0].to.charAt(1) === "06") {
         const data1 = data.message.Tuesday[0].to.substring(2, 5);
         T_to = "06" + data1 + " " + "AM";
-      } else if (
-        data.message.Tuesday[0].to.charAt(0) +
-          data.message.Tuesday[0].to.charAt(1) ===
-        "07"
-      ) {
+      } else if (data.message.Tuesday[0].to.charAt(0) + data.message.Tuesday[0].to.charAt(1) === "07") {
         const data1 = data.message.Tuesday[0].to.substring(2, 5);
         T_to = "07" + data1 + " " + "AM";
-      } else if (
-        data.message.Tuesday[0].to.charAt(0) +
-          data.message.Tuesday[0].to.charAt(1) ===
-        "08"
-      ) {
+      } else if (data.message.Tuesday[0].to.charAt(0) + data.message.Tuesday[0].to.charAt(1) === "08") {
         const data1 = data.message.Tuesday[0].to.substring(2, 5);
         T_to = "08" + data1 + " " + "AM";
-      } else if (
-        data.message.Tuesday[0].to.charAt(0) +
-          data.message.Tuesday[0].to.charAt(1) ===
-        "09"
-      ) {
+      } else if (data.message.Tuesday[0].to.charAt(0) + data.message.Tuesday[0].to.charAt(1) === "09") {
         const data1 = data.message.Tuesday[0].to.substring(2, 5);
         T_to = "09" + data1 + " " + "AM";
-      } else if (
-        data.message.Tuesday[0].to.charAt(0) +
-          data.message.Tuesday[0].to.charAt(1) ===
-        "10"
-      ) {
+      } else if (data.message.Tuesday[0].to.charAt(0) + data.message.Tuesday[0].to.charAt(1) === "10") {
         const data1 = data.message.Tuesday[0].to.substring(2, 5);
         T_to = "10" + data1 + " " + "AM";
-      } else if (
-        data.message.Tuesday[0].to.charAt(0) +
-          data.message.Tuesday[0].to.charAt(1) ===
-        "11"
-      ) {
+      } else if (data.message.Tuesday[0].to.charAt(0) + data.message.Tuesday[0].to.charAt(1) === "11") {
         const data1 = data.message.Tuesday[0].to.substring(2, 5);
         T_to = "11" + data1 + " " + "AM";
-      } else if (
-        data.message.Tuesday[0].to.charAt(0) +
-          data.message.Tuesday[0].to.charAt(1) ===
-        "12"
-      ) {
+      } else if (data.message.Tuesday[0].to.charAt(0) + data.message.Tuesday[0].to.charAt(1) === "12") {
         const data1 = data.message.Tuesday[0].to.substring(2, 5);
         T_to = "12" + data1 + " " + "PM";
       }
 
       // from time of wednesday
-      if (
-        data.message.Wednesday[0].from.charAt(0) +
-          data.message.Wednesday[0].from.charAt(1) ===
-        "13"
-      ) {
+      if (data.message.Wednesday[0].from.charAt(0) + data.message.Wednesday[0].from.charAt(1) === "13") {
         const data1 = data.message.Wednesday[0].from.substring(2, 5);
         W_from = "01" + data1 + " " + "PM";
-      } else if (
-        data.message.Wednesday[0].from.charAt(0) +
-          data.message.Wednesday[0].from.charAt(1) ===
-        "14"
-      ) {
+      } else if (data.message.Wednesday[0].from.charAt(0) + data.message.Wednesday[0].from.charAt(1) === "14") {
         const data1 = data.message.Wednesday[0].from.substring(2, 5);
         W_from = "02" + data1 + " " + "PM";
-      } else if (
-        data.message.Wednesday[0].from.charAt(0) +
-          data.message.Wednesday[0].from.charAt(1) ===
-        "15"
-      ) {
+      } else if (data.message.Wednesday[0].from.charAt(0) + data.message.Wednesday[0].from.charAt(1) === "15") {
         const data1 = data.message.Wednesday[0].from.substring(2, 5);
         W_from = "03" + data1 + " " + "PM";
-      } else if (
-        data.message.Wednesday[0].from.charAt(0) +
-          data.message.Wednesday[0].from.charAt(1) ===
-        "16"
-      ) {
+      } else if (data.message.Wednesday[0].from.charAt(0) + data.message.Wednesday[0].from.charAt(1) === "16") {
         const data1 = data.message.Wednesday[0].from.substring(2, 5);
         W_from = "04" + data1 + " " + "PM";
-      } else if (
-        data.message.Wednesday[0].from.charAt(0) +
-          data.message.Wednesday[0].from.charAt(1) ===
-        "17"
-      ) {
+      } else if (data.message.Wednesday[0].from.charAt(0) + data.message.Wednesday[0].from.charAt(1) === "17") {
         const data1 = data.message.Wednesday[0].from.substring(2, 5);
         W_from = "05" + data1 + " " + "PM";
-      } else if (
-        data.message.Wednesday[0].from.charAt(0) +
-          data.message.Wednesday[0].from.charAt(1) ===
-        "18"
-      ) {
+      } else if (data.message.Wednesday[0].from.charAt(0) + data.message.Wednesday[0].from.charAt(1) === "18") {
         const data1 = data.message.Wednesday[0].from.substring(2, 5);
         W_from = "06" + data1 + " " + "PM";
-      } else if (
-        data.message.Wednesday[0].from.charAt(0) +
-          data.message.Wednesday[0].from.charAt(1) ===
-        "19"
-      ) {
+      } else if (data.message.Wednesday[0].from.charAt(0) + data.message.Wednesday[0].from.charAt(1) === "19") {
         const data1 = data.message.Wednesday[0].from.substring(2, 5);
         W_from = "07" + data1 + " " + "PM";
-      } else if (
-        data.message.Wednesday[0].from.charAt(0) +
-          data.message.Wednesday[0].from.charAt(1) ===
-        "20"
-      ) {
+      } else if (data.message.Wednesday[0].from.charAt(0) + data.message.Wednesday[0].from.charAt(1) === "20") {
         const data1 = data.message.Wednesday[0].from.substring(2, 5);
         W_from = "08" + data1 + " " + "PM";
-      } else if (
-        data.message.Wednesday[0].from.charAt(0) +
-          data.message.Wednesday[0].from.charAt(1) ===
-        "21"
-      ) {
+      } else if (data.message.Wednesday[0].from.charAt(0) + data.message.Wednesday[0].from.charAt(1) === "21") {
         const data1 = data.message.Wednesday[0].from.substring(2, 5);
         W_from = "09" + data1 + " " + "PM";
-      } else if (
-        data.message.Wednesday[0].from.charAt(0) +
-          data.message.Wednesday[0].from.charAt(1) ===
-        "22"
-      ) {
+      } else if (data.message.Wednesday[0].from.charAt(0) + data.message.Wednesday[0].from.charAt(1) === "22") {
         const data1 = data.message.Wednesday[0].from.substring(2, 5);
         W_from = "10" + data1 + " " + "PM";
-      } else if (
-        data.message.Wednesday[0].from.charAt(0) +
-          data.message.Wednesday[0].from.charAt(1) ===
-        "23"
-      ) {
+      } else if (data.message.Wednesday[0].from.charAt(0) + data.message.Wednesday[0].from.charAt(1) === "23") {
         const data1 = data.message.Wednesday[0].from.substring(2, 5);
         W_from = "11" + data1 + " " + "PM";
-      } else if (
-        data.message.Wednesday[0].from.charAt(0) +
-          data.message.Wednesday[0].from.charAt(1) ===
-        "00"
-      ) {
+      } else if (data.message.Wednesday[0].from.charAt(0) + data.message.Wednesday[0].from.charAt(1) === "00") {
         const data1 = data.message.Wednesday[0].from.substring(2, 5);
         W_from = "12" + data1 + " " + "AM";
-      } else if (
-        data.message.Wednesday[0].from.charAt(0) +
-          data.message.Wednesday[0].from.charAt(1) ===
-        "01"
-      ) {
+      } else if (data.message.Wednesday[0].from.charAt(0) + data.message.Wednesday[0].from.charAt(1) === "01") {
         const data1 = data.message.Wednesday[0].from.substring(2, 5);
         W_from = "01" + data1 + " " + "AM";
-      } else if (
-        data.message.Wednesday[0].from.charAt(0) +
-          data.message.Wednesday[0].from.charAt(1) ===
-        "02"
-      ) {
+      } else if (data.message.Wednesday[0].from.charAt(0) + data.message.Wednesday[0].from.charAt(1) === "02") {
         const data1 = data.message.Wednesday[0].from.substring(2, 5);
         W_from = "02" + data1 + " " + "AM";
-      } else if (
-        data.message.Wednesday[0].from.charAt(0) +
-          data.message.Wednesday[0].from.charAt(1) ===
-        "03"
-      ) {
+      } else if (data.message.Wednesday[0].from.charAt(0) + data.message.Wednesday[0].from.charAt(1) === "03") {
         const data1 = data.message.Wednesday[0].from.substring(2, 5);
         W_from = "03" + data1 + " " + "AM";
-      } else if (
-        data.message.Wednesday[0].from.charAt(0) +
-          data.message.Wednesday[0].from.charAt(1) ===
-        "04"
-      ) {
+      } else if (data.message.Wednesday[0].from.charAt(0) + data.message.Wednesday[0].from.charAt(1) === "04") {
         const data1 = data.message.Wednesday[0].from.substring(2, 5);
         W_from = "04" + data1 + " " + "AM";
-      } else if (
-        data.message.Wednesday[0].from.charAt(0) +
-          data.message.Wednesday[0].from.charAt(1) ===
-        "05"
-      ) {
+      } else if (data.message.Wednesday[0].from.charAt(0) + data.message.Wednesday[0].from.charAt(1) === "05") {
         const data1 = data.message.Wednesday[0].from.substring(2, 5);
         W_from = "05" + data1 + " " + "AM";
-      } else if (
-        data.message.Wednesday[0].from.charAt(0) +
-          data.message.Wednesday[0].from.charAt(1) ===
-        "06"
-      ) {
+      } else if (data.message.Wednesday[0].from.charAt(0) + data.message.Wednesday[0].from.charAt(1) === "06") {
         const data1 = data.message.Wednesday[0].from.substring(2, 5);
         W_from = "06" + data1 + " " + "AM";
-      } else if (
-        data.message.Wednesday[0].from.charAt(0) +
-          data.message.Wednesday[0].from.charAt(1) ===
-        "07"
-      ) {
+      } else if (data.message.Wednesday[0].from.charAt(0) + data.message.Wednesday[0].from.charAt(1) === "07") {
         const data1 = data.message.Wednesday[0].from.substring(2, 5);
         W_from = "07" + data1 + " " + "AM";
-      } else if (
-        data.message.Wednesday[0].from.charAt(0) +
-          data.message.Wednesday[0].from.charAt(1) ===
-        "08"
-      ) {
+      } else if (data.message.Wednesday[0].from.charAt(0) + data.message.Wednesday[0].from.charAt(1) === "08") {
         const data1 = data.message.Wednesday[0].from.substring(2, 5);
         W_from = "08" + data1 + " " + "AM";
-      } else if (
-        data.message.Wednesday[0].from.charAt(0) +
-          data.message.Wednesday[0].from.charAt(1) ===
-        "09"
-      ) {
+      } else if (data.message.Wednesday[0].from.charAt(0) + data.message.Wednesday[0].from.charAt(1) === "09") {
         const data1 = data.message.Wednesday[0].from.substring(2, 5);
         W_from = "09" + data1 + " " + "AM";
-      } else if (
-        data.message.Wednesday[0].from.charAt(0) +
-          data.message.Wednesday[0].from.charAt(1) ===
-        "10"
-      ) {
+      } else if (data.message.Wednesday[0].from.charAt(0) + data.message.Wednesday[0].from.charAt(1) === "10") {
         const data1 = data.message.Wednesday[0].from.substring(2, 5);
         W_from = "10" + data1 + " " + "AM";
-      } else if (
-        data.message.Wednesday[0].from.charAt(0) +
-          data.message.Wednesday[0].from.charAt(1) ===
-        "11"
-      ) {
+      } else if (data.message.Wednesday[0].from.charAt(0) + data.message.Wednesday[0].from.charAt(1) === "11") {
         const data1 = data.message.Wednesday[0].from.substring(2, 5);
         W_from = "11" + data1 + " " + "AM";
-      } else if (
-        data.message.Wednesday[0].from.charAt(0) +
-          data.message.Wednesday[0].from.charAt(1) ===
-        "12"
-      ) {
+      } else if (data.message.Wednesday[0].from.charAt(0) + data.message.Wednesday[0].from.charAt(1) === "12") {
         const data1 = data.message.Wednesday[0].from.substring(2, 5);
         W_from = "12" + data1 + " " + "PM";
       }
 
       // to time to Wednesday
-      if (
-        data.message.Wednesday[0].to.charAt(0) +
-          data.message.Wednesday[0].to.charAt(1) ===
-        "13"
-      ) {
+      if (data.message.Wednesday[0].to.charAt(0) + data.message.Wednesday[0].to.charAt(1) === "13") {
         const data1 = data.message.Wednesday[0].to.substring(2, 5);
         W_to = "01" + data1 + " " + "PM";
-      } else if (
-        data.message.Wednesday[0].to.charAt(0) +
-          data.message.Wednesday[0].to.charAt(1) ===
-        "14"
-      ) {
+      } else if (data.message.Wednesday[0].to.charAt(0) + data.message.Wednesday[0].to.charAt(1) === "14") {
         const data1 = data.message.Wednesday[0].to.substring(2, 5);
         W_to = "02" + data1 + " " + "PM";
-      } else if (
-        data.message.Wednesday[0].to.charAt(0) +
-          data.message.Wednesday[0].to.charAt(1) ===
-        "15"
-      ) {
+      } else if (data.message.Wednesday[0].to.charAt(0) + data.message.Wednesday[0].to.charAt(1) === "15") {
         const data1 = data.message.Wednesday[0].to.substring(2, 5);
         W_to = "03" + data1 + " " + "PM";
-      } else if (
-        data.message.Wednesday[0].to.charAt(0) +
-          data.message.Wednesday[0].to.charAt(1) ===
-        "16"
-      ) {
+      } else if (data.message.Wednesday[0].to.charAt(0) + data.message.Wednesday[0].to.charAt(1) === "16") {
         const data1 = data.message.Wednesday[0].to.substring(2, 5);
         W_to = "04" + data1 + " " + "PM";
-      } else if (
-        data.message.Wednesday[0].to.charAt(0) +
-          data.message.Wednesday[0].to.charAt(1) ===
-        "17"
-      ) {
+      } else if (data.message.Wednesday[0].to.charAt(0) + data.message.Wednesday[0].to.charAt(1) === "17") {
         const data1 = data.message.Wednesday[0].to.substring(2, 5);
         W_to = "05" + data1 + " " + "PM";
-      } else if (
-        data.message.Wednesday[0].to.charAt(0) +
-          data.message.Wednesday[0].to.charAt(1) ===
-        "18"
-      ) {
+      } else if (data.message.Wednesday[0].to.charAt(0) + data.message.Wednesday[0].to.charAt(1) === "18") {
         const data1 = data.message.Wednesday[0].to.substring(2, 5);
         W_to = "06" + data1 + " " + "PM";
-      } else if (
-        data.message.Wednesday[0].to.charAt(0) +
-          data.message.Wednesday[0].to.charAt(1) ===
-        "19"
-      ) {
+      } else if (data.message.Wednesday[0].to.charAt(0) + data.message.Wednesday[0].to.charAt(1) === "19") {
         const data1 = data.message.Wednesday[0].to.substring(2, 5);
         W_to = "07" + data1 + " " + "PM";
-      } else if (
-        data.message.Wednesday[0].to.charAt(0) +
-          data.message.Wednesday[0].to.charAt(1) ===
-        "20"
-      ) {
+      } else if (data.message.Wednesday[0].to.charAt(0) + data.message.Wednesday[0].to.charAt(1) === "20") {
         const data1 = data.message.Wednesday[0].to.substring(2, 5);
         W_to = "08" + data1 + " " + "PM";
-      } else if (
-        data.message.Wednesday[0].to.charAt(0) +
-          data.message.Wednesday[0].to.charAt(1) ===
-        "21"
-      ) {
+      } else if (data.message.Wednesday[0].to.charAt(0) + data.message.Wednesday[0].to.charAt(1) === "21") {
         const data1 = data.message.Wednesday[0].to.substring(2, 5);
         W_to = "09" + data1 + " " + "PM";
-      } else if (
-        data.message.Wednesday[0].to.charAt(0) +
-          data.message.Wednesday[0].to.charAt(1) ===
-        "22"
-      ) {
+      } else if (data.message.Wednesday[0].to.charAt(0) + data.message.Wednesday[0].to.charAt(1) === "22") {
         const data1 = data.message.Wednesday[0].to.substring(2, 5);
         W_to = "10" + data1 + " " + "PM";
-      } else if (
-        data.message.Wednesday[0].to.charAt(0) +
-          data.message.Wednesday[0].to.charAt(1) ===
-        "23"
-      ) {
+      } else if (data.message.Wednesday[0].to.charAt(0) + data.message.Wednesday[0].to.charAt(1) === "23") {
         const data1 = data.message.Wednesday[0].to.substring(2, 5);
         W_to = "11" + data1 + " " + "PM";
-      } else if (
-        data.message.Wednesday[0].to.charAt(0) +
-          data.message.Wednesday[0].to.charAt(1) ===
-        "00"
-      ) {
+      } else if (data.message.Wednesday[0].to.charAt(0) + data.message.Wednesday[0].to.charAt(1) === "00") {
         const data1 = data.message.Wednesday[0].to.substring(2, 5);
         W_to = "12" + data1 + " " + "AM";
-      } else if (
-        data.message.Wednesday[0].to.charAt(0) +
-          data.message.Wednesday[0].to.charAt(1) ===
-        "01"
-      ) {
+      } else if (data.message.Wednesday[0].to.charAt(0) + data.message.Wednesday[0].to.charAt(1) === "01") {
         const data1 = data.message.Wednesday[0].to.substring(2, 5);
         W_to = "01" + data1 + " " + "AM";
-      } else if (
-        data.message.Wednesday[0].to.charAt(0) +
-          data.message.Wednesday[0].to.charAt(1) ===
-        "02"
-      ) {
+      } else if (data.message.Wednesday[0].to.charAt(0) + data.message.Wednesday[0].to.charAt(1) === "02") {
         const data1 = data.message.Wednesday[0].to.substring(2, 5);
         W_to = "02" + data1 + " " + "AM";
-      } else if (
-        data.message.Wednesday[0].to.charAt(0) +
-          data.message.Wednesday[0].to.charAt(1) ===
-        "03"
-      ) {
+      } else if (data.message.Wednesday[0].to.charAt(0) + data.message.Wednesday[0].to.charAt(1) === "03") {
         const data1 = data.message.Wednesday[0].to.substring(2, 5);
         W_to = "03" + data1 + " " + "AM";
-      } else if (
-        data.message.Wednesday[0].to.charAt(0) +
-          data.message.Wednesday[0].to.charAt(1) ===
-        "04"
-      ) {
+      } else if (data.message.Wednesday[0].to.charAt(0) + data.message.Wednesday[0].to.charAt(1) === "04") {
         const data1 = data.message.Wednesday[0].to.substring(2, 5);
         W_to = "04" + data1 + " " + "AM";
-      } else if (
-        data.message.Wednesday[0].to.charAt(0) +
-          data.message.Wednesday[0].to.charAt(1) ===
-        "05"
-      ) {
+      } else if (data.message.Wednesday[0].to.charAt(0) + data.message.Wednesday[0].to.charAt(1) === "05") {
         const data1 = data.message.Wednesday[0].to.substring(2, 5);
         W_to = "05" + data1 + " " + "AM";
-      } else if (
-        data.message.Wednesday[0].to.charAt(0) +
-          data.message.Wednesday[0].to.charAt(1) ===
-        "06"
-      ) {
+      } else if (data.message.Wednesday[0].to.charAt(0) + data.message.Wednesday[0].to.charAt(1) === "06") {
         const data1 = data.message.Wednesday[0].to.substring(2, 5);
         W_to = "06" + data1 + " " + "AM";
-      } else if (
-        data.message.Wednesday[0].to.charAt(0) +
-          data.message.Wednesday[0].to.charAt(1) ===
-        "07"
-      ) {
+      } else if (data.message.Wednesday[0].to.charAt(0) + data.message.Wednesday[0].to.charAt(1) === "07") {
         const data1 = data.message.Wednesday[0].to.substring(2, 5);
         W_to = "07" + data1 + " " + "AM";
-      } else if (
-        data.message.Wednesday[0].to.charAt(0) +
-          data.message.Wednesday[0].to.charAt(1) ===
-        "08"
-      ) {
+      } else if (data.message.Wednesday[0].to.charAt(0) + data.message.Wednesday[0].to.charAt(1) === "08") {
         const data1 = data.message.Wednesday[0].to.substring(2, 5);
         W_to = "08" + data1 + " " + "AM";
-      } else if (
-        data.message.Wednesday[0].to.charAt(0) +
-          data.message.Wednesday[0].to.charAt(1) ===
-        "09"
-      ) {
+      } else if (data.message.Wednesday[0].to.charAt(0) + data.message.Wednesday[0].to.charAt(1) === "09") {
         const data1 = data.message.Wednesday[0].to.substring(2, 5);
         W_to = "09" + data1 + " " + "AM";
-      } else if (
-        data.message.Wednesday[0].to.charAt(0) +
-          data.message.Wednesday[0].to.charAt(1) ===
-        "10"
-      ) {
+      } else if (data.message.Wednesday[0].to.charAt(0) + data.message.Wednesday[0].to.charAt(1) === "10") {
         const data1 = data.message.Wednesday[0].to.substring(2, 5);
         W_to = "10" + data1 + " " + "AM";
-      } else if (
-        data.message.Wednesday[0].to.charAt(0) +
-          data.message.Wednesday[0].to.charAt(1) ===
-        "11"
-      ) {
+      } else if (data.message.Wednesday[0].to.charAt(0) + data.message.Wednesday[0].to.charAt(1) === "11") {
         const data1 = data.message.Wednesday[0].to.substring(2, 5);
         W_to = "11" + data1 + " " + "AM";
-      } else if (
-        data.message.Wednesday[0].to.charAt(0) +
-          data.message.Wednesday[0].to.charAt(1) ===
-        "12"
-      ) {
+      } else if (data.message.Wednesday[0].to.charAt(0) + data.message.Wednesday[0].to.charAt(1) === "12") {
         const data1 = data.message.Wednesday[0].to.substring(2, 5);
         W_to = "12" + data1 + " " + "PM";
       }
 
       // from time to Thursday
-      if (
-        data.message.Thursday[0].from.charAt(0) +
-          data.message.Thursday[0].from.charAt(1) ===
-        "13"
-      ) {
+      if (data.message.Thursday[0].from.charAt(0) + data.message.Thursday[0].from.charAt(1) === "13") {
         const data1 = data.message.Thursday[0].from.substring(2, 5);
         Th_from = "01" + data1 + " " + "PM";
-      } else if (
-        data.message.Thursday[0].from.charAt(0) +
-          data.message.Thursday[0].from.charAt(1) ===
-        "14"
-      ) {
+      } else if (data.message.Thursday[0].from.charAt(0) + data.message.Thursday[0].from.charAt(1) === "14") {
         const data1 = data.message.Thursday[0].from.substring(2, 5);
         Th_from = "02" + data1 + " " + "PM";
-      } else if (
-        data.message.Thursday[0].from.charAt(0) +
-          data.message.Thursday[0].from.charAt(1) ===
-        "15"
-      ) {
+      } else if (data.message.Thursday[0].from.charAt(0) + data.message.Thursday[0].from.charAt(1) === "15") {
         const data1 = data.message.Thursday[0].from.substring(2, 5);
         Th_from = "03" + data1 + " " + "PM";
-      } else if (
-        data.message.Thursday[0].from.charAt(0) +
-          data.message.Thursday[0].from.charAt(1) ===
-        "16"
-      ) {
+      } else if (data.message.Thursday[0].from.charAt(0) + data.message.Thursday[0].from.charAt(1) === "16") {
         const data1 = data.message.Thursday[0].from.substring(2, 5);
         Th_from = "04" + data1 + " " + "PM";
-      } else if (
-        data.message.Thursday[0].from.charAt(0) +
-          data.message.Thursday[0].from.charAt(1) ===
-        "17"
-      ) {
+      } else if (data.message.Thursday[0].from.charAt(0) + data.message.Thursday[0].from.charAt(1) === "17") {
         const data1 = data.message.Thursday[0].from.substring(2, 5);
         Th_from = "05" + data1 + " " + "PM";
-      } else if (
-        data.message.Thursday[0].from.charAt(0) +
-          data.message.Thursday[0].from.charAt(1) ===
-        "18"
-      ) {
+      } else if (data.message.Thursday[0].from.charAt(0) + data.message.Thursday[0].from.charAt(1) === "18") {
         const data1 = data.message.Thursday[0].from.substring(2, 5);
         Th_from = "06" + data1 + " " + "PM";
-      } else if (
-        data.message.Thursday[0].from.charAt(0) +
-          data.message.Thursday[0].from.charAt(1) ===
-        "19"
-      ) {
+      } else if (data.message.Thursday[0].from.charAt(0) + data.message.Thursday[0].from.charAt(1) === "19") {
         const data1 = data.message.Thursday[0].from.substring(2, 5);
         Th_from = "07" + data1 + " " + "PM";
-      } else if (
-        data.message.Thursday[0].from.charAt(0) +
-          data.message.Thursday[0].from.charAt(1) ===
-        "20"
-      ) {
+      } else if (data.message.Thursday[0].from.charAt(0) + data.message.Thursday[0].from.charAt(1) === "20") {
         const data1 = data.message.Thursday[0].from.substring(2, 5);
         Th_from = "08" + data1 + " " + "PM";
-      } else if (
-        data.message.Thursday[0].from.charAt(0) +
-          data.message.Thursday[0].from.charAt(1) ===
-        "21"
-      ) {
+      } else if (data.message.Thursday[0].from.charAt(0) + data.message.Thursday[0].from.charAt(1) === "21") {
         const data1 = data.message.Thursday[0].from.substring(2, 5);
         Th_from = "09" + data1 + " " + "PM";
-      } else if (
-        data.message.Thursday[0].from.charAt(0) +
-          data.message.Thursday[0].from.charAt(1) ===
-        "22"
-      ) {
+      } else if (data.message.Thursday[0].from.charAt(0) + data.message.Thursday[0].from.charAt(1) === "22") {
         const data1 = data.message.Thursday[0].from.substring(2, 5);
         Th_from = "10" + data1 + " " + "PM";
-      } else if (
-        data.message.Thursday[0].from.charAt(0) +
-          data.message.Thursday[0].from.charAt(1) ===
-        "23"
-      ) {
+      } else if (data.message.Thursday[0].from.charAt(0) + data.message.Thursday[0].from.charAt(1) === "23") {
         const data1 = data.message.Thursday[0].from.substring(2, 5);
         Th_from = "11" + data1 + " " + "PM";
-      } else if (
-        data.message.Thursday[0].from.charAt(0) +
-          data.message.Thursday[0].from.charAt(1) ===
-        "00"
-      ) {
+      } else if (data.message.Thursday[0].from.charAt(0) + data.message.Thursday[0].from.charAt(1) === "00") {
         const data1 = data.message.Thursday[0].from.substring(2, 5);
         Th_from = "12" + data1 + " " + "AM";
-      } else if (
-        data.message.Thursday[0].from.charAt(0) +
-          data.message.Thursday[0].from.charAt(1) ===
-        "01"
-      ) {
+      } else if (data.message.Thursday[0].from.charAt(0) + data.message.Thursday[0].from.charAt(1) === "01") {
         const data1 = data.message.Thursday[0].from.substring(2, 5);
         Th_from = "01" + data1 + " " + "AM";
-      } else if (
-        data.message.Thursday[0].from.charAt(0) +
-          data.message.Thursday[0].from.charAt(1) ===
-        "02"
-      ) {
+      } else if (data.message.Thursday[0].from.charAt(0) + data.message.Thursday[0].from.charAt(1) === "02") {
         const data1 = data.message.Thursday[0].from.substring(2, 5);
         Th_from = "02" + data1 + " " + "AM";
-      } else if (
-        data.message.Thursday[0].from.charAt(0) +
-          data.message.Thursday[0].from.charAt(1) ===
-        "03"
-      ) {
+      } else if (data.message.Thursday[0].from.charAt(0) + data.message.Thursday[0].from.charAt(1) === "03") {
         const data1 = data.message.Thursday[0].from.substring(2, 5);
         Th_from = "03" + data1 + " " + "AM";
-      } else if (
-        data.message.Thursday[0].from.charAt(0) +
-          data.message.Thursday[0].from.charAt(1) ===
-        "04"
-      ) {
+      } else if (data.message.Thursday[0].from.charAt(0) + data.message.Thursday[0].from.charAt(1) === "04") {
         const data1 = data.message.Thursday[0].from.substring(2, 5);
         Th_from = "04" + data1 + " " + "AM";
-      } else if (
-        data.message.Thursday[0].from.charAt(0) +
-          data.message.Thursday[0].from.charAt(1) ===
-        "05"
-      ) {
+      } else if (data.message.Thursday[0].from.charAt(0) + data.message.Thursday[0].from.charAt(1) === "05") {
         const data1 = data.message.Thursday[0].from.substring(2, 5);
         Th_from = "05" + data1 + " " + "AM";
-      } else if (
-        data.message.Thursday[0].from.charAt(0) +
-          data.message.Thursday[0].from.charAt(1) ===
-        "06"
-      ) {
+      } else if (data.message.Thursday[0].from.charAt(0) + data.message.Thursday[0].from.charAt(1) === "06") {
         const data1 = data.message.Thursday[0].from.substring(2, 5);
         Th_from = "06" + data1 + " " + "AM";
-      } else if (
-        data.message.Thursday[0].from.charAt(0) +
-          data.message.Thursday[0].from.charAt(1) ===
-        "07"
-      ) {
+      } else if (data.message.Thursday[0].from.charAt(0) + data.message.Thursday[0].from.charAt(1) === "07") {
         const data1 = data.message.Thursday[0].from.substring(2, 5);
         Th_from = "07" + data1 + " " + "AM";
-      } else if (
-        data.message.Thursday[0].from.charAt(0) +
-          data.message.Thursday[0].from.charAt(1) ===
-        "08"
-      ) {
+      } else if (data.message.Thursday[0].from.charAt(0) + data.message.Thursday[0].from.charAt(1) === "08") {
         const data1 = data.message.Thursday[0].from.substring(2, 5);
         Th_from = "08" + data1 + " " + "AM";
-      } else if (
-        data.message.Thursday[0].from.charAt(0) +
-          data.message.Thursday[0].from.charAt(1) ===
-        "09"
-      ) {
+      } else if (data.message.Thursday[0].from.charAt(0) + data.message.Thursday[0].from.charAt(1) === "09") {
         const data1 = data.message.Thursday[0].from.substring(2, 5);
         Th_from = "09" + data1 + " " + "AM";
-      } else if (
-        data.message.Thursday[0].from.charAt(0) +
-          data.message.Thursday[0].from.charAt(1) ===
-        "10"
-      ) {
+      } else if (data.message.Thursday[0].from.charAt(0) + data.message.Thursday[0].from.charAt(1) === "10") {
         const data1 = data.message.Thursday[0].from.substring(2, 5);
         Th_from = "10" + data1 + " " + "AM";
-      } else if (
-        data.message.Thursday[0].from.charAt(0) +
-          data.message.Thursday[0].from.charAt(1) ===
-        "11"
-      ) {
+      } else if (data.message.Thursday[0].from.charAt(0) + data.message.Thursday[0].from.charAt(1) === "11") {
         const data1 = data.message.Thursday[0].from.substring(2, 5);
         Th_from = "11" + data1 + " " + "AM";
-      } else if (
-        data.message.Thursday[0].from.charAt(0) +
-          data.message.Thursday[0].from.charAt(1) ===
-        "12"
-      ) {
+      } else if (data.message.Thursday[0].from.charAt(0) + data.message.Thursday[0].from.charAt(1) === "12") {
         const data1 = data.message.Thursday[0].from.substring(2, 5);
         Th_from = "12" + data1 + " " + "PM";
       }
 
       // to time to thursday
-      if (
-        data.message.Thursday[0].to.charAt(0) +
-          data.message.Thursday[0].to.charAt(1) ===
-        "13"
-      ) {
+      if (data.message.Thursday[0].to.charAt(0) + data.message.Thursday[0].to.charAt(1) === "13") {
         const data1 = data.message.Thursday[0].to.substring(2, 5);
         Th_to = "01" + data1 + " " + "PM";
-      } else if (
-        data.message.Thursday[0].to.charAt(0) +
-          data.message.Thursday[0].to.charAt(1) ===
-        "14"
-      ) {
+      } else if (data.message.Thursday[0].to.charAt(0) + data.message.Thursday[0].to.charAt(1) === "14") {
         const data1 = data.message.Thursday[0].to.substring(2, 5);
         Th_to = "02" + data1 + " " + "PM";
-      } else if (
-        data.message.Thursday[0].to.charAt(0) +
-          data.message.Thursday[0].to.charAt(1) ===
-        "15"
-      ) {
+      } else if (data.message.Thursday[0].to.charAt(0) + data.message.Thursday[0].to.charAt(1) === "15") {
         const data1 = data.message.Thursday[0].to.substring(2, 5);
         Th_to = "03" + data1 + " " + "PM";
-      } else if (
-        data.message.Thursday[0].to.charAt(0) +
-          data.message.Thursday[0].to.charAt(1) ===
-        "16"
-      ) {
+      } else if (data.message.Thursday[0].to.charAt(0) + data.message.Thursday[0].to.charAt(1) === "16") {
         const data1 = data.message.Thursday[0].to.substring(2, 5);
         Th_to = "04" + data1 + " " + "PM";
-      } else if (
-        data.message.Thursday[0].to.charAt(0) +
-          data.message.Thursday[0].to.charAt(1) ===
-        "17"
-      ) {
+      } else if (data.message.Thursday[0].to.charAt(0) + data.message.Thursday[0].to.charAt(1) === "17") {
         const data1 = data.message.Thursday[0].to.substring(2, 5);
         Th_to = "05" + data1 + " " + "PM";
-      } else if (
-        data.message.Thursday[0].to.charAt(0) +
-          data.message.Thursday[0].to.charAt(1) ===
-        "18"
-      ) {
+      } else if (data.message.Thursday[0].to.charAt(0) + data.message.Thursday[0].to.charAt(1) === "18") {
         const data1 = data.message.Thursday[0].to.substring(2, 5);
         Th_to = "06" + data1 + " " + "PM";
-      } else if (
-        data.message.Thursday[0].to.charAt(0) +
-          data.message.Thursday[0].to.charAt(1) ===
-        "19"
-      ) {
+      } else if (data.message.Thursday[0].to.charAt(0) + data.message.Thursday[0].to.charAt(1) === "19") {
         const data1 = data.message.Thursday[0].to.substring(2, 5);
         Th_to = "07" + data1 + " " + "PM";
-      } else if (
-        data.message.Thursday[0].to.charAt(0) +
-          data.message.Thursday[0].to.charAt(1) ===
-        "20"
-      ) {
+      } else if (data.message.Thursday[0].to.charAt(0) + data.message.Thursday[0].to.charAt(1) === "20") {
         const data1 = data.message.Thursday[0].to.substring(2, 5);
         Th_to = "08" + data1 + " " + "PM";
-      } else if (
-        data.message.Thursday[0].to.charAt(0) +
-          data.message.Thursday[0].to.charAt(1) ===
-        "21"
-      ) {
+      } else if (data.message.Thursday[0].to.charAt(0) + data.message.Thursday[0].to.charAt(1) === "21") {
         const data1 = data.message.Thursday[0].to.substring(2, 5);
         Th_to = "09" + data1 + " " + "PM";
-      } else if (
-        data.message.Thursday[0].to.charAt(0) +
-          data.message.Thursday[0].to.charAt(1) ===
-        "22"
-      ) {
+      } else if (data.message.Thursday[0].to.charAt(0) + data.message.Thursday[0].to.charAt(1) === "22") {
         const data1 = data.message.Thursday[0].to.substring(2, 5);
         Th_to = "10" + data1 + " " + "PM";
-      } else if (
-        data.message.Thursday[0].to.charAt(0) +
-          data.message.Thursday[0].to.charAt(1) ===
-        "23"
-      ) {
+      } else if (data.message.Thursday[0].to.charAt(0) + data.message.Thursday[0].to.charAt(1) === "23") {
         const data1 = data.message.Thursday[0].to.substring(2, 5);
         Th_to = "11" + data1 + " " + "PM";
-      } else if (
-        data.message.Thursday[0].to.charAt(0) +
-          data.message.Thursday[0].to.charAt(1) ===
-        "00"
-      ) {
+      } else if (data.message.Thursday[0].to.charAt(0) + data.message.Thursday[0].to.charAt(1) === "00") {
         const data1 = data.message.Thursday[0].to.substring(2, 5);
         Th_to = "12" + data1 + " " + "AM";
-      } else if (
-        data.message.Thursday[0].to.charAt(0) +
-          data.message.Thursday[0].to.charAt(1) ===
-        "01"
-      ) {
+      } else if (data.message.Thursday[0].to.charAt(0) + data.message.Thursday[0].to.charAt(1) === "01") {
         const data1 = data.message.Thursday[0].to.substring(2, 5);
         Th_to = "01" + data1 + " " + "AM";
-      } else if (
-        data.message.Thursday[0].to.charAt(0) +
-          data.message.Thursday[0].to.charAt(1) ===
-        "02"
-      ) {
+      } else if (data.message.Thursday[0].to.charAt(0) + data.message.Thursday[0].to.charAt(1) === "02") {
         const data1 = data.message.Thursday[0].to.substring(2, 5);
         Th_to = "02" + data1 + " " + "AM";
-      } else if (
-        data.message.Thursday[0].to.charAt(0) +
-          data.message.Thursday[0].to.charAt(1) ===
-        "03"
-      ) {
+      } else if (data.message.Thursday[0].to.charAt(0) + data.message.Thursday[0].to.charAt(1) === "03") {
         const data1 = data.message.Thursday[0].to.substring(2, 5);
         Th_to = "03" + data1 + " " + "AM";
-      } else if (
-        data.message.Thursday[0].to.charAt(0) +
-          data.message.Thursday[0].to.charAt(1) ===
-        "04"
-      ) {
+      } else if (data.message.Thursday[0].to.charAt(0) + data.message.Thursday[0].to.charAt(1) === "04") {
         const data1 = data.message.Thursday[0].to.substring(2, 5);
         Th_to = "04" + data1 + " " + "AM";
-      } else if (
-        data.message.Thursday[0].to.charAt(0) +
-          data.message.Thursday[0].to.charAt(1) ===
-        "05"
-      ) {
+      } else if (data.message.Thursday[0].to.charAt(0) + data.message.Thursday[0].to.charAt(1) === "05") {
         const data1 = data.message.Thursday[0].to.substring(2, 5);
         Th_to = "05" + data1 + " " + "AM";
-      } else if (
-        data.message.Thursday[0].to.charAt(0) +
-          data.message.Thursday[0].to.charAt(1) ===
-        "06"
-      ) {
+      } else if (data.message.Thursday[0].to.charAt(0) + data.message.Thursday[0].to.charAt(1) === "06") {
         const data1 = data.message.Thursday[0].to.substring(2, 5);
         Th_to = "06" + data1 + " " + "AM";
-      } else if (
-        data.message.Thursday[0].to.charAt(0) +
-          data.message.Thursday[0].to.charAt(1) ===
-        "07"
-      ) {
+      } else if (data.message.Thursday[0].to.charAt(0) + data.message.Thursday[0].to.charAt(1) === "07") {
         const data1 = data.message.Thursday[0].to.substring(2, 5);
         Th_to = "07" + data1 + " " + "AM";
-      } else if (
-        data.message.Thursday[0].to.charAt(0) +
-          data.message.Thursday[0].to.charAt(1) ===
-        "08"
-      ) {
+      } else if (data.message.Thursday[0].to.charAt(0) + data.message.Thursday[0].to.charAt(1) === "08") {
         const data1 = data.message.Thursday[0].to.substring(2, 5);
         Th_to = "08" + data1 + " " + "AM";
-      } else if (
-        data.message.Thursday[0].to.charAt(0) +
-          data.message.Thursday[0].to.charAt(1) ===
-        "09"
-      ) {
+      } else if (data.message.Thursday[0].to.charAt(0) + data.message.Thursday[0].to.charAt(1) === "09") {
         const data1 = data.message.Thursday[0].to.substring(2, 5);
         Th_to = "09" + data1 + " " + "AM";
-      } else if (
-        data.message.Thursday[0].to.charAt(0) +
-          data.message.Thursday[0].to.charAt(1) ===
-        "10"
-      ) {
+      } else if (data.message.Thursday[0].to.charAt(0) + data.message.Thursday[0].to.charAt(1) === "10") {
         const data1 = data.message.Thursday[0].to.substring(2, 5);
         Th_to = "10" + data1 + " " + "AM";
-      } else if (
-        data.message.Thursday[0].to.charAt(0) +
-          data.message.Thursday[0].to.charAt(1) ===
-        "11"
-      ) {
+      } else if (data.message.Thursday[0].to.charAt(0) + data.message.Thursday[0].to.charAt(1) === "11") {
         const data1 = data.message.Thursday[0].to.substring(2, 5);
         Th_to = "11" + data1 + " " + "AM";
-      } else if (
-        data.message.Thursday[0].to.charAt(0) +
-          data.message.Thursday[0].to.charAt(1) ===
-        "12"
-      ) {
+      } else if (data.message.Thursday[0].to.charAt(0) + data.message.Thursday[0].to.charAt(1) === "12") {
         const data1 = data.message.Thursday[0].to.substring(2, 5);
         Th_to = "12" + data1 + " " + "PM";
       }
 
       // from time of friday
-      if (
-        data.message.Friday[0].from.charAt(0) +
-          data.message.Friday[0].from.charAt(1) ===
-        "13"
-      ) {
+      if (data.message.Friday[0].from.charAt(0) + data.message.Friday[0].from.charAt(1) === "13") {
         const data1 = data.message.Friday[0].from.substring(2, 5);
         F_from = "01" + data1 + " " + "PM";
-      } else if (
-        data.message.Friday[0].from.charAt(0) +
-          data.message.Friday[0].from.charAt(1) ===
-        "14"
-      ) {
+      } else if (data.message.Friday[0].from.charAt(0) + data.message.Friday[0].from.charAt(1) === "14") {
         const data1 = data.message.Friday[0].from.substring(2, 5);
         F_from = "02" + data1 + " " + "PM";
-      } else if (
-        data.message.Friday[0].from.charAt(0) +
-          data.message.Friday[0].from.charAt(1) ===
-        "15"
-      ) {
+      } else if (data.message.Friday[0].from.charAt(0) + data.message.Friday[0].from.charAt(1) === "15") {
         const data1 = data.message.Friday[0].from.substring(2, 5);
         F_from = "03" + data1 + " " + "PM";
-      } else if (
-        data.message.Friday[0].from.charAt(0) +
-          data.message.Friday[0].from.charAt(1) ===
-        "16"
-      ) {
+      } else if (data.message.Friday[0].from.charAt(0) + data.message.Friday[0].from.charAt(1) === "16") {
         const data1 = data.message.Friday[0].from.substring(2, 5);
         F_from = "04" + data1 + " " + "PM";
-      } else if (
-        data.message.Friday[0].from.charAt(0) +
-          data.message.Friday[0].from.charAt(1) ===
-        "17"
-      ) {
+      } else if (data.message.Friday[0].from.charAt(0) + data.message.Friday[0].from.charAt(1) === "17") {
         const data1 = data.message.Friday[0].from.substring(2, 5);
         F_from = "05" + data1 + " " + "PM";
-      } else if (
-        data.message.Friday[0].from.charAt(0) +
-          data.message.Friday[0].from.charAt(1) ===
-        "18"
-      ) {
+      } else if (data.message.Friday[0].from.charAt(0) + data.message.Friday[0].from.charAt(1) === "18") {
         const data1 = data.message.Friday[0].from.substring(2, 5);
         F_from = "06" + data1 + " " + "PM";
-      } else if (
-        data.message.Friday[0].from.charAt(0) +
-          data.message.Friday[0].from.charAt(1) ===
-        "19"
-      ) {
+      } else if (data.message.Friday[0].from.charAt(0) + data.message.Friday[0].from.charAt(1) === "19") {
         const data1 = data.message.Friday[0].from.substring(2, 5);
         F_from = "07" + data1 + " " + "PM";
-      } else if (
-        data.message.Friday[0].from.charAt(0) +
-          data.message.Friday[0].from.charAt(1) ===
-        "20"
-      ) {
+      } else if (data.message.Friday[0].from.charAt(0) + data.message.Friday[0].from.charAt(1) === "20") {
         const data1 = data.message.Friday[0].from.substring(2, 5);
         F_from = "08" + data1 + " " + "PM";
-      } else if (
-        data.message.Friday[0].from.charAt(0) +
-          data.message.Friday[0].from.charAt(1) ===
-        "21"
-      ) {
+      } else if (data.message.Friday[0].from.charAt(0) + data.message.Friday[0].from.charAt(1) === "21") {
         const data1 = data.message.Friday[0].from.substring(2, 5);
         F_from = "09" + data1 + " " + "PM";
-      } else if (
-        data.message.Friday[0].from.charAt(0) +
-          data.message.Friday[0].from.charAt(1) ===
-        "22"
-      ) {
+      } else if (data.message.Friday[0].from.charAt(0) + data.message.Friday[0].from.charAt(1) === "22") {
         const data1 = data.message.Friday[0].from.substring(2, 5);
         F_from = "10" + data1 + " " + "PM";
-      } else if (
-        data.message.Friday[0].from.charAt(0) +
-          data.message.Friday[0].from.charAt(1) ===
-        "23"
-      ) {
+      } else if (data.message.Friday[0].from.charAt(0) + data.message.Friday[0].from.charAt(1) === "23") {
         const data1 = data.message.Friday[0].from.substring(2, 5);
         F_from = "11" + data1 + " " + "PM";
-      } else if (
-        data.message.Friday[0].from.charAt(0) +
-          data.message.Friday[0].from.charAt(1) ===
-        "00"
-      ) {
+      } else if (data.message.Friday[0].from.charAt(0) + data.message.Friday[0].from.charAt(1) === "00") {
         const data1 = data.message.Friday[0].from.substring(2, 5);
         F_from = "12" + data1 + " " + "AM";
-      } else if (
-        data.message.Friday[0].from.charAt(0) +
-          data.message.Friday[0].from.charAt(1) ===
-        "01"
-      ) {
+      } else if (data.message.Friday[0].from.charAt(0) + data.message.Friday[0].from.charAt(1) === "01") {
         const data1 = data.message.Friday[0].from.substring(2, 5);
         F_from = "01" + data1 + " " + "AM";
-      } else if (
-        data.message.Friday[0].from.charAt(0) +
-          data.message.Friday[0].from.charAt(1) ===
-        "02"
-      ) {
+      } else if (data.message.Friday[0].from.charAt(0) + data.message.Friday[0].from.charAt(1) === "02") {
         const data1 = data.message.Friday[0].from.substring(2, 5);
         F_from = "02" + data1 + " " + "AM";
-      } else if (
-        data.message.Friday[0].from.charAt(0) +
-          data.message.Friday[0].from.charAt(1) ===
-        "03"
-      ) {
+      } else if (data.message.Friday[0].from.charAt(0) + data.message.Friday[0].from.charAt(1) === "03") {
         const data1 = data.message.Friday[0].from.substring(2, 5);
         F_from = "03" + data1 + " " + "AM";
-      } else if (
-        data.message.Friday[0].from.charAt(0) +
-          data.message.Friday[0].from.charAt(1) ===
-        "04"
-      ) {
+      } else if (data.message.Friday[0].from.charAt(0) + data.message.Friday[0].from.charAt(1) === "04") {
         const data1 = data.message.Friday[0].from.substring(2, 5);
         F_from = "04" + data1 + " " + "AM";
-      } else if (
-        data.message.Friday[0].from.charAt(0) +
-          data.message.Friday[0].from.charAt(1) ===
-        "05"
-      ) {
+      } else if (data.message.Friday[0].from.charAt(0) + data.message.Friday[0].from.charAt(1) === "05") {
         const data1 = data.message.Friday[0].from.substring(2, 5);
         F_from = "05" + data1 + " " + "AM";
-      } else if (
-        data.message.Friday[0].from.charAt(0) +
-          data.message.Friday[0].from.charAt(1) ===
-        "06"
-      ) {
+      } else if (data.message.Friday[0].from.charAt(0) + data.message.Friday[0].from.charAt(1) === "06") {
         const data1 = data.message.Friday[0].from.substring(2, 5);
         F_from = "06" + data1 + " " + "AM";
-      } else if (
-        data.message.Friday[0].from.charAt(0) +
-          data.message.Friday[0].from.charAt(1) ===
-        "07"
-      ) {
+      } else if (data.message.Friday[0].from.charAt(0) + data.message.Friday[0].from.charAt(1) === "07") {
         const data1 = data.message.Friday[0].from.substring(2, 5);
         F_from = "07" + data1 + " " + "AM";
-      } else if (
-        data.message.Friday[0].from.charAt(0) +
-          data.message.Friday[0].from.charAt(1) ===
-        "08"
-      ) {
+      } else if (data.message.Friday[0].from.charAt(0) + data.message.Friday[0].from.charAt(1) === "08") {
         const data1 = data.message.Friday[0].from.substring(2, 5);
         F_from = "08" + data1 + " " + "AM";
-      } else if (
-        data.message.Friday[0].from.charAt(0) +
-          data.message.Friday[0].from.charAt(1) ===
-        "09"
-      ) {
+      } else if (data.message.Friday[0].from.charAt(0) + data.message.Friday[0].from.charAt(1) === "09") {
         const data1 = data.message.Friday[0].from.substring(2, 5);
         F_from = "09" + data1 + " " + "AM";
-      } else if (
-        data.message.Friday[0].from.charAt(0) +
-          data.message.Friday[0].from.charAt(1) ===
-        "10"
-      ) {
+      } else if (data.message.Friday[0].from.charAt(0) + data.message.Friday[0].from.charAt(1) === "10") {
         const data1 = data.message.Friday[0].from.substring(2, 5);
         F_from = "10" + data1 + " " + "AM";
-      } else if (
-        data.message.Friday[0].from.charAt(0) +
-          data.message.Friday[0].from.charAt(1) ===
-        "11"
-      ) {
+      } else if (data.message.Friday[0].from.charAt(0) + data.message.Friday[0].from.charAt(1) === "11") {
         const data1 = data.message.Friday[0].from.substring(2, 5);
         F_from = "11" + data1 + " " + "AM";
-      } else if (
-        data.message.Friday[0].from.charAt(0) +
-          data.message.Friday[0].from.charAt(1) ===
-        "12"
-      ) {
+      } else if (data.message.Friday[0].from.charAt(0) + data.message.Friday[0].from.charAt(1) === "12") {
         const data1 = data.message.Friday[0].from.substring(2, 5);
         F_from = "12" + data1 + " " + "PM";
       }
 
       // to time of Friday
-      if (
-        data.message.Friday[0].to.charAt(0) +
-          data.message.Friday[0].to.charAt(1) ===
-        "13"
-      ) {
+      if (data.message.Friday[0].to.charAt(0) + data.message.Friday[0].to.charAt(1) === "13") {
         const data1 = data.message.Friday[0].to.substring(2, 5);
         F_to = "01" + data1 + " " + "PM";
-      } else if (
-        data.message.Friday[0].to.charAt(0) +
-          data.message.Friday[0].to.charAt(1) ===
-        "14"
-      ) {
+      } else if (data.message.Friday[0].to.charAt(0) + data.message.Friday[0].to.charAt(1) === "14") {
         const data1 = data.message.Friday[0].to.substring(2, 5);
         F_to = "02" + data1 + " " + "PM";
-      } else if (
-        data.message.Friday[0].to.charAt(0) +
-          data.message.Friday[0].to.charAt(1) ===
-        "15"
-      ) {
+      } else if (data.message.Friday[0].to.charAt(0) + data.message.Friday[0].to.charAt(1) === "15") {
         const data1 = data.message.Friday[0].to.substring(2, 5);
         F_to = "03" + data1 + " " + "PM";
-      } else if (
-        data.message.Friday[0].to.charAt(0) +
-          data.message.Friday[0].to.charAt(1) ===
-        "16"
-      ) {
+      } else if (data.message.Friday[0].to.charAt(0) + data.message.Friday[0].to.charAt(1) === "16") {
         const data1 = data.message.Friday[0].to.substring(2, 5);
         F_to = "04" + data1 + " " + "PM";
-      } else if (
-        data.message.Friday[0].to.charAt(0) +
-          data.message.Friday[0].to.charAt(1) ===
-        "17"
-      ) {
+      } else if (data.message.Friday[0].to.charAt(0) + data.message.Friday[0].to.charAt(1) === "17") {
         const data1 = data.message.Friday[0].to.substring(2, 5);
         F_to = "05" + data1 + " " + "PM";
-      } else if (
-        data.message.Friday[0].to.charAt(0) +
-          data.message.Friday[0].to.charAt(1) ===
-        "18"
-      ) {
+      } else if (data.message.Friday[0].to.charAt(0) + data.message.Friday[0].to.charAt(1) === "18") {
         const data1 = data.message.Friday[0].to.substring(2, 5);
         F_to = "06" + data1 + " " + "PM";
-      } else if (
-        data.message.Friday[0].to.charAt(0) +
-          data.message.Friday[0].to.charAt(1) ===
-        "19"
-      ) {
+      } else if (data.message.Friday[0].to.charAt(0) + data.message.Friday[0].to.charAt(1) === "19") {
         const data1 = data.message.Friday[0].to.substring(2, 5);
         F_to = "07" + data1 + " " + "PM";
-      } else if (
-        data.message.Friday[0].to.charAt(0) +
-          data.message.Friday[0].to.charAt(1) ===
-        "20"
-      ) {
+      } else if (data.message.Friday[0].to.charAt(0) + data.message.Friday[0].to.charAt(1) === "20") {
         const data1 = data.message.Friday[0].to.substring(2, 5);
         F_to = "08" + data1 + " " + "PM";
-      } else if (
-        data.message.Friday[0].to.charAt(0) +
-          data.message.Friday[0].to.charAt(1) ===
-        "21"
-      ) {
+      } else if (data.message.Friday[0].to.charAt(0) + data.message.Friday[0].to.charAt(1) === "21") {
         const data1 = data.message.Friday[0].to.substring(2, 5);
         F_to = "09" + data1 + " " + "PM";
-      } else if (
-        data.message.Friday[0].to.charAt(0) +
-          data.message.Friday[0].to.charAt(1) ===
-        "22"
-      ) {
+      } else if (data.message.Friday[0].to.charAt(0) + data.message.Friday[0].to.charAt(1) === "22") {
         const data1 = data.message.Friday[0].to.substring(2, 5);
         F_to = "10" + data1 + " " + "PM";
-      } else if (
-        data.message.Friday[0].to.charAt(0) +
-          data.message.Friday[0].to.charAt(1) ===
-        "23"
-      ) {
+      } else if (data.message.Friday[0].to.charAt(0) + data.message.Friday[0].to.charAt(1) === "23") {
         const data1 = data.message.Friday[0].to.substring(2, 5);
         F_to = "11" + data1 + " " + "PM";
-      } else if (
-        data.message.Friday[0].to.charAt(0) +
-          data.message.Friday[0].to.charAt(1) ===
-        "00"
-      ) {
+      } else if (data.message.Friday[0].to.charAt(0) + data.message.Friday[0].to.charAt(1) === "00") {
         const data1 = data.message.Friday[0].to.substring(2, 5);
         F_to = "12" + data1 + " " + "AM";
-      } else if (
-        data.message.Friday[0].to.charAt(0) +
-          data.message.Friday[0].to.charAt(1) ===
-        "01"
-      ) {
+      } else if (data.message.Friday[0].to.charAt(0) + data.message.Friday[0].to.charAt(1) === "01") {
         const data1 = data.message.Friday[0].to.substring(2, 5);
         F_to = "01" + data1 + " " + "AM";
-      } else if (
-        data.message.Friday[0].to.charAt(0) +
-          data.message.Friday[0].to.charAt(1) ===
-        "02"
-      ) {
+      } else if (data.message.Friday[0].to.charAt(0) + data.message.Friday[0].to.charAt(1) === "02") {
         const data1 = data.message.Friday[0].to.substring(2, 5);
         F_to = "02" + data1 + " " + "AM";
-      } else if (
-        data.message.Friday[0].to.charAt(0) +
-          data.message.Friday[0].to.charAt(1) ===
-        "03"
-      ) {
+      } else if (data.message.Friday[0].to.charAt(0) + data.message.Friday[0].to.charAt(1) === "03") {
         const data1 = data.message.Friday[0].to.substring(2, 5);
         F_to = "03" + data1 + " " + "AM";
-      } else if (
-        data.message.Friday[0].to.charAt(0) +
-          data.message.Friday[0].to.charAt(1) ===
-        "04"
-      ) {
+      } else if (data.message.Friday[0].to.charAt(0) + data.message.Friday[0].to.charAt(1) === "04") {
         const data1 = data.message.Friday[0].to.substring(2, 5);
         F_to = "04" + data1 + " " + "AM";
-      } else if (
-        data.message.Friday[0].to.charAt(0) +
-          data.message.Friday[0].to.charAt(1) ===
-        "05"
-      ) {
+      } else if (data.message.Friday[0].to.charAt(0) + data.message.Friday[0].to.charAt(1) === "05") {
         const data1 = data.message.Friday[0].to.substring(2, 5);
         F_to = "05" + data1 + " " + "AM";
-      } else if (
-        data.message.Friday[0].to.charAt(0) +
-          data.message.Friday[0].to.charAt(1) ===
-        "06"
-      ) {
+      } else if (data.message.Friday[0].to.charAt(0) + data.message.Friday[0].to.charAt(1) === "06") {
         const data1 = data.message.Friday[0].to.substring(2, 5);
         F_to = "06" + data1 + " " + "AM";
-      } else if (
-        data.message.Friday[0].to.charAt(0) +
-          data.message.Friday[0].to.charAt(1) ===
-        "07"
-      ) {
+      } else if (data.message.Friday[0].to.charAt(0) + data.message.Friday[0].to.charAt(1) === "07") {
         const data1 = data.message.Friday[0].to.substring(2, 5);
         F_to = "07" + data1 + " " + "AM";
-      } else if (
-        data.message.Friday[0].to.charAt(0) +
-          data.message.Friday[0].to.charAt(1) ===
-        "08"
-      ) {
+      } else if (data.message.Friday[0].to.charAt(0) + data.message.Friday[0].to.charAt(1) === "08") {
         const data1 = data.message.Friday[0].to.substring(2, 5);
         F_to = "08" + data1 + " " + "AM";
-      } else if (
-        data.message.Friday[0].to.charAt(0) +
-          data.message.Friday[0].to.charAt(1) ===
-        "09"
-      ) {
+      } else if (data.message.Friday[0].to.charAt(0) + data.message.Friday[0].to.charAt(1) === "09") {
         const data1 = data.message.Friday[0].to.substring(2, 5);
         F_to = "09" + data1 + " " + "AM";
-      } else if (
-        data.message.Friday[0].to.charAt(0) +
-          data.message.Friday[0].to.charAt(1) ===
-        "10"
-      ) {
+      } else if (data.message.Friday[0].to.charAt(0) + data.message.Friday[0].to.charAt(1) === "10") {
         const data1 = data.message.Friday[0].to.substring(2, 5);
         F_to = "10" + data1 + " " + "AM";
-      } else if (
-        data.message.Friday[0].to.charAt(0) +
-          data.message.Friday[0].to.charAt(1) ===
-        "11"
-      ) {
+      } else if (data.message.Friday[0].to.charAt(0) + data.message.Friday[0].to.charAt(1) === "11") {
         const data1 = data.message.Friday[0].to.substring(2, 5);
         F_to = "11" + data1 + " " + "AM";
-      } else if (
-        data.message.Friday[0].to.charAt(0) +
-          data.message.Friday[0].to.charAt(1) ===
-        "12"
-      ) {
+      } else if (data.message.Friday[0].to.charAt(0) + data.message.Friday[0].to.charAt(1) === "12") {
         const data1 = data.message.Friday[0].to.substring(2, 5);
         F_to = "12" + data1 + " " + "PM";
       }
@@ -1795,17 +833,17 @@ const OfficeHours = () => {
   // change time format
 
   return (
-    <div className="maincontainer">
+    <div className='maincontainer'>
       <TopMenu />
       <MainMenu />
-      <div className="freezesemesterdiv">
-        <h2 className="freezesemestertitle">Office Hours</h2>
+      <div className='freezesemesterdiv'>
+        <h2 className='freezesemestertitle'>Office Hours</h2>
       </div>
       <table>
         <tr>
-          <th className="dayCol">Day</th>
-          <th className="fromCol">From</th>
-          <th className="toCol">To</th>
+          <th className='dayCol'>Day</th>
+          <th className='fromCol'>From</th>
+          <th className='toCol'>To</th>
         </tr>
         {monday.map((time) => (
           <tr>

@@ -30,19 +30,17 @@ const NewMessage = () => {
       return;
     }
     const { subject, message } = newsms;
-    const res = await fetch(
-      "https://backend-three-nu.vercel.app/ChatBox/CreateChat",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          subject,
-          message,
-        }),
-      }
-    );
+    const res = await fetch("https://backend-three-nu.vercel.app/ChatBox/CreateChat", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: localStorage.getItem("S_token"),
+      },
+      body: JSON.stringify({
+        subject,
+        message,
+      }),
+    });
     const data = await res.json();
     if (data.status === "success") {
       Success(data.message);
@@ -54,59 +52,33 @@ const NewMessage = () => {
     }
   };
   return (
-    <div className="stdpasswordcontainer">
+    <div className='stdpasswordcontainer'>
       <TopMenu />
       <MainMenu />
-      <div className="freezesemesterdiv">
-        <h2 className="freezesemestertitle">New Message</h2>
+      <div className='freezesemesterdiv'>
+        <h2 className='freezesemestertitle'>New Message</h2>
       </div>
-      <div className="stdpasswordformdiv">
-        <form action="" method="POST">
-          <label className="subjectlabel" htmlFor="">
+      <div className='stdpasswordformdiv'>
+        <form action='' method='POST'>
+          <label className='subjectlabel' htmlFor=''>
             Subject
           </label>
           <br />
-          <input
-            className="subjectinput"
-            type="text"
-            name="subject"
-            value={newsms.subject}
-            onChange={handleInputs}
-            placeholder="Enter Subject"
-            required
-          />
+          <input className='subjectinput' type='text' name='subject' value={newsms.subject} onChange={handleInputs} placeholder='Enter Subject' required />
           <br />
-          <label className="descriptionlabel" htmlFor="">
+          <label className='descriptionlabel' htmlFor=''>
             Description
           </label>
           <br />
-          <textarea
-            name="message"
-            value={newsms.message}
-            onChange={handleInputs}
-            className="descriptioninput"
-            cols="30"
-            rows="8"
-            placeholder="Enter Description"
-          ></textarea>
+          <textarea name='message' value={newsms.message} onChange={handleInputs} className='descriptioninput' cols='30' rows='8' placeholder='Enter Description'></textarea>
           <br />
-          <Link to="/MailBox">
-            <button className="cancelbutton">Cancel</button>
+          <Link to='/MailBox'>
+            <button className='cancelbutton'>Cancel</button>
           </Link>
-          <button className="sendbutton" onClick={send}>
+          <button className='sendbutton' onClick={send}>
             Send
           </button>
-          <ToastContainer
-            position="top-center"
-            autoClose={2000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-          />
+          <ToastContainer position='top-center' autoClose={2000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
         </form>
       </div>
       <Footer />

@@ -9,17 +9,15 @@ const PretestQuestions = () => {
   const courseName = location.state;
   const [preTest, setPreTest] = useState([]);
   const pretest_question = async () => {
-    const res = await fetch(
-      `https://backend-three-nu.vercel.app/Pretest/getQuestions/${courseName}`,
-      {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        credentials: "include",
-      }
-    );
+    const res = await fetch(`https://backend-three-nu.vercel.app/Pretest/getQuestions/${courseName}`, {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        authorization: localStorage.getItem("S_token"),
+      },
+      credentials: "include",
+    });
     const data = await res.json();
     if (data.status === "success") {
       setPreTest(data.message);
@@ -47,19 +45,17 @@ const PretestQuestions = () => {
   //submit button
   const submitTest = async () => {
     const answer = state;
-    const res = await fetch(
-      `https://backend-three-nu.vercel.app/Pretest/verifyAnswer/${courseName}`,
-      {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          answer: answer,
-        }),
-      }
-    );
+    const res = await fetch(`https://backend-three-nu.vercel.app/Pretest/verifyAnswer/${courseName}`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        authorization: localStorage.getItem("S_token"),
+      },
+      body: JSON.stringify({
+        answer: answer,
+      }),
+    });
     await res.json();
   };
 
@@ -71,83 +67,49 @@ const PretestQuestions = () => {
 
   return (
     <>
-      <div className="pretestdiv">
-        <h2 className="freezesemestertitle">Pre-Test</h2>
+      <div className='pretestdiv'>
+        <h2 className='freezesemestertitle'>Pre-Test</h2>
       </div>
-      <div className="Pretest-questions-container">
+      <div className='Pretest-questions-container'>
         {preTest.map((mcqs) => (
-          <div className="question-container">
+          <div className='question-container'>
             <h3>{mcqs.question}</h3>
-            <input
-              type="radio"
-              name={mcqs.question}
-              value={mcqs.option1}
-              onChange={handleChange}
-              className="select"
-            />
-            <label htmlFor="" className="choice">
+            <input type='radio' name={mcqs.question} value={mcqs.option1} onChange={handleChange} className='select' />
+            <label htmlFor='' className='choice'>
               {mcqs.option1}
             </label>
             <br />
-            <input
-              type="radio"
-              name={mcqs.question}
-              value={mcqs.option2}
-              onChange={handleChange}
-              className="select"
-            />
-            <label htmlFor="" className="choice">
+            <input type='radio' name={mcqs.question} value={mcqs.option2} onChange={handleChange} className='select' />
+            <label htmlFor='' className='choice'>
               {mcqs.option2}
             </label>
             <br />
-            <input
-              type="radio"
-              name={mcqs.question}
-              value={mcqs.option3}
-              onChange={handleChange}
-              className="select"
-            />
-            <label htmlFor="" className="choice">
+            <input type='radio' name={mcqs.question} value={mcqs.option3} onChange={handleChange} className='select' />
+            <label htmlFor='' className='choice'>
               {mcqs.option3}
             </label>
             <br />
-            <input
-              type="radio"
-              name={mcqs.question}
-              value={mcqs.option4}
-              onChange={handleChange}
-              className="select"
-            />
-            <label htmlFor="" className="choice">
+            <input type='radio' name={mcqs.question} value={mcqs.option4} onChange={handleChange} className='select' />
+            <label htmlFor='' className='choice'>
               {mcqs.option4}
             </label>
           </div>
         ))}
-        <div className="submit-btn-container">
+        <div className='submit-btn-container'>
           {state.length === 10 ? (
-            <Link to="/AddCourse">
+            <Link to='/AddCourse'>
               {" "}
-              <button className="start-btn" onClick={submitTest}>
+              <button className='start-btn' onClick={submitTest}>
                 Submit
               </button>
             </Link>
           ) : (
-            <button className="start-btn" onClick={SubmitError}>
+            <button className='start-btn' onClick={SubmitError}>
               Submit
             </button>
           )}
         </div>
-        <ToastContainer
-          position="top-center"
-          autoClose={2000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-        />
+        <ToastContainer position='top-center' autoClose={2000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
       </div>
     </>
   );

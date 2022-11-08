@@ -10,15 +10,13 @@ const TopMenu = () => {
   const [userData, setUserData] = useState({});
   const navigate = useNavigate();
   const calltopmenu = async () => {
-    const res = await fetch(
-      "https://backend-three-nu.vercel.app/Student/S_Topmenu",
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const res = await fetch("https://backend-three-nu.vercel.app/Student/S_Topmenu", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: localStorage.getItem("S_token"),
+      },
+    });
     const data = await res.json();
     setUserData(data.message);
     if (data.status !== "success") {
@@ -32,77 +30,68 @@ const TopMenu = () => {
 
   const S_logout = async (e) => {
     e.preventDefault();
-    const res = await fetch(
-      "https://backend-three-nu.vercel.app/Student/Studentlogout",
-      {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        credentials: "include",
-      }
-    );
-    const data = await res.json();
-    if (data.status === "success") {
-      navigate("/StudentLogin");
-    }
+    localStorage.clear();
+    navigate("/StudentLogin");
+    // const res = await fetch("https://backend-three-nu.vercel.app/Student/Studentlogout", {
+    //   method: "GET",
+    //   headers: {
+    //     Accept: "application/json",
+    //     "Content-Type": "application/json",
+    //     authorization: localStorage.getItem("S_token"),
+    //   },
+    //   credentials: "include",
+    // });
+    // const data = await res.json();
+    // if (data.status === "success") {
+    // }
   };
   // for Notification
   const [notifications, setNotifications] = useState([]);
   const S_Notification = async () => {
-    const res = await fetch(
-      "https://backend-three-nu.vercel.app/Notification/S_notification",
-      {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        // credentials: "include",
-      }
-    );
+    const res = await fetch("https://backend-three-nu.vercel.app/Notification/S_notification", {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        authorization: localStorage.getItem("S_token"),
+      },
+      // credentials: "include",
+    });
     const data = await res.json();
     if (data.status === "success") {
       setNotifications(data.message);
     }
   };
   return (
-    <div className="containerNo1">
-      <form action="" method="GET">
-        <div className="containerNo2">
-          <h1 className="title">Tipster</h1>
-          <h3 className="tagline">A Digital Batch Advisor</h3>
+    <div className='containerNo1'>
+      <form action='' method='GET'>
+        <div className='containerNo2'>
+          <h1 className='title'>Tipster</h1>
+          <h3 className='tagline'>A Digital Batch Advisor</h3>
         </div>
-        <div className="containerNo3">
-          <Link to="/StudentProfile">
-            <img className="profileicon" src={userData.profilePic} alt="" />
-            <h4 className="profile">{userData.registrationId}</h4>
+        <div className='containerNo3'>
+          <Link to='/StudentProfile'>
+            <img className='profileicon' src={userData.profilePic} alt='' />
+            <h4 className='profile'>{userData.registrationId}</h4>
           </Link>
           <img
-            className="notificationicon"
+            className='notificationicon'
             src={notification}
-            alt=""
+            alt=''
             onClick={() => {
               setButtonPopup(true);
               S_Notification();
             }}
           />
-          <img
-            className="logouticon"
-            method="GET"
-            src={logout}
-            alt=""
-            onClick={S_logout}
-          />
+          <img className='logouticon' method='GET' src={logout} alt='' onClick={S_logout} />
         </div>
       </form>
       <NotificationPanel trigger={buttonPopup} setTrigger={setButtonPopup}>
         {notifications.length === 0 || !notifications ? (
-          <p className="no-noti">No Notifications!</p>
+          <p className='no-noti'>No Notifications!</p>
         ) : (
           notifications.map((notifi) => (
-            <div className="noti-div">
+            <div className='noti-div'>
               {notifi.name} &nbsp;
               {notifi.message}
             </div>

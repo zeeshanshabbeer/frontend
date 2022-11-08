@@ -16,15 +16,13 @@ const BatchAdvisorTopMenu = () => {
   }, []);
 
   const calltopmenu = async () => {
-    const res = await fetch(
-      "https://backend-three-nu.vercel.app/BatchAdvisor/BA_Topmenu",
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const res = await fetch("https://backend-three-nu.vercel.app/BatchAdvisor/BA_Topmenu", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: localStorage.getItem("BA_token"),
+      },
+    });
     const data = await res.json();
     if (data.status === "success") {
       setUserData(data.message);
@@ -34,38 +32,24 @@ const BatchAdvisorTopMenu = () => {
   };
   //for logout
 
-  const BAlogout = async () => {
-    const res = await fetch(
-      "https://backend-three-nu.vercel.app/BatchAdvisor/BatchAdvisorLogout",
-      {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        credentials: "include",
-      }
-    );
-    const data = await res.json();
-    if (data.status === "success") {
-      navigate("/BatchAdvisorLogin");
-    }
+  const BAlogout = async (e) => {
+    e.preventDefault();
+    localStorage.clear();
+    navigate("/BatchAdvisorLogin");
   };
 
   // for Notification
   const [notifications, setNotifications] = useState([]);
   const BA_Notification = async () => {
-    const res = await fetch(
-      "https://backend-three-nu.vercel.app/Notification/BA_notification",
-      {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        credentials: "include",
-      }
-    );
+    const res = await fetch("https://backend-three-nu.vercel.app/Notification/BA_notification", {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        authorization: localStorage.getItem("BA_token"),
+      },
+      credentials: "include",
+    });
     const data = await res.json();
     if (data.status === "success") {
       setNotifications(data.message);
@@ -73,41 +57,35 @@ const BatchAdvisorTopMenu = () => {
   };
 
   return (
-    <div className="containerNo1">
-      <div className="containerNo2">
-        <h1 className="title">Tipster</h1>
-        <h3 className="tagline">A Digital Batch Advisor</h3>
+    <div className='containerNo1'>
+      <div className='containerNo2'>
+        <h1 className='title'>Tipster</h1>
+        <h3 className='tagline'>A Digital Batch Advisor</h3>
       </div>
-      <form action="" method="GET">
-        <div className="containerNo3">
-          <Link to="/BatchAdvisorProfile">
-            <img className="profileicon" src={profile} alt="" />
-            <h4 className="profile">{userData.name}</h4>
+      <form action='' method='GET'>
+        <div className='containerNo3'>
+          <Link to='/BatchAdvisorProfile'>
+            <img className='profileicon' src={profile} alt='' />
+            <h4 className='profile'>{userData.name}</h4>
           </Link>
           <img
-            className="notificationicon"
+            className='notificationicon'
             src={notification}
-            alt=""
+            alt=''
             onClick={() => {
               setButtonPopup(true);
               BA_Notification();
             }}
           />
-          <img
-            className="logouticon"
-            method="GET"
-            src={logout}
-            alt=""
-            onClick={BAlogout}
-          />
+          <img className='logouticon' method='GET' src={logout} alt='' onClick={BAlogout} />
         </div>
       </form>
       <NotificationPanel trigger={buttonPopup} setTrigger={setButtonPopup}>
         {notifications.length === 0 || notifications === false ? (
-          <p className="no-noti">No Notifications!</p>
+          <p className='no-noti'>No Notifications!</p>
         ) : (
           notifications.map((notifi) => (
-            <div className="notidiv">
+            <div className='notidiv'>
               {notifi.registrationId} &nbsp;
               {notifi.message}
             </div>

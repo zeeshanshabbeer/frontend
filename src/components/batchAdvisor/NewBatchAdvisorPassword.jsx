@@ -33,23 +33,20 @@ const NewBatchAdvisorPassword = () => {
       Error("Please enter confirm password.");
       return;
     }
-    const regexPattern =
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).{8,}$/;
+    const regexPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).{8,}$/;
     if (regexPattern.test(new_password)) {
-      const res = await fetch(
-        "https://backend-three-nu.vercel.app/BatchAdvisor/BA_resetpassword",
-        {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            new_password,
-            confirm_password,
-            token,
-          }),
-        }
-      );
+      const res = await fetch("https://backend-three-nu.vercel.app/BatchAdvisor/BA_resetpassword", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: localStorage.getItem("BA_token"),
+        },
+        body: JSON.stringify({
+          new_password,
+          confirm_password,
+          token,
+        }),
+      });
       const data = await res.json();
       if (data.status === "success") {
         Success(data.message);
@@ -60,61 +57,33 @@ const NewBatchAdvisorPassword = () => {
         Error(data.message);
       }
     } else {
-      Error(
-        "Minimum length is 8 characters. One uppercase, one lowercase, one special character and one digit is compulsory."
-      );
+      Error("Minimum length is 8 characters. One uppercase, one lowercase, one special character and one digit is compulsory.");
     }
   };
   return (
-    <div className="BALogincontainer">
-      <h1 className="title">Tipster</h1>
-      <h3 className="tagline">A Digital Batch Advisor</h3>
-      <h1 className="console">
-        <FontAwesomeIcon icon={faUserTie} className="icon" />
+    <div className='BALogincontainer'>
+      <h1 className='title'>Tipster</h1>
+      <h3 className='tagline'>A Digital Batch Advisor</h3>
+      <h1 className='console'>
+        <FontAwesomeIcon icon={faUserTie} className='icon' />
         Batch Advisor Console
       </h1>
-      <div className="container3">
-        <h2 className="rstpassword">Reset Password</h2>
+      <div className='container3'>
+        <h2 className='rstpassword'>Reset Password</h2>
         <hr />
-        <form action="" method="PUT">
-          <input
-            className="email"
-            type="password"
-            name="new_password"
-            value={password.new_password}
-            onChange={handleInputs}
-            placeholder="New Password"
-            required
-          />
+        <form action='' method='PUT'>
+          <input className='email' type='password' name='new_password' value={password.new_password} onChange={handleInputs} placeholder='New Password' required />
           <br />
           <br />
-          <input
-            className="email"
-            type="password"
-            name="confirm_password"
-            value={password.confirm_password}
-            onChange={handleInputs}
-            placeholder="Confirm New Password"
-            required
-          />
+          <input className='email' type='password' name='confirm_password' value={password.confirm_password} onChange={handleInputs} placeholder='Confirm New Password' required />
           <br />
-          <Link to="/BatchAdvisorLogin">
-            <button className="otpcancelbtn">Cancel</button>
+          <Link to='/BatchAdvisorLogin'>
+            <button className='otpcancelbtn'>Cancel</button>
           </Link>
-          <button className="otpsendbtn" onClick={update_password}>
+          <button className='otpsendbtn' onClick={update_password}>
             Confirm
           </button>
-          <ToastContainer
-            position="top-center"
-            autoClose={2000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-          />
+          <ToastContainer position='top-center' autoClose={2000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
         </form>
       </div>
       <Footer />

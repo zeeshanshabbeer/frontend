@@ -11,15 +11,13 @@ const StudentTranscript = (props) => {
   const [studentdata, setStudentdata] = useState();
   const studentRecord = async () => {
     try {
-      const res = await fetch(
-        `https://backend-three-nu.vercel.app/StudentInformation/GetStudentData/${registrationId}`,
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const res = await fetch(`https://backend-three-nu.vercel.app/StudentInformation/GetStudentData/${registrationId}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: localStorage.getItem("BA_token"),
+        },
+      });
       const data = await res.json();
       setStudentdata(data.message);
       // HandleData();
@@ -140,34 +138,34 @@ const StudentTranscript = (props) => {
   }
   return (
     <Fragment>
-      <Link to="/StudentsInformation">
-        <img className="arrowIcon" src={leftarrow} alt="" />
+      <Link to='/StudentsInformation'>
+        <img className='arrowIcon' src={leftarrow} alt='' />
       </Link>
 
       {!studentdata ? (
         ""
       ) : (
-        <div className="transcriptContainer">
-          <h1 className="transcript">Transcript</h1>
-          <h3 className="datalabel">Name: </h3>
-          <h3 className="data">{studentdata.name}</h3>
+        <div className='transcriptContainer'>
+          <h1 className='transcript'>Transcript</h1>
+          <h3 className='datalabel'>Name: </h3>
+          <h3 className='data'>{studentdata.name}</h3>
           <br />
-          <h3 className="datalabel">Registration No:</h3>
-          <h3 className="data">{studentdata.registrationId}</h3>
+          <h3 className='datalabel'>Registration No:</h3>
+          <h3 className='data'>{studentdata.registrationId}</h3>
           <br />
-          <h3 className="datalabel">Section:</h3>
-          <h3 className="data">{studentdata.section}</h3>
+          <h3 className='datalabel'>Section:</h3>
+          <h3 className='data'>{studentdata.section}</h3>
           <br />
           <br />
           {studentdata.semester === 1 ? (
             <div>
-              <h3 className="semlabel">Semester1</h3>
-              <table className="transcriptTable">
+              <h3 className='semlabel'>Semester1</h3>
+              <table className='transcriptTable'>
                 <tr>
-                  <th className="codeCol">Course Code</th>
-                  <th className="titleCol">Course Title</th>
-                  <th className="creditCol">Credits</th>
-                  <th className="GPCol">GP</th>
+                  <th className='codeCol'>Course Code</th>
+                  <th className='titleCol'>Course Title</th>
+                  <th className='creditCol'>Credits</th>
+                  <th className='GPCol'>GP</th>
                 </tr>
                 {sem1.map((sem) => (
                   <tr>
@@ -182,13 +180,13 @@ const StudentTranscript = (props) => {
           ) : studentdata.semester === 2 ? (
             <div>
               <div>
-                <h3 className="semlabel">Semester 1</h3>
-                <table className="transcriptTable">
+                <h3 className='semlabel'>Semester 1</h3>
+                <table className='transcriptTable'>
                   <tr>
-                    <th className="codeCol">Course Code</th>
-                    <th className="titleCol">Course Title</th>
-                    <th className="creditCol">Credits</th>
-                    <th className="GPCol">GP</th>
+                    <th className='codeCol'>Course Code</th>
+                    <th className='titleCol'>Course Title</th>
+                    <th className='creditCol'>Credits</th>
+                    <th className='GPCol'>GP</th>
                   </tr>
                   {sem1.map((sem) => (
                     <tr>
@@ -202,13 +200,13 @@ const StudentTranscript = (props) => {
               </div>
               <br />
               <div>
-                <h3 className="semlabel">Semester 2</h3>
-                <table className="transcriptTable">
+                <h3 className='semlabel'>Semester 2</h3>
+                <table className='transcriptTable'>
                   <tr>
-                    <th className="codeCol">Course Code</th>
-                    <th className="titleCol">Course Title</th>
-                    <th className="creditCol">Credits</th>
-                    <th className="GPCol">GP</th>
+                    <th className='codeCol'>Course Code</th>
+                    <th className='titleCol'>Course Title</th>
+                    <th className='creditCol'>Credits</th>
+                    <th className='GPCol'>GP</th>
                   </tr>
                   {sem2.map((sem) => (
                     <tr>
@@ -224,13 +222,13 @@ const StudentTranscript = (props) => {
           ) : studentdata.semester === 3 ? (
             <div>
               <div>
-                <h3 className="semlabel">Semester 1</h3>
-                <table className="transcriptTable">
+                <h3 className='semlabel'>Semester 1</h3>
+                <table className='transcriptTable'>
                   <tr>
-                    <th className="codeCol">Course Code</th>
-                    <th className="titleCol">Course Title</th>
-                    <th className="creditCol">Credits</th>
-                    <th className="GPCol">GP</th>
+                    <th className='codeCol'>Course Code</th>
+                    <th className='titleCol'>Course Title</th>
+                    <th className='creditCol'>Credits</th>
+                    <th className='GPCol'>GP</th>
                   </tr>
                   {sem1.map((sem) => (
                     <tr>
@@ -244,13 +242,13 @@ const StudentTranscript = (props) => {
               </div>
               <br />
               <div>
-                <h3 className="semlabel">Semester 2</h3>
-                <table className="transcriptTable">
+                <h3 className='semlabel'>Semester 2</h3>
+                <table className='transcriptTable'>
                   <tr>
-                    <th className="codeCol">Course Code</th>
-                    <th className="titleCol">Course Title</th>
-                    <th className="creditCol">Credits</th>
-                    <th className="GPCol">GP</th>
+                    <th className='codeCol'>Course Code</th>
+                    <th className='titleCol'>Course Title</th>
+                    <th className='creditCol'>Credits</th>
+                    <th className='GPCol'>GP</th>
                   </tr>
                   {sem2.map((sem) => (
                     <tr>
@@ -264,13 +262,13 @@ const StudentTranscript = (props) => {
               </div>
               <br />
               <div>
-                <h3 className="semlabel">Semester 3</h3>
-                <table className="transcriptTable">
+                <h3 className='semlabel'>Semester 3</h3>
+                <table className='transcriptTable'>
                   <tr>
-                    <th className="codeCol">Course Code</th>
-                    <th className="titleCol">Course Title</th>
-                    <th className="creditCol">Credits</th>
-                    <th className="GPCol">GP</th>
+                    <th className='codeCol'>Course Code</th>
+                    <th className='titleCol'>Course Title</th>
+                    <th className='creditCol'>Credits</th>
+                    <th className='GPCol'>GP</th>
                   </tr>
                   {sem3.map((sem) => (
                     <tr>
@@ -286,13 +284,13 @@ const StudentTranscript = (props) => {
           ) : studentdata.semester === 4 ? (
             <div>
               <div>
-                <h3 className="semlabel">Semester 1</h3>
-                <table className="transcriptTable">
+                <h3 className='semlabel'>Semester 1</h3>
+                <table className='transcriptTable'>
                   <tr>
-                    <th className="codeCol">Course Code</th>
-                    <th className="titleCol">Course Title</th>
-                    <th className="creditCol">Credits</th>
-                    <th className="GPCol">GP</th>
+                    <th className='codeCol'>Course Code</th>
+                    <th className='titleCol'>Course Title</th>
+                    <th className='creditCol'>Credits</th>
+                    <th className='GPCol'>GP</th>
                   </tr>
                   {sem1.map((sem) => (
                     <tr>
@@ -306,13 +304,13 @@ const StudentTranscript = (props) => {
               </div>
               <br />
               <div>
-                <h3 className="semlabel">Semester 2</h3>
-                <table className="transcriptTable">
+                <h3 className='semlabel'>Semester 2</h3>
+                <table className='transcriptTable'>
                   <tr>
-                    <th className="codeCol">Course Code</th>
-                    <th className="titleCol">Course Title</th>
-                    <th className="creditCol">Credits</th>
-                    <th className="GPCol">GP</th>
+                    <th className='codeCol'>Course Code</th>
+                    <th className='titleCol'>Course Title</th>
+                    <th className='creditCol'>Credits</th>
+                    <th className='GPCol'>GP</th>
                   </tr>
                   {sem2.map((sem) => (
                     <tr>
@@ -326,13 +324,13 @@ const StudentTranscript = (props) => {
               </div>
               <br />
               <div>
-                <h3 className="semlabel">Semester 3</h3>
-                <table className="transcriptTable">
+                <h3 className='semlabel'>Semester 3</h3>
+                <table className='transcriptTable'>
                   <tr>
-                    <th className="codeCol">Course Code</th>
-                    <th className="titleCol">Course Title</th>
-                    <th className="creditCol">Credits</th>
-                    <th className="GPCol">GP</th>
+                    <th className='codeCol'>Course Code</th>
+                    <th className='titleCol'>Course Title</th>
+                    <th className='creditCol'>Credits</th>
+                    <th className='GPCol'>GP</th>
                   </tr>
                   {sem3.map((sem) => (
                     <tr>
@@ -346,13 +344,13 @@ const StudentTranscript = (props) => {
               </div>
               <br />
               <div>
-                <h3 className="semlabel">Semester 4</h3>
-                <table className="transcriptTable">
+                <h3 className='semlabel'>Semester 4</h3>
+                <table className='transcriptTable'>
                   <tr>
-                    <th className="codeCol">Course Code</th>
-                    <th className="titleCol">Course Title</th>
-                    <th className="creditCol">Credits</th>
-                    <th className="GPCol">GP</th>
+                    <th className='codeCol'>Course Code</th>
+                    <th className='titleCol'>Course Title</th>
+                    <th className='creditCol'>Credits</th>
+                    <th className='GPCol'>GP</th>
                   </tr>
                   {sem4.map((sem) => (
                     <tr>
@@ -368,13 +366,13 @@ const StudentTranscript = (props) => {
           ) : studentdata.semester === 5 ? (
             <div>
               <div>
-                <h3 className="semlabel">Semester 1</h3>
-                <table className="transcriptTable">
+                <h3 className='semlabel'>Semester 1</h3>
+                <table className='transcriptTable'>
                   <tr>
-                    <th className="codeCol">Course Code</th>
-                    <th className="titleCol">Course Title</th>
-                    <th className="creditCol">Credits</th>
-                    <th className="GPCol">GP</th>
+                    <th className='codeCol'>Course Code</th>
+                    <th className='titleCol'>Course Title</th>
+                    <th className='creditCol'>Credits</th>
+                    <th className='GPCol'>GP</th>
                   </tr>
                   {sem1.map((sem) => (
                     <tr>
@@ -388,13 +386,13 @@ const StudentTranscript = (props) => {
               </div>
               <br />
               <div>
-                <h3 className="semlabel">Semester 2</h3>
-                <table className="transcriptTable">
+                <h3 className='semlabel'>Semester 2</h3>
+                <table className='transcriptTable'>
                   <tr>
-                    <th className="codeCol">Course Code</th>
-                    <th className="titleCol">Course Title</th>
-                    <th className="creditCol">Credits</th>
-                    <th className="GPCol">GP</th>
+                    <th className='codeCol'>Course Code</th>
+                    <th className='titleCol'>Course Title</th>
+                    <th className='creditCol'>Credits</th>
+                    <th className='GPCol'>GP</th>
                   </tr>
                   {sem2.map((sem) => (
                     <tr>
@@ -408,13 +406,13 @@ const StudentTranscript = (props) => {
               </div>
               <br />
               <div>
-                <h3 className="semlabel">Semester 3</h3>
-                <table className="transcriptTable">
+                <h3 className='semlabel'>Semester 3</h3>
+                <table className='transcriptTable'>
                   <tr>
-                    <th className="codeCol">Course Code</th>
-                    <th className="titleCol">Course Title</th>
-                    <th className="creditCol">Credits</th>
-                    <th className="GPCol">GP</th>
+                    <th className='codeCol'>Course Code</th>
+                    <th className='titleCol'>Course Title</th>
+                    <th className='creditCol'>Credits</th>
+                    <th className='GPCol'>GP</th>
                   </tr>
                   {sem3.map((sem) => (
                     <tr>
@@ -428,13 +426,13 @@ const StudentTranscript = (props) => {
               </div>
               <br />
               <div>
-                <h3 className="semlabel">Semester 4</h3>
-                <table className="transcriptTable">
+                <h3 className='semlabel'>Semester 4</h3>
+                <table className='transcriptTable'>
                   <tr>
-                    <th className="codeCol">Course Code</th>
-                    <th className="titleCol">Course Title</th>
-                    <th className="creditCol">Credits</th>
-                    <th className="GPCol">GP</th>
+                    <th className='codeCol'>Course Code</th>
+                    <th className='titleCol'>Course Title</th>
+                    <th className='creditCol'>Credits</th>
+                    <th className='GPCol'>GP</th>
                   </tr>
                   {sem4.map((sem) => (
                     <tr>
@@ -448,13 +446,13 @@ const StudentTranscript = (props) => {
               </div>
               <br />
               <div>
-                <h3 className="semlabel">Semester 5</h3>
-                <table className="transcriptTable">
+                <h3 className='semlabel'>Semester 5</h3>
+                <table className='transcriptTable'>
                   <tr>
-                    <th className="codeCol">Course Code</th>
-                    <th className="titleCol">Course Title</th>
-                    <th className="creditCol">Credits</th>
-                    <th className="GPCol">GP</th>
+                    <th className='codeCol'>Course Code</th>
+                    <th className='titleCol'>Course Title</th>
+                    <th className='creditCol'>Credits</th>
+                    <th className='GPCol'>GP</th>
                   </tr>
                   {sem5.map((sem) => (
                     <tr>
@@ -470,13 +468,13 @@ const StudentTranscript = (props) => {
           ) : studentdata.semester === 6 ? (
             <div>
               <div>
-                <h3 className="semlabel">Semester 1</h3>
-                <table className="transcriptTable">
+                <h3 className='semlabel'>Semester 1</h3>
+                <table className='transcriptTable'>
                   <tr>
-                    <th className="codeCol">Course Code</th>
-                    <th className="titleCol">Course Title</th>
-                    <th className="creditCol">Credits</th>
-                    <th className="GPCol">GP</th>
+                    <th className='codeCol'>Course Code</th>
+                    <th className='titleCol'>Course Title</th>
+                    <th className='creditCol'>Credits</th>
+                    <th className='GPCol'>GP</th>
                   </tr>
                   {sem1.map((sem) => (
                     <tr>
@@ -490,13 +488,13 @@ const StudentTranscript = (props) => {
               </div>
               <br />
               <div>
-                <h3 className="semlabel">Semester 2</h3>
-                <table className="transcriptTable">
+                <h3 className='semlabel'>Semester 2</h3>
+                <table className='transcriptTable'>
                   <tr>
-                    <th className="codeCol">Course Code</th>
-                    <th className="titleCol">Course Title</th>
-                    <th className="creditCol">Credits</th>
-                    <th className="GPCol">GP</th>
+                    <th className='codeCol'>Course Code</th>
+                    <th className='titleCol'>Course Title</th>
+                    <th className='creditCol'>Credits</th>
+                    <th className='GPCol'>GP</th>
                   </tr>
                   {sem2.map((sem) => (
                     <tr>
@@ -510,13 +508,13 @@ const StudentTranscript = (props) => {
               </div>
               <br />
               <div>
-                <h3 className="semlabel">Semester 3</h3>
-                <table className="transcriptTable">
+                <h3 className='semlabel'>Semester 3</h3>
+                <table className='transcriptTable'>
                   <tr>
-                    <th className="codeCol">Course Code</th>
-                    <th className="titleCol">Course Title</th>
-                    <th className="creditCol">Credits</th>
-                    <th className="GPCol">GP</th>
+                    <th className='codeCol'>Course Code</th>
+                    <th className='titleCol'>Course Title</th>
+                    <th className='creditCol'>Credits</th>
+                    <th className='GPCol'>GP</th>
                   </tr>
                   {sem3.map((sem) => (
                     <tr>
@@ -530,13 +528,13 @@ const StudentTranscript = (props) => {
               </div>
               <br />
               <div>
-                <h3 className="semlabel">Semester 4</h3>
-                <table className="transcriptTable">
+                <h3 className='semlabel'>Semester 4</h3>
+                <table className='transcriptTable'>
                   <tr>
-                    <th className="codeCol">Course Code</th>
-                    <th className="titleCol">Course Title</th>
-                    <th className="creditCol">Credits</th>
-                    <th className="GPCol">GP</th>
+                    <th className='codeCol'>Course Code</th>
+                    <th className='titleCol'>Course Title</th>
+                    <th className='creditCol'>Credits</th>
+                    <th className='GPCol'>GP</th>
                   </tr>
                   {sem4.map((sem) => (
                     <tr>
@@ -550,13 +548,13 @@ const StudentTranscript = (props) => {
               </div>
               <br />
               <div>
-                <h3 className="semlabel">Semester 5</h3>
-                <table className="transcriptTable">
+                <h3 className='semlabel'>Semester 5</h3>
+                <table className='transcriptTable'>
                   <tr>
-                    <th className="codeCol">Course Code</th>
-                    <th className="titleCol">Course Title</th>
-                    <th className="creditCol">Credits</th>
-                    <th className="GPCol">GP</th>
+                    <th className='codeCol'>Course Code</th>
+                    <th className='titleCol'>Course Title</th>
+                    <th className='creditCol'>Credits</th>
+                    <th className='GPCol'>GP</th>
                   </tr>
                   {sem5.map((sem) => (
                     <tr>
@@ -570,13 +568,13 @@ const StudentTranscript = (props) => {
               </div>
               <br />
               <div>
-                <h3 className="semlabel">Semester 6</h3>
-                <table className="transcriptTable">
+                <h3 className='semlabel'>Semester 6</h3>
+                <table className='transcriptTable'>
                   <tr>
-                    <th className="codeCol">Course Code</th>
-                    <th className="titleCol">Course Title</th>
-                    <th className="creditCol">Credits</th>
-                    <th className="GPCol">GP</th>
+                    <th className='codeCol'>Course Code</th>
+                    <th className='titleCol'>Course Title</th>
+                    <th className='creditCol'>Credits</th>
+                    <th className='GPCol'>GP</th>
                   </tr>
                   {sem6.map((sem) => (
                     <tr>
@@ -592,13 +590,13 @@ const StudentTranscript = (props) => {
           ) : studentdata.semester === 7 ? (
             <div>
               <div>
-                <h3 className="semlabel">Semester 1</h3>
-                <table className="transcriptTable">
+                <h3 className='semlabel'>Semester 1</h3>
+                <table className='transcriptTable'>
                   <tr>
-                    <th className="codeCol">Course Code</th>
-                    <th className="titleCol">Course Title</th>
-                    <th className="creditCol">Credits</th>
-                    <th className="GPCol">GP</th>
+                    <th className='codeCol'>Course Code</th>
+                    <th className='titleCol'>Course Title</th>
+                    <th className='creditCol'>Credits</th>
+                    <th className='GPCol'>GP</th>
                   </tr>
                   {sem1.map((sem) => (
                     <tr>
@@ -612,13 +610,13 @@ const StudentTranscript = (props) => {
               </div>
               <br />
               <div>
-                <h3 className="semlabel">Semester 2</h3>
-                <table className="transcriptTable">
+                <h3 className='semlabel'>Semester 2</h3>
+                <table className='transcriptTable'>
                   <tr>
-                    <th className="codeCol">Course Code</th>
-                    <th className="titleCol">Course Title</th>
-                    <th className="creditCol">Credits</th>
-                    <th className="GPCol">GP</th>
+                    <th className='codeCol'>Course Code</th>
+                    <th className='titleCol'>Course Title</th>
+                    <th className='creditCol'>Credits</th>
+                    <th className='GPCol'>GP</th>
                   </tr>
                   {sem2.map((sem) => (
                     <tr>
@@ -632,13 +630,13 @@ const StudentTranscript = (props) => {
               </div>
               <br />
               <div>
-                <h3 className="semlabel">Semester 3</h3>
-                <table className="transcriptTable">
+                <h3 className='semlabel'>Semester 3</h3>
+                <table className='transcriptTable'>
                   <tr>
-                    <th className="codeCol">Course Code</th>
-                    <th className="titleCol">Course Title</th>
-                    <th className="creditCol">Credits</th>
-                    <th className="GPCol">GP</th>
+                    <th className='codeCol'>Course Code</th>
+                    <th className='titleCol'>Course Title</th>
+                    <th className='creditCol'>Credits</th>
+                    <th className='GPCol'>GP</th>
                   </tr>
                   {sem3.map((sem) => (
                     <tr>
@@ -652,13 +650,13 @@ const StudentTranscript = (props) => {
               </div>
               <br />
               <div>
-                <h3 className="semlabel">Semester 4</h3>
-                <table className="transcriptTable">
+                <h3 className='semlabel'>Semester 4</h3>
+                <table className='transcriptTable'>
                   <tr>
-                    <th className="codeCol">Course Code</th>
-                    <th className="titleCol">Course Title</th>
-                    <th className="creditCol">Credits</th>
-                    <th className="GPCol">GP</th>
+                    <th className='codeCol'>Course Code</th>
+                    <th className='titleCol'>Course Title</th>
+                    <th className='creditCol'>Credits</th>
+                    <th className='GPCol'>GP</th>
                   </tr>
                   {sem4.map((sem) => (
                     <tr>
@@ -672,13 +670,13 @@ const StudentTranscript = (props) => {
               </div>
               <br />
               <div>
-                <h3 className="semlabel">Semester 5</h3>
-                <table className="transcriptTable">
+                <h3 className='semlabel'>Semester 5</h3>
+                <table className='transcriptTable'>
                   <tr>
-                    <th className="codeCol">Course Code</th>
-                    <th className="titleCol">Course Title</th>
-                    <th className="creditCol">Credits</th>
-                    <th className="GPCol">GP</th>
+                    <th className='codeCol'>Course Code</th>
+                    <th className='titleCol'>Course Title</th>
+                    <th className='creditCol'>Credits</th>
+                    <th className='GPCol'>GP</th>
                   </tr>
                   {sem5.map((sem) => (
                     <tr>
@@ -692,13 +690,13 @@ const StudentTranscript = (props) => {
               </div>
               <br />
               <div>
-                <h3 className="semlabel">Semester 6</h3>
-                <table className="transcriptTable">
+                <h3 className='semlabel'>Semester 6</h3>
+                <table className='transcriptTable'>
                   <tr>
-                    <th className="codeCol">Course Code</th>
-                    <th className="titleCol">Course Title</th>
-                    <th className="creditCol">Credits</th>
-                    <th className="GPCol">GP</th>
+                    <th className='codeCol'>Course Code</th>
+                    <th className='titleCol'>Course Title</th>
+                    <th className='creditCol'>Credits</th>
+                    <th className='GPCol'>GP</th>
                   </tr>
                   {sem6.map((sem) => (
                     <tr>
@@ -712,13 +710,13 @@ const StudentTranscript = (props) => {
               </div>
               <br />
               <div>
-                <h3 className="semlabel">Semester 7</h3>
-                <table className="transcriptTable">
+                <h3 className='semlabel'>Semester 7</h3>
+                <table className='transcriptTable'>
                   <tr>
-                    <th className="codeCol">Course Code</th>
-                    <th className="titleCol">Course Title</th>
-                    <th className="creditCol">Credits</th>
-                    <th className="GPCol">GP</th>
+                    <th className='codeCol'>Course Code</th>
+                    <th className='titleCol'>Course Title</th>
+                    <th className='creditCol'>Credits</th>
+                    <th className='GPCol'>GP</th>
                   </tr>
                   {sem7.map((sem) => (
                     <tr>
@@ -734,13 +732,13 @@ const StudentTranscript = (props) => {
           ) : studentdata.semester === 8 ? (
             <div>
               <div>
-                <h3 className="semlabel">Semester 1</h3>
-                <table className="transcriptTable">
+                <h3 className='semlabel'>Semester 1</h3>
+                <table className='transcriptTable'>
                   <tr>
-                    <th className="codeCol">Course Code</th>
-                    <th className="titleCol">Course Title</th>
-                    <th className="creditCol">Credits</th>
-                    <th className="GPCol">GP</th>
+                    <th className='codeCol'>Course Code</th>
+                    <th className='titleCol'>Course Title</th>
+                    <th className='creditCol'>Credits</th>
+                    <th className='GPCol'>GP</th>
                   </tr>
                   {sem1.map((sem) => (
                     <tr>
@@ -754,13 +752,13 @@ const StudentTranscript = (props) => {
               </div>
               <br />
               <div>
-                <h3 className="semlabel">Semester 2</h3>
-                <table className="transcriptTable">
+                <h3 className='semlabel'>Semester 2</h3>
+                <table className='transcriptTable'>
                   <tr>
-                    <th className="codeCol">Course Code</th>
-                    <th className="titleCol">Course Title</th>
-                    <th className="creditCol">Credits</th>
-                    <th className="GPCol">GP</th>
+                    <th className='codeCol'>Course Code</th>
+                    <th className='titleCol'>Course Title</th>
+                    <th className='creditCol'>Credits</th>
+                    <th className='GPCol'>GP</th>
                   </tr>
                   {sem2.map((sem) => (
                     <tr>
@@ -774,13 +772,13 @@ const StudentTranscript = (props) => {
               </div>
               <br />
               <div>
-                <h3 className="semlabel">Semester 3</h3>
-                <table className="transcriptTable">
+                <h3 className='semlabel'>Semester 3</h3>
+                <table className='transcriptTable'>
                   <tr>
-                    <th className="codeCol">Course Code</th>
-                    <th className="titleCol">Course Title</th>
-                    <th className="creditCol">Credits</th>
-                    <th className="GPCol">GP</th>
+                    <th className='codeCol'>Course Code</th>
+                    <th className='titleCol'>Course Title</th>
+                    <th className='creditCol'>Credits</th>
+                    <th className='GPCol'>GP</th>
                   </tr>
                   {sem3.map((sem) => (
                     <tr>
@@ -794,13 +792,13 @@ const StudentTranscript = (props) => {
               </div>
               <br />
               <div>
-                <h3 className="semlabel">Semester 4</h3>
-                <table className="transcriptTable">
+                <h3 className='semlabel'>Semester 4</h3>
+                <table className='transcriptTable'>
                   <tr>
-                    <th className="codeCol">Course Code</th>
-                    <th className="titleCol">Course Title</th>
-                    <th className="creditCol">Credits</th>
-                    <th className="GPCol">GP</th>
+                    <th className='codeCol'>Course Code</th>
+                    <th className='titleCol'>Course Title</th>
+                    <th className='creditCol'>Credits</th>
+                    <th className='GPCol'>GP</th>
                   </tr>
                   {sem4.map((sem) => (
                     <tr>
@@ -814,13 +812,13 @@ const StudentTranscript = (props) => {
               </div>
               <br />
               <div>
-                <h3 className="semlabel">Semester 5</h3>
-                <table className="transcriptTable">
+                <h3 className='semlabel'>Semester 5</h3>
+                <table className='transcriptTable'>
                   <tr>
-                    <th className="codeCol">Course Code</th>
-                    <th className="titleCol">Course Title</th>
-                    <th className="creditCol">Credits</th>
-                    <th className="GPCol">GP</th>
+                    <th className='codeCol'>Course Code</th>
+                    <th className='titleCol'>Course Title</th>
+                    <th className='creditCol'>Credits</th>
+                    <th className='GPCol'>GP</th>
                   </tr>
                   {sem5.map((sem) => (
                     <tr>
@@ -834,13 +832,13 @@ const StudentTranscript = (props) => {
               </div>
               <br />
               <div>
-                <h3 className="semlabel">Semester 6</h3>
-                <table className="transcriptTable">
+                <h3 className='semlabel'>Semester 6</h3>
+                <table className='transcriptTable'>
                   <tr>
-                    <th className="codeCol">Course Code</th>
-                    <th className="titleCol">Course Title</th>
-                    <th className="creditCol">Credits</th>
-                    <th className="GPCol">GP</th>
+                    <th className='codeCol'>Course Code</th>
+                    <th className='titleCol'>Course Title</th>
+                    <th className='creditCol'>Credits</th>
+                    <th className='GPCol'>GP</th>
                   </tr>
                   {sem6.map((sem) => (
                     <tr>
@@ -854,13 +852,13 @@ const StudentTranscript = (props) => {
               </div>
               <br />
               <div>
-                <h3 className="semlabel">Semester 7</h3>
-                <table className="transcriptTable">
+                <h3 className='semlabel'>Semester 7</h3>
+                <table className='transcriptTable'>
                   <tr>
-                    <th className="codeCol">Course Code</th>
-                    <th className="titleCol">Course Title</th>
-                    <th className="creditCol">Credits</th>
-                    <th className="GPCol">GP</th>
+                    <th className='codeCol'>Course Code</th>
+                    <th className='titleCol'>Course Title</th>
+                    <th className='creditCol'>Credits</th>
+                    <th className='GPCol'>GP</th>
                   </tr>
                   {sem7.map((sem) => (
                     <tr>
@@ -874,13 +872,13 @@ const StudentTranscript = (props) => {
               </div>
               <br />
               <div>
-                <h3 className="semlabel">Semester 8</h3>
-                <table className="transcriptTable">
+                <h3 className='semlabel'>Semester 8</h3>
+                <table className='transcriptTable'>
                   <tr>
-                    <th className="codeCol">Course Code</th>
-                    <th className="titleCol">Course Title</th>
-                    <th className="creditCol">Credits</th>
-                    <th className="GPCol">GP</th>
+                    <th className='codeCol'>Course Code</th>
+                    <th className='titleCol'>Course Title</th>
+                    <th className='creditCol'>Credits</th>
+                    <th className='GPCol'>GP</th>
                   </tr>
                   {sem8.map((sem) => (
                     <tr>
@@ -896,13 +894,13 @@ const StudentTranscript = (props) => {
           ) : studentdata.semester === 9 ? (
             <div>
               <div>
-                <h3 className="semlabel">Semester 1</h3>
-                <table className="transcriptTable">
+                <h3 className='semlabel'>Semester 1</h3>
+                <table className='transcriptTable'>
                   <tr>
-                    <th className="codeCol">Course Code</th>
-                    <th className="titleCol">Course Title</th>
-                    <th className="creditCol">Credits</th>
-                    <th className="GPCol">GP</th>
+                    <th className='codeCol'>Course Code</th>
+                    <th className='titleCol'>Course Title</th>
+                    <th className='creditCol'>Credits</th>
+                    <th className='GPCol'>GP</th>
                   </tr>
                   {sem1.map((sem) => (
                     <tr>
@@ -916,13 +914,13 @@ const StudentTranscript = (props) => {
               </div>
               <br />
               <div>
-                <h3 className="semlabel">Semester 2</h3>
-                <table className="transcriptTable">
+                <h3 className='semlabel'>Semester 2</h3>
+                <table className='transcriptTable'>
                   <tr>
-                    <th className="codeCol">Course Code</th>
-                    <th className="titleCol">Course Title</th>
-                    <th className="creditCol">Credits</th>
-                    <th className="GPCol">GP</th>
+                    <th className='codeCol'>Course Code</th>
+                    <th className='titleCol'>Course Title</th>
+                    <th className='creditCol'>Credits</th>
+                    <th className='GPCol'>GP</th>
                   </tr>
                   {sem2.map((sem) => (
                     <tr>
@@ -936,13 +934,13 @@ const StudentTranscript = (props) => {
               </div>
               <br />
               <div>
-                <h3 className="semlabel">Semester 3</h3>
-                <table className="transcriptTable">
+                <h3 className='semlabel'>Semester 3</h3>
+                <table className='transcriptTable'>
                   <tr>
-                    <th className="codeCol">Course Code</th>
-                    <th className="titleCol">Course Title</th>
-                    <th className="creditCol">Credits</th>
-                    <th className="GPCol">GP</th>
+                    <th className='codeCol'>Course Code</th>
+                    <th className='titleCol'>Course Title</th>
+                    <th className='creditCol'>Credits</th>
+                    <th className='GPCol'>GP</th>
                   </tr>
                   {sem3.map((sem) => (
                     <tr>
@@ -956,13 +954,13 @@ const StudentTranscript = (props) => {
               </div>
               <br />
               <div>
-                <h3 className="semlabel">Semester 4</h3>
-                <table className="transcriptTable">
+                <h3 className='semlabel'>Semester 4</h3>
+                <table className='transcriptTable'>
                   <tr>
-                    <th className="codeCol">Course Code</th>
-                    <th className="titleCol">Course Title</th>
-                    <th className="creditCol">Credits</th>
-                    <th className="GPCol">GP</th>
+                    <th className='codeCol'>Course Code</th>
+                    <th className='titleCol'>Course Title</th>
+                    <th className='creditCol'>Credits</th>
+                    <th className='GPCol'>GP</th>
                   </tr>
                   {sem4.map((sem) => (
                     <tr>
@@ -976,13 +974,13 @@ const StudentTranscript = (props) => {
               </div>
               <br />
               <div>
-                <h3 className="semlabel">Semester 5</h3>
-                <table className="transcriptTable">
+                <h3 className='semlabel'>Semester 5</h3>
+                <table className='transcriptTable'>
                   <tr>
-                    <th className="codeCol">Course Code</th>
-                    <th className="titleCol">Course Title</th>
-                    <th className="creditCol">Credits</th>
-                    <th className="GPCol">GP</th>
+                    <th className='codeCol'>Course Code</th>
+                    <th className='titleCol'>Course Title</th>
+                    <th className='creditCol'>Credits</th>
+                    <th className='GPCol'>GP</th>
                   </tr>
                   {sem5.map((sem) => (
                     <tr>
@@ -996,13 +994,13 @@ const StudentTranscript = (props) => {
               </div>
               <br />
               <div>
-                <h3 className="semlabel">Semester 6</h3>
-                <table className="transcriptTable">
+                <h3 className='semlabel'>Semester 6</h3>
+                <table className='transcriptTable'>
                   <tr>
-                    <th className="codeCol">Course Code</th>
-                    <th className="titleCol">Course Title</th>
-                    <th className="creditCol">Credits</th>
-                    <th className="GPCol">GP</th>
+                    <th className='codeCol'>Course Code</th>
+                    <th className='titleCol'>Course Title</th>
+                    <th className='creditCol'>Credits</th>
+                    <th className='GPCol'>GP</th>
                   </tr>
                   {sem6.map((sem) => (
                     <tr>
@@ -1016,13 +1014,13 @@ const StudentTranscript = (props) => {
               </div>
               <br />
               <div>
-                <h3 className="semlabel">Semester 7</h3>
-                <table className="transcriptTable">
+                <h3 className='semlabel'>Semester 7</h3>
+                <table className='transcriptTable'>
                   <tr>
-                    <th className="codeCol">Course Code</th>
-                    <th className="titleCol">Course Title</th>
-                    <th className="creditCol">Credits</th>
-                    <th className="GPCol">GP</th>
+                    <th className='codeCol'>Course Code</th>
+                    <th className='titleCol'>Course Title</th>
+                    <th className='creditCol'>Credits</th>
+                    <th className='GPCol'>GP</th>
                   </tr>
                   {sem7.map((sem) => (
                     <tr>
@@ -1036,13 +1034,13 @@ const StudentTranscript = (props) => {
               </div>
               <br />
               <div>
-                <h3 className="semlabel">Semester 8</h3>
-                <table className="transcriptTable">
+                <h3 className='semlabel'>Semester 8</h3>
+                <table className='transcriptTable'>
                   <tr>
-                    <th className="codeCol">Course Code</th>
-                    <th className="titleCol">Course Title</th>
-                    <th className="creditCol">Credits</th>
-                    <th className="GPCol">GP</th>
+                    <th className='codeCol'>Course Code</th>
+                    <th className='titleCol'>Course Title</th>
+                    <th className='creditCol'>Credits</th>
+                    <th className='GPCol'>GP</th>
                   </tr>
                   {sem8.map((sem) => (
                     <tr>
@@ -1056,13 +1054,13 @@ const StudentTranscript = (props) => {
               </div>
               <br />
               <div>
-                <h3 className="semlabel">Semester 9</h3>
-                <table className="transcriptTable">
+                <h3 className='semlabel'>Semester 9</h3>
+                <table className='transcriptTable'>
                   <tr>
-                    <th className="codeCol">Course Code</th>
-                    <th className="titleCol">Course Title</th>
-                    <th className="creditCol">Credits</th>
-                    <th className="GPCol">GP</th>
+                    <th className='codeCol'>Course Code</th>
+                    <th className='titleCol'>Course Title</th>
+                    <th className='creditCol'>Credits</th>
+                    <th className='GPCol'>GP</th>
                   </tr>
                   {sem9.map((sem) => (
                     <tr>
@@ -1078,13 +1076,13 @@ const StudentTranscript = (props) => {
           ) : studentdata.semester === 10 ? (
             <div>
               <div>
-                <h3 className="semlabel">Semester 1</h3>
-                <table className="transcriptTable">
+                <h3 className='semlabel'>Semester 1</h3>
+                <table className='transcriptTable'>
                   <tr>
-                    <th className="codeCol">Course Code</th>
-                    <th className="titleCol">Course Title</th>
-                    <th className="creditCol">Credits</th>
-                    <th className="GPCol">GP</th>
+                    <th className='codeCol'>Course Code</th>
+                    <th className='titleCol'>Course Title</th>
+                    <th className='creditCol'>Credits</th>
+                    <th className='GPCol'>GP</th>
                   </tr>
                   {sem1.map((sem) => (
                     <tr>
@@ -1098,13 +1096,13 @@ const StudentTranscript = (props) => {
               </div>
               <br />
               <div>
-                <h3 className="semlabel">Semester 2</h3>
-                <table className="transcriptTable">
+                <h3 className='semlabel'>Semester 2</h3>
+                <table className='transcriptTable'>
                   <tr>
-                    <th className="codeCol">Course Code</th>
-                    <th className="titleCol">Course Title</th>
-                    <th className="creditCol">Credits</th>
-                    <th className="GPCol">GP</th>
+                    <th className='codeCol'>Course Code</th>
+                    <th className='titleCol'>Course Title</th>
+                    <th className='creditCol'>Credits</th>
+                    <th className='GPCol'>GP</th>
                   </tr>
                   {sem2.map((sem) => (
                     <tr>
@@ -1118,13 +1116,13 @@ const StudentTranscript = (props) => {
               </div>
               <br />
               <div>
-                <h3 className="semlabel">Semester 3</h3>
-                <table className="transcriptTable">
+                <h3 className='semlabel'>Semester 3</h3>
+                <table className='transcriptTable'>
                   <tr>
-                    <th className="codeCol">Course Code</th>
-                    <th className="titleCol">Course Title</th>
-                    <th className="creditCol">Credits</th>
-                    <th className="GPCol">GP</th>
+                    <th className='codeCol'>Course Code</th>
+                    <th className='titleCol'>Course Title</th>
+                    <th className='creditCol'>Credits</th>
+                    <th className='GPCol'>GP</th>
                   </tr>
                   {sem3.map((sem) => (
                     <tr>
@@ -1138,13 +1136,13 @@ const StudentTranscript = (props) => {
               </div>
               <br />
               <div>
-                <h3 className="semlabel">Semester 4</h3>
-                <table className="transcriptTable">
+                <h3 className='semlabel'>Semester 4</h3>
+                <table className='transcriptTable'>
                   <tr>
-                    <th className="codeCol">Course Code</th>
-                    <th className="titleCol">Course Title</th>
-                    <th className="creditCol">Credits</th>
-                    <th className="GPCol">GP</th>
+                    <th className='codeCol'>Course Code</th>
+                    <th className='titleCol'>Course Title</th>
+                    <th className='creditCol'>Credits</th>
+                    <th className='GPCol'>GP</th>
                   </tr>
                   {sem4.map((sem) => (
                     <tr>
@@ -1158,13 +1156,13 @@ const StudentTranscript = (props) => {
               </div>
               <br />
               <div>
-                <h3 className="semlabel">Semester 5</h3>
-                <table className="transcriptTable">
+                <h3 className='semlabel'>Semester 5</h3>
+                <table className='transcriptTable'>
                   <tr>
-                    <th className="codeCol">Course Code</th>
-                    <th className="titleCol">Course Title</th>
-                    <th className="creditCol">Credits</th>
-                    <th className="GPCol">GP</th>
+                    <th className='codeCol'>Course Code</th>
+                    <th className='titleCol'>Course Title</th>
+                    <th className='creditCol'>Credits</th>
+                    <th className='GPCol'>GP</th>
                   </tr>
                   {sem5.map((sem) => (
                     <tr>
@@ -1178,13 +1176,13 @@ const StudentTranscript = (props) => {
               </div>
               <br />
               <div>
-                <h3 className="semlabel">Semester 6</h3>
-                <table className="transcriptTable">
+                <h3 className='semlabel'>Semester 6</h3>
+                <table className='transcriptTable'>
                   <tr>
-                    <th className="codeCol">Course Code</th>
-                    <th className="titleCol">Course Title</th>
-                    <th className="creditCol">Credits</th>
-                    <th className="GPCol">GP</th>
+                    <th className='codeCol'>Course Code</th>
+                    <th className='titleCol'>Course Title</th>
+                    <th className='creditCol'>Credits</th>
+                    <th className='GPCol'>GP</th>
                   </tr>
                   {sem6.map((sem) => (
                     <tr>
@@ -1198,13 +1196,13 @@ const StudentTranscript = (props) => {
               </div>
               <br />
               <div>
-                <h3 className="semlabel">Semester 7</h3>
-                <table className="transcriptTable">
+                <h3 className='semlabel'>Semester 7</h3>
+                <table className='transcriptTable'>
                   <tr>
-                    <th className="codeCol">Course Code</th>
-                    <th className="titleCol">Course Title</th>
-                    <th className="creditCol">Credits</th>
-                    <th className="GPCol">GP</th>
+                    <th className='codeCol'>Course Code</th>
+                    <th className='titleCol'>Course Title</th>
+                    <th className='creditCol'>Credits</th>
+                    <th className='GPCol'>GP</th>
                   </tr>
                   {sem7.map((sem) => (
                     <tr>
@@ -1218,13 +1216,13 @@ const StudentTranscript = (props) => {
               </div>
               <br />
               <div>
-                <h3 className="semlabel">Semester 8</h3>
-                <table className="transcriptTable">
+                <h3 className='semlabel'>Semester 8</h3>
+                <table className='transcriptTable'>
                   <tr>
-                    <th className="codeCol">Course Code</th>
-                    <th className="titleCol">Course Title</th>
-                    <th className="creditCol">Credits</th>
-                    <th className="GPCol">GP</th>
+                    <th className='codeCol'>Course Code</th>
+                    <th className='titleCol'>Course Title</th>
+                    <th className='creditCol'>Credits</th>
+                    <th className='GPCol'>GP</th>
                   </tr>
                   {sem8.map((sem) => (
                     <tr>
@@ -1238,13 +1236,13 @@ const StudentTranscript = (props) => {
               </div>
               <br />
               <div>
-                <h3 className="semlabel">Semester 9</h3>
-                <table className="transcriptTable">
+                <h3 className='semlabel'>Semester 9</h3>
+                <table className='transcriptTable'>
                   <tr>
-                    <th className="codeCol">Course Code</th>
-                    <th className="titleCol">Course Title</th>
-                    <th className="creditCol">Credits</th>
-                    <th className="GPCol">GP</th>
+                    <th className='codeCol'>Course Code</th>
+                    <th className='titleCol'>Course Title</th>
+                    <th className='creditCol'>Credits</th>
+                    <th className='GPCol'>GP</th>
                   </tr>
                   {sem9.map((sem) => (
                     <tr>
@@ -1258,13 +1256,13 @@ const StudentTranscript = (props) => {
               </div>
               <br />
               <div>
-                <h3 className="semlabel">Semester 10</h3>
-                <table className="transcriptTable">
+                <h3 className='semlabel'>Semester 10</h3>
+                <table className='transcriptTable'>
                   <tr>
-                    <th className="codeCol">Course Code</th>
-                    <th className="titleCol">Course Title</th>
-                    <th className="creditCol">Credits</th>
-                    <th className="GPCol">GP</th>
+                    <th className='codeCol'>Course Code</th>
+                    <th className='titleCol'>Course Title</th>
+                    <th className='creditCol'>Credits</th>
+                    <th className='GPCol'>GP</th>
                   </tr>
                   {sem10.map((sem) => (
                     <tr>
@@ -1280,13 +1278,13 @@ const StudentTranscript = (props) => {
           ) : studentdata.semester === 11 ? (
             <div>
               <div>
-                <h3 className="semlabel">Semester 1</h3>
-                <table className="transcriptTable">
+                <h3 className='semlabel'>Semester 1</h3>
+                <table className='transcriptTable'>
                   <tr>
-                    <th className="codeCol">Course Code</th>
-                    <th className="titleCol">Course Title</th>
-                    <th className="creditCol">Credits</th>
-                    <th className="GPCol">GP</th>
+                    <th className='codeCol'>Course Code</th>
+                    <th className='titleCol'>Course Title</th>
+                    <th className='creditCol'>Credits</th>
+                    <th className='GPCol'>GP</th>
                   </tr>
                   {sem1.map((sem) => (
                     <tr>
@@ -1300,13 +1298,13 @@ const StudentTranscript = (props) => {
               </div>
               <br />
               <div>
-                <h3 className="semlabel">Semester 2</h3>
-                <table className="transcriptTable">
+                <h3 className='semlabel'>Semester 2</h3>
+                <table className='transcriptTable'>
                   <tr>
-                    <th className="codeCol">Course Code</th>
-                    <th className="titleCol">Course Title</th>
-                    <th className="creditCol">Credits</th>
-                    <th className="GPCol">GP</th>
+                    <th className='codeCol'>Course Code</th>
+                    <th className='titleCol'>Course Title</th>
+                    <th className='creditCol'>Credits</th>
+                    <th className='GPCol'>GP</th>
                   </tr>
                   {sem2.map((sem) => (
                     <tr>
@@ -1320,13 +1318,13 @@ const StudentTranscript = (props) => {
               </div>
               <br />
               <div>
-                <h3 className="semlabel">Semester 3</h3>
-                <table className="transcriptTable">
+                <h3 className='semlabel'>Semester 3</h3>
+                <table className='transcriptTable'>
                   <tr>
-                    <th className="codeCol">Course Code</th>
-                    <th className="titleCol">Course Title</th>
-                    <th className="creditCol">Credits</th>
-                    <th className="GPCol">GP</th>
+                    <th className='codeCol'>Course Code</th>
+                    <th className='titleCol'>Course Title</th>
+                    <th className='creditCol'>Credits</th>
+                    <th className='GPCol'>GP</th>
                   </tr>
                   {sem3.map((sem) => (
                     <tr>
@@ -1340,13 +1338,13 @@ const StudentTranscript = (props) => {
               </div>
               <br />
               <div>
-                <h3 className="semlabel">Semester 4</h3>
-                <table className="transcriptTable">
+                <h3 className='semlabel'>Semester 4</h3>
+                <table className='transcriptTable'>
                   <tr>
-                    <th className="codeCol">Course Code</th>
-                    <th className="titleCol">Course Title</th>
-                    <th className="creditCol">Credits</th>
-                    <th className="GPCol">GP</th>
+                    <th className='codeCol'>Course Code</th>
+                    <th className='titleCol'>Course Title</th>
+                    <th className='creditCol'>Credits</th>
+                    <th className='GPCol'>GP</th>
                   </tr>
                   {sem4.map((sem) => (
                     <tr>
@@ -1360,13 +1358,13 @@ const StudentTranscript = (props) => {
               </div>
               <br />
               <div>
-                <h3 className="semlabel">Semester 5</h3>
-                <table className="transcriptTable">
+                <h3 className='semlabel'>Semester 5</h3>
+                <table className='transcriptTable'>
                   <tr>
-                    <th className="codeCol">Course Code</th>
-                    <th className="titleCol">Course Title</th>
-                    <th className="creditCol">Credits</th>
-                    <th className="GPCol">GP</th>
+                    <th className='codeCol'>Course Code</th>
+                    <th className='titleCol'>Course Title</th>
+                    <th className='creditCol'>Credits</th>
+                    <th className='GPCol'>GP</th>
                   </tr>
                   {sem5.map((sem) => (
                     <tr>
@@ -1380,13 +1378,13 @@ const StudentTranscript = (props) => {
               </div>
               <br />
               <div>
-                <h3 className="semlabel">Semester 6</h3>
-                <table className="transcriptTable">
+                <h3 className='semlabel'>Semester 6</h3>
+                <table className='transcriptTable'>
                   <tr>
-                    <th className="codeCol">Course Code</th>
-                    <th className="titleCol">Course Title</th>
-                    <th className="creditCol">Credits</th>
-                    <th className="GPCol">GP</th>
+                    <th className='codeCol'>Course Code</th>
+                    <th className='titleCol'>Course Title</th>
+                    <th className='creditCol'>Credits</th>
+                    <th className='GPCol'>GP</th>
                   </tr>
                   {sem6.map((sem) => (
                     <tr>
@@ -1400,13 +1398,13 @@ const StudentTranscript = (props) => {
               </div>
               <br />
               <div>
-                <h3 className="semlabel">Semester 7</h3>
-                <table className="transcriptTable">
+                <h3 className='semlabel'>Semester 7</h3>
+                <table className='transcriptTable'>
                   <tr>
-                    <th className="codeCol">Course Code</th>
-                    <th className="titleCol">Course Title</th>
-                    <th className="creditCol">Credits</th>
-                    <th className="GPCol">GP</th>
+                    <th className='codeCol'>Course Code</th>
+                    <th className='titleCol'>Course Title</th>
+                    <th className='creditCol'>Credits</th>
+                    <th className='GPCol'>GP</th>
                   </tr>
                   {sem7.map((sem) => (
                     <tr>
@@ -1420,13 +1418,13 @@ const StudentTranscript = (props) => {
               </div>
               <br />
               <div>
-                <h3 className="semlabel">Semester 8</h3>
-                <table className="transcriptTable">
+                <h3 className='semlabel'>Semester 8</h3>
+                <table className='transcriptTable'>
                   <tr>
-                    <th className="codeCol">Course Code</th>
-                    <th className="titleCol">Course Title</th>
-                    <th className="creditCol">Credits</th>
-                    <th className="GPCol">GP</th>
+                    <th className='codeCol'>Course Code</th>
+                    <th className='titleCol'>Course Title</th>
+                    <th className='creditCol'>Credits</th>
+                    <th className='GPCol'>GP</th>
                   </tr>
                   {sem8.map((sem) => (
                     <tr>
@@ -1440,13 +1438,13 @@ const StudentTranscript = (props) => {
               </div>
               <br />
               <div>
-                <h3 className="semlabel">Semester 9</h3>
-                <table className="transcriptTable">
+                <h3 className='semlabel'>Semester 9</h3>
+                <table className='transcriptTable'>
                   <tr>
-                    <th className="codeCol">Course Code</th>
-                    <th className="titleCol">Course Title</th>
-                    <th className="creditCol">Credits</th>
-                    <th className="GPCol">GP</th>
+                    <th className='codeCol'>Course Code</th>
+                    <th className='titleCol'>Course Title</th>
+                    <th className='creditCol'>Credits</th>
+                    <th className='GPCol'>GP</th>
                   </tr>
                   {sem9.map((sem) => (
                     <tr>
@@ -1460,13 +1458,13 @@ const StudentTranscript = (props) => {
               </div>
               <br />
               <div>
-                <h3 className="semlabel">Semester 10</h3>
-                <table className="transcriptTable">
+                <h3 className='semlabel'>Semester 10</h3>
+                <table className='transcriptTable'>
                   <tr>
-                    <th className="codeCol">Course Code</th>
-                    <th className="titleCol">Course Title</th>
-                    <th className="creditCol">Credits</th>
-                    <th className="GPCol">GP</th>
+                    <th className='codeCol'>Course Code</th>
+                    <th className='titleCol'>Course Title</th>
+                    <th className='creditCol'>Credits</th>
+                    <th className='GPCol'>GP</th>
                   </tr>
                   {sem10.map((sem) => (
                     <tr>
@@ -1480,13 +1478,13 @@ const StudentTranscript = (props) => {
               </div>
               <br />
               <div>
-                <h3 className="semlabel">Semester 11</h3>
-                <table className="transcriptTable">
+                <h3 className='semlabel'>Semester 11</h3>
+                <table className='transcriptTable'>
                   <tr>
-                    <th className="codeCol">Course Code</th>
-                    <th className="titleCol">Course Title</th>
-                    <th className="creditCol">Credits</th>
-                    <th className="GPCol">GP</th>
+                    <th className='codeCol'>Course Code</th>
+                    <th className='titleCol'>Course Title</th>
+                    <th className='creditCol'>Credits</th>
+                    <th className='GPCol'>GP</th>
                   </tr>
                   {sem11.map((sem) => (
                     <tr>
@@ -1502,13 +1500,13 @@ const StudentTranscript = (props) => {
           ) : studentdata.semester === 12 ? (
             <div>
               <div>
-                <h3 className="semlabel">Semester 1</h3>
-                <table className="transcriptTable">
+                <h3 className='semlabel'>Semester 1</h3>
+                <table className='transcriptTable'>
                   <tr>
-                    <th className="codeCol">Course Code</th>
-                    <th className="titleCol">Course Title</th>
-                    <th className="creditCol">Credits</th>
-                    <th className="GPCol">GP</th>
+                    <th className='codeCol'>Course Code</th>
+                    <th className='titleCol'>Course Title</th>
+                    <th className='creditCol'>Credits</th>
+                    <th className='GPCol'>GP</th>
                   </tr>
                   {sem1.map((sem) => (
                     <tr>
@@ -1522,13 +1520,13 @@ const StudentTranscript = (props) => {
               </div>
               <br />
               <div>
-                <h3 className="semlabel">Semester 2</h3>
-                <table className="transcriptTable">
+                <h3 className='semlabel'>Semester 2</h3>
+                <table className='transcriptTable'>
                   <tr>
-                    <th className="codeCol">Course Code</th>
-                    <th className="titleCol">Course Title</th>
-                    <th className="creditCol">Credits</th>
-                    <th className="GPCol">GP</th>
+                    <th className='codeCol'>Course Code</th>
+                    <th className='titleCol'>Course Title</th>
+                    <th className='creditCol'>Credits</th>
+                    <th className='GPCol'>GP</th>
                   </tr>
                   {sem2.map((sem) => (
                     <tr>
@@ -1542,13 +1540,13 @@ const StudentTranscript = (props) => {
               </div>
               <br />
               <div>
-                <h3 className="semlabel">Semester 3</h3>
-                <table className="transcriptTable">
+                <h3 className='semlabel'>Semester 3</h3>
+                <table className='transcriptTable'>
                   <tr>
-                    <th className="codeCol">Course Code</th>
-                    <th className="titleCol">Course Title</th>
-                    <th className="creditCol">Credits</th>
-                    <th className="GPCol">GP</th>
+                    <th className='codeCol'>Course Code</th>
+                    <th className='titleCol'>Course Title</th>
+                    <th className='creditCol'>Credits</th>
+                    <th className='GPCol'>GP</th>
                   </tr>
                   {sem3.map((sem) => (
                     <tr>
@@ -1562,13 +1560,13 @@ const StudentTranscript = (props) => {
               </div>
               <br />
               <div>
-                <h3 className="semlabel">Semester 4</h3>
-                <table className="transcriptTable">
+                <h3 className='semlabel'>Semester 4</h3>
+                <table className='transcriptTable'>
                   <tr>
-                    <th className="codeCol">Course Code</th>
-                    <th className="titleCol">Course Title</th>
-                    <th className="creditCol">Credits</th>
-                    <th className="GPCol">GP</th>
+                    <th className='codeCol'>Course Code</th>
+                    <th className='titleCol'>Course Title</th>
+                    <th className='creditCol'>Credits</th>
+                    <th className='GPCol'>GP</th>
                   </tr>
                   {sem4.map((sem) => (
                     <tr>
@@ -1582,13 +1580,13 @@ const StudentTranscript = (props) => {
               </div>
               <br />
               <div>
-                <h3 className="semlabel">Semester 5</h3>
-                <table className="transcriptTable">
+                <h3 className='semlabel'>Semester 5</h3>
+                <table className='transcriptTable'>
                   <tr>
-                    <th className="codeCol">Course Code</th>
-                    <th className="titleCol">Course Title</th>
-                    <th className="creditCol">Credits</th>
-                    <th className="GPCol">GP</th>
+                    <th className='codeCol'>Course Code</th>
+                    <th className='titleCol'>Course Title</th>
+                    <th className='creditCol'>Credits</th>
+                    <th className='GPCol'>GP</th>
                   </tr>
                   {sem5.map((sem) => (
                     <tr>
@@ -1602,13 +1600,13 @@ const StudentTranscript = (props) => {
               </div>
               <br />
               <div>
-                <h3 className="semlabel">Semester 6</h3>
-                <table className="transcriptTable">
+                <h3 className='semlabel'>Semester 6</h3>
+                <table className='transcriptTable'>
                   <tr>
-                    <th className="codeCol">Course Code</th>
-                    <th className="titleCol">Course Title</th>
-                    <th className="creditCol">Credits</th>
-                    <th className="GPCol">GP</th>
+                    <th className='codeCol'>Course Code</th>
+                    <th className='titleCol'>Course Title</th>
+                    <th className='creditCol'>Credits</th>
+                    <th className='GPCol'>GP</th>
                   </tr>
                   {sem6.map((sem) => (
                     <tr>
@@ -1622,13 +1620,13 @@ const StudentTranscript = (props) => {
               </div>
               <br />
               <div>
-                <h3 className="semlabel">Semester 7</h3>
-                <table className="transcriptTable">
+                <h3 className='semlabel'>Semester 7</h3>
+                <table className='transcriptTable'>
                   <tr>
-                    <th className="codeCol">Course Code</th>
-                    <th className="titleCol">Course Title</th>
-                    <th className="creditCol">Credits</th>
-                    <th className="GPCol">GP</th>
+                    <th className='codeCol'>Course Code</th>
+                    <th className='titleCol'>Course Title</th>
+                    <th className='creditCol'>Credits</th>
+                    <th className='GPCol'>GP</th>
                   </tr>
                   {sem7.map((sem) => (
                     <tr>
@@ -1642,13 +1640,13 @@ const StudentTranscript = (props) => {
               </div>
               <br />
               <div>
-                <h3 className="semlabel">Semester 8</h3>
-                <table className="transcriptTable">
+                <h3 className='semlabel'>Semester 8</h3>
+                <table className='transcriptTable'>
                   <tr>
-                    <th className="codeCol">Course Code</th>
-                    <th className="titleCol">Course Title</th>
-                    <th className="creditCol">Credits</th>
-                    <th className="GPCol">GP</th>
+                    <th className='codeCol'>Course Code</th>
+                    <th className='titleCol'>Course Title</th>
+                    <th className='creditCol'>Credits</th>
+                    <th className='GPCol'>GP</th>
                   </tr>
                   {sem8.map((sem) => (
                     <tr>
@@ -1662,13 +1660,13 @@ const StudentTranscript = (props) => {
               </div>
               <br />
               <div>
-                <h3 className="semlabel">Semester 9</h3>
-                <table className="transcriptTable">
+                <h3 className='semlabel'>Semester 9</h3>
+                <table className='transcriptTable'>
                   <tr>
-                    <th className="codeCol">Course Code</th>
-                    <th className="titleCol">Course Title</th>
-                    <th className="creditCol">Credits</th>
-                    <th className="GPCol">GP</th>
+                    <th className='codeCol'>Course Code</th>
+                    <th className='titleCol'>Course Title</th>
+                    <th className='creditCol'>Credits</th>
+                    <th className='GPCol'>GP</th>
                   </tr>
                   {sem9.map((sem) => (
                     <tr>
@@ -1682,13 +1680,13 @@ const StudentTranscript = (props) => {
               </div>
               <br />
               <div>
-                <h3 className="semlabel">Semester 10</h3>
-                <table className="transcriptTable">
+                <h3 className='semlabel'>Semester 10</h3>
+                <table className='transcriptTable'>
                   <tr>
-                    <th className="codeCol">Course Code</th>
-                    <th className="titleCol">Course Title</th>
-                    <th className="creditCol">Credits</th>
-                    <th className="GPCol">GP</th>
+                    <th className='codeCol'>Course Code</th>
+                    <th className='titleCol'>Course Title</th>
+                    <th className='creditCol'>Credits</th>
+                    <th className='GPCol'>GP</th>
                   </tr>
                   {sem10.map((sem) => (
                     <tr>
@@ -1702,13 +1700,13 @@ const StudentTranscript = (props) => {
               </div>
               <br />
               <div>
-                <h3 className="semlabel">Semester 11</h3>
-                <table className="transcriptTable">
+                <h3 className='semlabel'>Semester 11</h3>
+                <table className='transcriptTable'>
                   <tr>
-                    <th className="codeCol">Course Code</th>
-                    <th className="titleCol">Course Title</th>
-                    <th className="creditCol">Credits</th>
-                    <th className="GPCol">GP</th>
+                    <th className='codeCol'>Course Code</th>
+                    <th className='titleCol'>Course Title</th>
+                    <th className='creditCol'>Credits</th>
+                    <th className='GPCol'>GP</th>
                   </tr>
                   {sem11.map((sem) => (
                     <tr>
@@ -1722,13 +1720,13 @@ const StudentTranscript = (props) => {
               </div>
               <br />
               <div>
-                <h3 className="semlabel">Semester 12</h3>
-                <table className="transcriptTable">
+                <h3 className='semlabel'>Semester 12</h3>
+                <table className='transcriptTable'>
                   <tr>
-                    <th className="codeCol">Course Code</th>
-                    <th className="titleCol">Course Title</th>
-                    <th className="creditCol">Credits</th>
-                    <th className="GPCol">GP</th>
+                    <th className='codeCol'>Course Code</th>
+                    <th className='titleCol'>Course Title</th>
+                    <th className='creditCol'>Credits</th>
+                    <th className='GPCol'>GP</th>
                   </tr>
                   {sem12.map((sem) => (
                     <tr>
@@ -1746,8 +1744,8 @@ const StudentTranscript = (props) => {
           )}
 
           <br />
-          <h3 className="semlabel">CGPA:</h3>
-          <h3 className="sem">{studentdata.Result[0].CGPA}</h3>
+          <h3 className='semlabel'>CGPA:</h3>
+          <h3 className='sem'>{studentdata.Result[0].CGPA}</h3>
         </div>
       )}
     </Fragment>

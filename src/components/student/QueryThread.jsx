@@ -18,15 +18,13 @@ const QueryThread = () => {
   const [pageLoad, setPageLoad] = useState(0);
   const [studentChat, setStudentChat] = useState([]);
   const chat = async () => {
-    const res = await fetch(
-      `https://backend-three-nu.vercel.app/ChatBox/S_ViewMessage/${subject}`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const res = await fetch(`https://backend-three-nu.vercel.app/ChatBox/S_ViewMessage/${subject}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: localStorage.getItem("S_token"),
+      },
+    });
     const data = await res.json();
     setMessage1("");
     if (data.status === "success") {
@@ -52,88 +50,63 @@ const QueryThread = () => {
       return;
     }
     const message = message1;
-    const res = await fetch(
-      `https://backend-three-nu.vercel.app/ChatBox/S_SendMessage/${subject}/${message}`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const res = await fetch(`https://backend-three-nu.vercel.app/ChatBox/S_SendMessage/${subject}/${message}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: localStorage.getItem("S_token"),
+      },
+    });
     await res.json();
     setPageLoad(pageLoad + 1);
   };
 
   return (
-    <div className="maincontainer">
+    <div className='maincontainer'>
       <TopMenu />
       <MainMenu />
-      <div className="freezesemesterdiv">
-        <h2 className="freezesemestertitle">
+      <div className='freezesemesterdiv'>
+        <h2 className='freezesemestertitle'>
           <div>
-            <Link to="/MailBox">
-              <img src={back} alt="" className="backToInbox" />
+            <Link to='/MailBox'>
+              <img src={back} alt='' className='backToInbox' />
             </Link>
             Query Box
           </div>
         </h2>
       </div>
-      <div className="msgthreadcontainer">
-        <p className="subjectHeading">
+      <div className='msgthreadcontainer'>
+        <p className='subjectHeading'>
           <b>Subject:</b> {subject}
         </p>
         {studentChat.map((chat) =>
           chat.name === name ? (
             <div>
-              <div className="Sent">
+              <div className='Sent'>
                 {chat.message}
                 <br />
-                <p className="time">{chat.date}</p>
+                <p className='time'>{chat.date}</p>
               </div>
             </div>
           ) : (
             <div>
-              <div className="Received">
+              <div className='Received'>
                 {chat.message}
                 <br />
-                <p className="time">{chat.date}</p>
+                <p className='time'>{chat.date}</p>
               </div>
             </div>
           )
         )}
       </div>
-      <div className="msgTextAreaContainer">
-        <form action="">
-          <textarea
-            name="message1"
-            value={message1}
-            onChange={(e) => setMessage1(e.target.value)}
-            id="message"
-            cols="100"
-            rows="1"
-            className="msgTextArea"
-          ></textarea>
+      <div className='msgTextAreaContainer'>
+        <form action=''>
+          <textarea name='message1' value={message1} onChange={(e) => setMessage1(e.target.value)} id='message' cols='100' rows='1' className='msgTextArea'></textarea>
           {/* <button id="btn">kdkjsjsdjskj</button> */}
-          <img
-            src={sendMessage}
-            alt=""
-            className="sendMessageIcon"
-            onClick={sendsms}
-          />
+          <img src={sendMessage} alt='' className='sendMessageIcon' onClick={sendsms} />
         </form>
       </div>
-      <ToastContainer
-        position="top-center"
-        autoClose={2000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
+      <ToastContainer position='top-center' autoClose={2000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
       <Footer />
     </div>
   );

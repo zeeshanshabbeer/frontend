@@ -11,17 +11,15 @@ const PendingRequests = () => {
   const navigate = useNavigate();
   const S_Profile = async () => {
     try {
-      const res = await fetch(
-        "https://backend-three-nu.vercel.app/BatchAdvisor/Add_Drop_Freeze_pending",
-        {
-          method: "GET",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          },
-          credentials: "include",
-        }
-      );
+      const res = await fetch("https://backend-three-nu.vercel.app/BatchAdvisor/Add_Drop_Freeze_pending", {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          authorization: localStorage.getItem("BA_token"),
+        },
+        credentials: "include",
+      });
 
       const data = await res.json();
       setUserData(data.message);
@@ -40,41 +38,32 @@ const PendingRequests = () => {
   }, []);
 
   return (
-    <div className="BAprofilecontainer">
+    <div className='BAprofilecontainer'>
       <BatchAdvisorTopMenu />
       <BatchAdvisorMainMenu />
-      <div className="menuheadingdiv">
-        <h2 className="freezesemestertitle">Pending Requests</h2>
+      <div className='menuheadingdiv'>
+        <h2 className='freezesemestertitle'>Pending Requests</h2>
       </div>
       {userData.length === 0 ? (
-        <div className="emptydiv">
-          <h2 className="emptytext">You don't have any pending requests!</h2>
+        <div className='emptydiv'>
+          <h2 className='emptytext'>You don't have any pending requests!</h2>
         </div>
       ) : (
-        <table className="pendingTable">
+        <table className='pendingTable'>
           <tr>
-            <th className="pendingReg">Registration No.</th>
-            <th className="pendingName">Name</th>
-            <th className="pendingType">Request Type</th>
-            <th className="formIcon"></th>
+            <th className='pendingReg'>Registration No.</th>
+            <th className='pendingName'>Name</th>
+            <th className='pendingType'>Request Type</th>
+            <th className='formIcon'></th>
           </tr>
           {userData.map((pending) => (
             <tr>
-              <td className="pendingReg">{pending.registrationId}</td>
-              <td className="pendingName">{pending.name}</td>
-              <td className="pendingType">{pending.request}</td>
-              <td className="formIcon">
-                <Link
-                  to={
-                    pending.request === "Freeze Semester"
-                      ? "/FreezeSemesterForm"
-                      : pending.request === "Add Pending"
-                      ? "/AddForm"
-                      : "/DropForm"
-                  }
-                  state={pending.registrationId}
-                >
-                  <img className="nexticon" src={next} alt="" />
+              <td className='pendingReg'>{pending.registrationId}</td>
+              <td className='pendingName'>{pending.name}</td>
+              <td className='pendingType'>{pending.request}</td>
+              <td className='formIcon'>
+                <Link to={pending.request === "Freeze Semester" ? "/FreezeSemesterForm" : pending.request === "Add Pending" ? "/AddForm" : "/DropForm"} state={pending.registrationId}>
+                  <img className='nexticon' src={next} alt='' />
                 </Link>
               </td>
             </tr>

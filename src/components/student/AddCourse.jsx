@@ -14,17 +14,15 @@ const AddCourse = () => {
   //fetch credits hours
   const [creditHours, setCreditHours] = useState("");
   const getCreditsHour = async () => {
-    const res = await fetch(
-      "https://backend-three-nu.vercel.app/AddCourse/CreditHour",
-      {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        credentials: "include",
-      }
-    );
+    const res = await fetch("https://backend-three-nu.vercel.app/AddCourse/CreditHour", {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        authorization: localStorage.getItem("S_token"),
+      },
+      credentials: "include",
+    });
     const data = await res.json();
     if (data.status === "success") {
       setCreditHours(data.message);
@@ -36,17 +34,15 @@ const AddCourse = () => {
   // get all courses that student can add
   const [getCourses, setGetCourses] = useState([]);
   const getAddCourses = async () => {
-    const res = await fetch(
-      "https://backend-three-nu.vercel.app/AddCourse/CoursesThatAdded",
-      {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        credentials: "include",
-      }
-    );
+    const res = await fetch("https://backend-three-nu.vercel.app/AddCourse/CoursesThatAdded", {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        authorization: localStorage.getItem("S_token"),
+      },
+      credentials: "include",
+    });
     const data = await res.json();
     if (data.status === "success") {
       setGetCourses(data.message);
@@ -65,17 +61,15 @@ const AddCourse = () => {
 
   const TimeTableClash = async () => {
     const subject = addcourse;
-    const res = await fetch(
-      `https://backend-three-nu.vercel.app/Timetable/TimetableClashes/${subject}`,
-      {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        credentials: "include",
-      }
-    );
+    const res = await fetch(`https://backend-three-nu.vercel.app/Timetable/TimetableClashes/${subject}`, {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        authorization: localStorage.getItem("S_token"),
+      },
+      credentials: "include",
+    });
     const data = await res.json();
     if (data.status === "success") {
       setTimetableClash(data.message);
@@ -89,17 +83,15 @@ const AddCourse = () => {
   // get all(sos or elective) courses to check what is coursecode and credits hours
   const [allCourses, setAllCourses] = useState([]);
   const getAllCourses = async () => {
-    const res = await fetch(
-      "https://backend-three-nu.vercel.app/SechemeOfStudy/AllCourses",
-      {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        credentials: "include",
-      }
-    );
+    const res = await fetch("https://backend-three-nu.vercel.app/SechemeOfStudy/AllCourses", {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        authorization: localStorage.getItem("S_token"),
+      },
+      credentials: "include",
+    });
     const data = await res.json();
     if (data.status === "success") {
       setAllCourses(data.message);
@@ -141,17 +133,15 @@ const AddCourse = () => {
     setSections("");
     setReasons("");
     setFileName();
-    const res = await fetch(
-      "https://backend-three-nu.vercel.app/PendingAddCourse/AddCourses",
-      {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        credentials: "include",
-      }
-    );
+    const res = await fetch("https://backend-three-nu.vercel.app/PendingAddCourse/AddCourses", {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        authorization: localStorage.getItem("S_token"),
+      },
+      credentials: "include",
+    });
     const data = await res.json();
     if (data.status === "success") {
       setDetail(data.message);
@@ -202,19 +192,13 @@ const AddCourse = () => {
             for (let j = 0; j < allCourses[i].prerequisite.length; j++) {
               if (allCourses[i].prerequisite.length === 1) {
                 for (let k = 0; k < allCourses.length; k++) {
-                  if (
-                    allCourses[k].courseCode ===
-                    allCourses[i].prerequisite[j].course
-                  ) {
+                  if (allCourses[k].courseCode === allCourses[i].prerequisite[j].course) {
                     preReqCourse = allCourses[k].courseName;
                   }
                 }
               } else {
                 for (let k = 0; k < allCourses.length; k++) {
-                  if (
-                    allCourses[k].courseCode ===
-                    allCourses[i].prerequisite[j].course
-                  ) {
+                  if (allCourses[k].courseCode === allCourses[i].prerequisite[j].course) {
                     preReqCourse = allCourses[k].courseName;
                   }
                 }
@@ -223,25 +207,23 @@ const AddCourse = () => {
           }
         }
       }
-      const res = await fetch(
-        "https://backend-three-nu.vercel.app/PendingAddCourse/AddpendingCourses",
-        {
-          method: "POST",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            courseCode,
-            courseName,
-            section,
-            credits,
-            reason,
-            preTest,
-            preReqCourse,
-          }),
-        }
-      );
+      const res = await fetch("https://backend-three-nu.vercel.app/PendingAddCourse/AddpendingCourses", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          authorization: localStorage.getItem("S_token"),
+        },
+        body: JSON.stringify({
+          courseCode,
+          courseName,
+          section,
+          credits,
+          reason,
+          preTest,
+          preReqCourse,
+        }),
+      });
       const data = await res.json();
       if (data.status === "success") {
         Success("Course added successfully.");
@@ -252,17 +234,15 @@ const AddCourse = () => {
 
   //click on delete button
   const dele1 = async (courseName) => {
-    const res = await fetch(
-      `https://backend-three-nu.vercel.app/PendingAddCourse/DeleteSpecificRecord/${courseName}`,
-      {
-        method: "DELETE",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        credentials: "include",
-      }
-    );
+    const res = await fetch(`https://backend-three-nu.vercel.app/PendingAddCourse/DeleteSpecificRecord/${courseName}`, {
+      method: "DELETE",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        authorization: localStorage.getItem("S_token"),
+      },
+      credentials: "include",
+    });
     const data = await res.json();
     if (data.status === "success") {
       Success(data.message);
@@ -285,13 +265,13 @@ const AddCourse = () => {
     const formData = new FormData();
     formData.append("fee", fileName);
     setFileName();
-    const res = await fetch(
-      "https://backend-three-nu.vercel.app/AddCourse/submit_AddForm",
-      {
-        method: "POST",
-        body: formData,
-      }
-    );
+    const res = await fetch("https://backend-three-nu.vercel.app/AddCourse/submit_AddForm", {
+      method: "POST",
+      headers: {
+        authorization: localStorage.getItem("S_token"),
+      },
+      body: formData,
+    });
     const data = await res.json();
     setLoadComponents(loadComponents + 1);
     if (data.status === "success") {
@@ -308,204 +288,116 @@ const AddCourse = () => {
     return;
   };
   return (
-    <div className="maincontainer">
+    <div className='maincontainer'>
       <TopMenu />
       <MainMenu />
-      <div className="freezesemesterdiv">
-        <h2 className="freezesemestertitle">Add Course</h2>
+      <div className='freezesemesterdiv'>
+        <h2 className='freezesemestertitle'>Add Course</h2>
       </div>
-      <div className="AddCourseFormContainer">
-        <form action="">
-          <h3 className="CreditHours">
+      <div className='AddCourseFormContainer'>
+        <form action=''>
+          <h3 className='CreditHours'>
             Current Credit Hours:
-            <span className="credits">{creditHours}</span>
+            <span className='credits'>{creditHours}</span>
           </h3>
-          <select
-            className="CourseTitleandReasonInput"
-            name="courseName"
-            value={addcourse.courseName}
-            onChange={(e) => setAddcourse(e.target.value)}
-            id=""
-            placeholder=""
-            required
-          >
-            <option value="" disabled selected hidden>
+          <select className='CourseTitleandReasonInput' name='courseName' value={addcourse.courseName} onChange={(e) => setAddcourse(e.target.value)} id='' placeholder='' required>
+            <option value='' disabled selected hidden>
               Course Title
             </option>
-            {getCourses.length === 0 ? (
-              <option disabled>No courses are available</option>
-            ) : (
-              getCourses.map((course) => <option>{course.courseName}</option>)
-            )}
+            {getCourses.length === 0 ? <option disabled>No courses are available</option> : getCourses.map((course) => <option>{course.courseName}</option>)}
           </select>
-          <input
-            className="CourseCodeandCreditsInput"
-            type="text"
-            name="courseCode"
-            value={courseDetail.courseCode}
-            id=""
-            placeholder="Course Code"
-            readOnly
-          />
-          <input
-            className="CourseCodeandCreditsInput"
-            type="text"
-            name="credits"
-            value={courseDetail.credits}
-            placeholder="Credits"
-            readOnly
-          />
-          <select
-            className="SectionInput"
-            name="section"
-            value={sections}
-            onChange={(e) => setSections(e.target.value)}
-            id=""
-            placeholder=""
-            required
-          >
-            <option value="" disabled selected hidden required>
+          <input className='CourseCodeandCreditsInput' type='text' name='courseCode' value={courseDetail.courseCode} id='' placeholder='Course Code' readOnly />
+          <input className='CourseCodeandCreditsInput' type='text' name='credits' value={courseDetail.credits} placeholder='Credits' readOnly />
+          <select className='SectionInput' name='section' value={sections} onChange={(e) => setSections(e.target.value)} id='' placeholder='' required>
+            <option value='' disabled selected hidden required>
               Concerned Section
             </option>
-            {timetableClash.length === 0 ? (
-              <option disabled>Clashes in all sections</option>
-            ) : (
-              timetableClash.map((timtable) => <option>{timtable}</option>)
-            )}
+            {timetableClash.length === 0 ? <option disabled>Clashes in all sections</option> : timetableClash.map((timtable) => <option>{timtable}</option>)}
           </select>
           <textarea
-            className="AddReasonInput"
-            name="reason"
+            className='AddReasonInput'
+            name='reason'
             value={reasons}
             onChange={(e) => setReasons(e.target.value)}
-            id=""
-            cols="36.5"
-            rows="3"
-            placeholder="Enter Valid Reason"
+            id=''
+            cols='36.5'
+            rows='3'
+            placeholder='Enter Valid Reason'
             required
           ></textarea>
-          <button className="Addbutton" onClick={add}>
+          <button className='Addbutton' onClick={add}>
             Add
           </button>
         </form>
       </div>
-      <div className="AddCourseTableContainer">
+      <div className='AddCourseTableContainer'>
         {detail.length === 0 ? (
           ""
         ) : (
-          <form action="">
-            <table className="AddCourseTable">
+          <form action=''>
+            <table className='AddCourseTable'>
               <tr>
-                <th className="CourseCodeColumn">Course Code</th>
-                <th className="CourseTitleColumn">Course Title</th>
-                <th className="CreditsColumn">Credits</th>
-                <th className="SectionColumn">Section</th>
-                <th className="PrereqCourseColumn">Pre-req Course</th>
-                <th className="PretestColumn">Pre-test</th>
-                <th className="DeleteColumn">Delete</th>
+                <th className='CourseCodeColumn'>Course Code</th>
+                <th className='CourseTitleColumn'>Course Title</th>
+                <th className='CreditsColumn'>Credits</th>
+                <th className='SectionColumn'>Section</th>
+                <th className='PrereqCourseColumn'>Pre-req Course</th>
+                <th className='PretestColumn'>Pre-test</th>
+                <th className='DeleteColumn'>Delete</th>
               </tr>
               {detail.map((add) => (
                 <tr>
-                  <td className="CourseCodeColumn">{add.courseCode}</td>
-                  <td className="CourseTitleColumn">{add.courseName}</td>
-                  <td className="CreditsColumn">{add.credits}</td>
-                  <td className="SectionColumn">{add.section}</td>
-                  <td className="PrereqCourseColumn">{add.preReqCourse}</td>
+                  <td className='CourseCodeColumn'>{add.courseCode}</td>
+                  <td className='CourseTitleColumn'>{add.courseName}</td>
+                  <td className='CreditsColumn'>{add.credits}</td>
+                  <td className='SectionColumn'>{add.section}</td>
+                  <td className='PrereqCourseColumn'>{add.preReqCourse}</td>
                   {add.preTest === "N/A" ? (
-                    <td className="PretestColumn">{add.preTest}</td>
+                    <td className='PretestColumn'>{add.preTest}</td>
                   ) : add.preTest === "Available" ? (
-                    <td className="PretestColumn">
-                      <Link
-                        to={"/PretestInstructions"}
-                        state={add.preReqCourse}
-                      >
+                    <td className='PretestColumn'>
+                      <Link to={"/PretestInstructions"} state={add.preReqCourse}>
                         {add.preTest}
                       </Link>
                     </td>
                   ) : (
-                    <td className="PretestColumn">{add.preTest}</td>
+                    <td className='PretestColumn'>{add.preTest}</td>
                   )}
-                  <td className="DeleteColumn">
-                    <img
-                      src={deleteicon}
-                      alt=""
-                      className="AddedCourseDelBtn"
-                      onClick={() => dele1(add.courseName)}
-                    />
+                  <td className='DeleteColumn'>
+                    <img src={deleteicon} alt='' className='AddedCourseDelBtn' onClick={() => dele1(add.courseName)} />
                   </td>
                 </tr>
               ))}
             </table>
             <br />
-            <label className="FeeChallanLabel">
-              Upload Copy of Paid Fee Challan:{" "}
-            </label>
-            <input
-              type="file"
-              id=""
-              filename="fee"
-              onChange={ChangeFile}
-              accept="image/*"
-              className="upload"
-              required
-            />
+            <label className='FeeChallanLabel'>Upload Copy of Paid Fee Challan: </label>
+            <input type='file' id='' filename='fee' onChange={ChangeFile} accept='image/*' className='upload' required />
             <br />
             {detail.length === 1 && detail[0].preTest === "Available" ? (
-              <button
-                className="AddCourseSubmitButton"
-                onClick={preTestAvailable}
-              >
+              <button className='AddCourseSubmitButton' onClick={preTestAvailable}>
                 Submit
               </button>
-            ) : detail.length === 2 &&
-              (detail[0].preTest === "Available" ||
-                detail[1].preTest === "Available") ? (
-              <button
-                className="AddCourseSubmitButton"
-                onClick={preTestAvailable}
-              >
+            ) : detail.length === 2 && (detail[0].preTest === "Available" || detail[1].preTest === "Available") ? (
+              <button className='AddCourseSubmitButton' onClick={preTestAvailable}>
                 Submit
               </button>
-            ) : detail.length === 3 &&
-              (detail[0].preTest === "Available" ||
-                detail[1].preTest === "Available" ||
-                detail[2].preTest === "Available") ? (
-              <button
-                className="AddCourseSubmitButton"
-                onClick={preTestAvailable}
-              >
+            ) : detail.length === 3 && (detail[0].preTest === "Available" || detail[1].preTest === "Available" || detail[2].preTest === "Available") ? (
+              <button className='AddCourseSubmitButton' onClick={preTestAvailable}>
                 Submit
               </button>
-            ) : detail.length === 4 &&
-              (detail[0].preTest === "Available" ||
-                detail[1].preTest === "Available" ||
-                detail[2].preTest === "Available" ||
-                detail[3].preTest === "Available") ? (
-              <button
-                className="AddCourseSubmitButton"
-                onClick={preTestAvailable}
-              >
+            ) : detail.length === 4 && (detail[0].preTest === "Available" || detail[1].preTest === "Available" || detail[2].preTest === "Available" || detail[3].preTest === "Available") ? (
+              <button className='AddCourseSubmitButton' onClick={preTestAvailable}>
                 Submit
               </button>
             ) : (
-              <button className="AddCourseSubmitButton" onClick={changeonClick}>
+              <button className='AddCourseSubmitButton' onClick={changeonClick}>
                 Submit
               </button>
             )}
           </form>
         )}
       </div>
-      <ToastContainer
-        position="top-center"
-        autoClose={2000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
+      <ToastContainer position='top-center' autoClose={2000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
 
       <Footer />
     </div>

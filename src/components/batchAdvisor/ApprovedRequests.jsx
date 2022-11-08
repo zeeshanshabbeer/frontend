@@ -14,17 +14,15 @@ const ApprovedRequests = () => {
   const [userData, setUserData] = useState([]);
   const [pageLoad, setPageLoad] = useState(0);
   const S_Profile = async () => {
-    const res = await fetch(
-      "https://backend-three-nu.vercel.app/ApprovedRequest/ApprovedRequest",
-      {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        credentials: "include",
-      }
-    );
+    const res = await fetch("https://backend-three-nu.vercel.app/ApprovedRequest/ApprovedRequest", {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        authorization: localStorage.getItem("BA_token"),
+      },
+      credentials: "include",
+    });
 
     const data = await res.json();
     if (data.status === "success") {
@@ -34,15 +32,13 @@ const ApprovedRequests = () => {
 
   const deleted = async (_id) => {
     // const res = await fetch(`/delete/${_id}`, {
-    const res = await fetch(
-      `https://backend-three-nu.vercel.app/ApprovedRequest/delete/${_id}`,
-      {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const res = await fetch(`https://backend-three-nu.vercel.app/ApprovedRequest/delete/${_id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: localStorage.getItem("BA_token"),
+      },
+    });
     const data = await res.json();
     if (data.status === "success") {
       Success(data.message);
@@ -57,77 +53,53 @@ const ApprovedRequests = () => {
   }, [pageLoad]);
   const [buttonPopup, setButtonPopup] = useState(false);
   return (
-    <div className="BAprofilecontainer">
+    <div className='BAprofilecontainer'>
       <BatchAdvisorTopMenu />
       <BatchAdvisorMainMenu />
-      <div className="menuheadingdiv">
-        <h2 className="ApprovedRequeststitle">Approved Requests</h2>
+      <div className='menuheadingdiv'>
+        <h2 className='ApprovedRequeststitle'>Approved Requests</h2>
       </div>
       {userData.length === 0 ? (
-        <div className="emptydiv">
-          <h2 className="emptytext">You don't have any approved requests!</h2>
+        <div className='emptydiv'>
+          <h2 className='emptytext'>You don't have any approved requests!</h2>
         </div>
       ) : (
-        <form action="">
-          <table className="pendingTable" id="table-to-xls">
+        <form action=''>
+          <table className='pendingTable' id='table-to-xls'>
             <tr>
-              <th className="ARregno">Reg No</th>
-              <th className="ARname">Name</th>
-              <th className="ARcode">Course Code</th>
-              <th className="ARtitle">Course Title</th>
-              <th className="ARcredits">Credits</th>
-              <th className="ARsection">Section</th>
-              <th className="ARrequest">Action</th>
-              <th className="ARdel">Delete</th>
+              <th className='ARregno'>Reg No</th>
+              <th className='ARname'>Name</th>
+              <th className='ARcode'>Course Code</th>
+              <th className='ARtitle'>Course Title</th>
+              <th className='ARcredits'>Credits</th>
+              <th className='ARsection'>Section</th>
+              <th className='ARrequest'>Action</th>
+              <th className='ARdel'>Delete</th>
             </tr>
             {userData.map((approved) => (
               <tr>
-                <td className="ARregno">{approved.registrationId}</td>
-                <td className="ARname">{approved.name}</td>
-                <td className="ARcode">{approved.courseCode}</td>
-                <td className="ARtitle">{approved.courseName}</td>
-                <td className="ARcredits">{approved.credits}</td>
-                <td className="ARsection">{approved.section}</td>
-                <td className="ARrequest">{approved.action}</td>
-                <td className="ARdel">
-                  <img
-                    className="tooltip"
-                    src={del}
-                    alt=""
-                    onClick={() => deleted(approved._id)}
-                  />
+                <td className='ARregno'>{approved.registrationId}</td>
+                <td className='ARname'>{approved.name}</td>
+                <td className='ARcode'>{approved.courseCode}</td>
+                <td className='ARtitle'>{approved.courseName}</td>
+                <td className='ARcredits'>{approved.credits}</td>
+                <td className='ARsection'>{approved.section}</td>
+                <td className='ARrequest'>{approved.action}</td>
+                <td className='ARdel'>
+                  <img className='tooltip' src={del} alt='' onClick={() => deleted(approved._id)} />
                 </td>
               </tr>
             ))}
           </table>
-          <ReactHTMLTableToExcel
-            id="test-table-xls-button"
-            className="print"
-            table="table-to-xls"
-            filename="Add/Drop List"
-            sheet="tablexls"
-            buttonText="Download"
-          />
+          <ReactHTMLTableToExcel id='test-table-xls-button' className='print' table='table-to-xls' filename='Add/Drop List' sheet='tablexls' buttonText='Download' />
         </form>
       )}
-      <ToastContainer
-        position="top-center"
-        autoClose={2000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
+      <ToastContainer position='top-center' autoClose={2000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
       <Footer />
       <DeleteAddedCoursePopup trigger={buttonPopup} setTrigger={setButtonPopup}>
-        <form action="">
-          <h3 className="DeleteConfirmation">
-            Are you sure you want to delete this request?
-          </h3>
-          <button className="DeleteAddedCourseButton ">Delete</button>
+        <form action=''>
+          <h3 className='DeleteConfirmation'>Are you sure you want to delete this request?</h3>
+          <button className='DeleteAddedCourseButton '>Delete</button>
         </form>
       </DeleteAddedCoursePopup>
     </div>

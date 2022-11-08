@@ -13,17 +13,15 @@ const PretestInstructions = () => {
   //get all(sos or elective) courses to check what is coursecode and credits hours
   const [allCourses, setAllCourses] = useState([]);
   const getAllCourses = async () => {
-    const res = await fetch(
-      "https://backend-three-nu.vercel.app/SechemeOfStudy/AllCourses",
-      {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        credentials: "include",
-      }
-    );
+    const res = await fetch("https://backend-three-nu.vercel.app/SechemeOfStudy/AllCourses", {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        authorization: localStorage.getItem("S_token"),
+      },
+      credentials: "include",
+    });
     const data = await res.json();
     if (data.status === "success") {
       setAllCourses(data.message);
@@ -48,35 +46,35 @@ const PretestInstructions = () => {
     }
   }
   return (
-    <div className="maincontainer">
+    <div className='maincontainer'>
       <TopMenu />
       <MainMenu />
-      <div className="freezesemesterdiv">
-        <h2 className="freezesemestertitle">
-          <Link to="/AddCourse">
-            <img src={back} alt="" className="backToAddCourse" />
+      <div className='freezesemesterdiv'>
+        <h2 className='freezesemestertitle'>
+          <Link to='/AddCourse'>
+            <img src={back} alt='' className='backToAddCourse' />
           </Link>
           Pre-Test
         </h2>
       </div>
-      <div className="PretestInstructionsContainer">
-        <div className="innerdiv">
-          <form action="">
-            <p className="prereqCode">
+      <div className='PretestInstructionsContainer'>
+        <div className='innerdiv'>
+          <form action=''>
+            <p className='prereqCode'>
               <b> Course Code: </b>
               {preTest.courseCode}
             </p>
-            <p className="prereqTitle">
+            <p className='prereqTitle'>
               <b> Course Title:</b> {preTest.courseName}
             </p>
             <h3>Instructions:</h3>
-            <p className="instructions">Total Questions: 10</p>
-            <p className="instructions">Total Marks: 10</p>
-            <p className="instructions">Total Time: 15 mins</p>
-            <p className="instructions">Only one attempt!</p>
-            <p className="instructions">One you start you cannot pause!</p>
+            <p className='instructions'>Total Questions: 10</p>
+            <p className='instructions'>Total Marks: 10</p>
+            <p className='instructions'>Total Time: 15 mins</p>
+            <p className='instructions'>Only one attempt!</p>
+            <p className='instructions'>One you start you cannot pause!</p>
             <Link to={"/PretestQuestions"} state={preTest.courseName}>
-              <button className="start-btn">Start</button>
+              <button className='start-btn'>Start</button>
             </Link>
           </form>
         </div>
